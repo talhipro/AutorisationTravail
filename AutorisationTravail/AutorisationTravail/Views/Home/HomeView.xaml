@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AutorisationTravail.Views.Home.HomeView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout>
+                <Frame BackgroundColor="#fcb32a" HasShadow="False">
+
+                    <StackLayout Margin="0" VerticalOptions="Center">
+                        <Label
+                            Margin="0"
+                            FontAttributes="Bold"
+                            FontSize="24"
+                            HorizontalOptions="Center"
+                            Text="Accueil"
+                            TextColor="White" />
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+            <Grid
+                Margin="20"
+                ColumnSpacing="15"
+                RowSpacing="15"
+                VerticalOptions="CenterAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width=".5*" />
+                    <ColumnDefinition Width=".5*" />
+                </Grid.ColumnDefinitions>
+                <Frame
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Padding="10"
+                    BackgroundColor="#dbdbdb"
+                    CornerRadius="8">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Demande_Tapped" />
+                    </Frame.GestureRecognizers>
+                    <StackLayout>
+                        <Image
+                            HeightRequest="80"
+                            Source="list_demande.png"
+                            WidthRequest="80" />
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            HorizontalTextAlignment="Center"
+                            Text="Demande Autorisation de Travail" />
+
+                    </StackLayout>
+                </Frame>
+
+                <Frame
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Padding="10"
+                    BackgroundColor="#dbdbdb"
+                    CornerRadius="8">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="AddAT_Tapped" />
+                    </Frame.GestureRecognizers>
+                    <StackLayout>
+                        <Image
+                            HeightRequest="80"
+                            Source="add_at.png"
+                            WidthRequest="80" />
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            HorizontalTextAlignment="Center"
+                            Text="Création Autorisation de Travail" />
+
+                    </StackLayout>
+                </Frame>
+
+                <Frame
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Padding="10"
+                    BackgroundColor="#dbdbdb"
+                    CornerRadius="8">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ListAT_Tapped" />
+                    </Frame.GestureRecognizers>
+                    <StackLayout>
+                        <Image
+                            HeightRequest="80"
+                            Source="list_at.png"
+                            WidthRequest="80" />
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            HorizontalTextAlignment="Center"
+                            Text="Liste Autorisation de Travail" />
+
+                    </StackLayout>
+                </Frame>
+
+                <Frame
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Padding="10"
+                    BackgroundColor="#dbdbdb"
+                    CornerRadius="8">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ListPermis_Tapped" />
+                    </Frame.GestureRecognizers>
+                    <StackLayout>
+                        <Image
+                            HeightRequest="80"
+                            Source="list_permis.png"
+                            WidthRequest="80" />
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            HorizontalTextAlignment="Center"
+                            Text="Liste Permis" />
+
+                    </StackLayout>
+                </Frame>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Popup:PopupPage
+    x:Class="AutorisationTravail.Popups.AddMoyensAccesPopup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Popup:PopupPage.Animation>
+        <animations:ScaleAnimation
+            DurationIn="400"
+            DurationOut="300"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True"
+            PositionIn="Center"
+            PositionOut="Center"
+            ScaleIn="1.2"
+            ScaleOut="0.8" />
+    </Popup:PopupPage.Animation>
+    <Frame
+        Margin="20"
+        Padding="15"
+        BackgroundColor="White"
+        CornerRadius="5"
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="Center">
+        <ScrollView>
+            <StackLayout Orientation="Vertical">
+                <Label
+                    Margin="0,15"
+                    FontAttributes="Bold"
+                    FontSize="20"
+                    Text="Veuillez choisir les Moyens Acces à ajouter."
+                    TextColor="Black" />
+                <CollectionView HeightRequest="200" SelectionMode="Multiple">
+                    <CollectionView.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Escabeau</x:String>
+                            <x:String>Nacelle, PEMP</x:String>
+                            <x:String>Escabeau</x:String>
+                            <x:String>Nacelle, PEMP</x:String>
+                            <x:String>Escabeau</x:String>
+                            <x:String>Nacelle, PEMP</x:String>
+                            <x:String>Escabeau</x:String>
+                            <x:String>Nacelle, PEMP</x:String>
+                            <x:String>Escabeau</x:String>
+                            <x:String>Nacelle, PEMP</x:String>
+                        </x:Array>
+                    </CollectionView.ItemsSource>
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout
+                            HorizontalItemSpacing="5"
+                            Orientation="Vertical"
+                            Span="{OnIdiom Phone=2,
+                                           Tablet=3}"
+                            VerticalItemSpacing="10" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame
+                                BackgroundColor="#FFFFFF"
+                                BorderColor="#979797"
+                                CornerRadius="3"
+                                HasShadow="False"
+                                VerticalOptions="Center">
+                                <Frame.Padding>
+                                    <OnIdiom
+                                        x:TypeArguments="Thickness"
+                                        Phone="5"
+                                        Tablet="10" />
+                                </Frame.Padding>
+                                <StackLayout Orientation="Horizontal">
+                                    <CheckBox />
+                                    <Label
+                                        HorizontalOptions="Center"
+                                        Text="{Binding}"
+                                        TextColor="#979797"
+                                        VerticalOptions="Center" />
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".7*" />
+                        <ColumnDefinition Width=".3*" />
+                    </Grid.ColumnDefinitions>
+                    <Frame
+                        Grid.Column="0"
+                        Margin="0,20,0,0"
+                        BackgroundColor="#fcb32a"
+                        CornerRadius="6"
+                        HasShadow="False"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="End">
+                        <Frame.Padding>
+                            <OnPlatform
+                                x:TypeArguments="Thickness"
+                                Android="-6,-5"
+                                iOS="6,-5" />
+                        </Frame.Padding>
+                        <Button
+                            BackgroundColor="Transparent"
+                            FontAttributes="Bold"
+                            FontSize="15"
+                            Text="Ajouter"
+                            TextColor="White" />
+                    </Frame>
+                    <Frame
+                        Grid.Column="1"
+                        Margin="0,20,0,0"
+                        BackgroundColor="#A8A8A8"
+                        CornerRadius="6"
+                        HasShadow="False"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="End">
+                        <Frame.Padding>
+                            <OnPlatform
+                                x:TypeArguments="Thickness"
+                                Android="-6,-5"
+                                iOS="6,-5" />
+                        </Frame.Padding>
+                        <Button
+                            BackgroundColor="Transparent"
+                            Clicked="ClosePopup_Clicked"
+                            FontAttributes="Bold"
+                            FontSize="15"
+                            Text="Fermer"
+                            TextColor="White" />
+                    </Frame>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </Frame>
+</Popup:PopupPage>

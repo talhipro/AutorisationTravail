@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AutorisationTravail.Views.AutorisationTravail.ListAutorisationTravail"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout>
+                <Frame BackgroundColor="#fcb32a" HasShadow="False">
+
+                    <StackLayout Margin="0" VerticalOptions="Center">
+                        <Label
+                            Margin="0"
+                            FontAttributes="Bold"
+                            FontSize="24"
+                            HorizontalOptions="Center"
+                            Text="Liste Autorisations de Travail"
+                            TextColor="White" />
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+            <SearchBar
+                x:Name="search"
+                Margin="10,0"
+                BackgroundColor="#dbdbdb"
+                CancelButtonColor="#A6B2C3"
+                FontSize="14"
+                HeightRequest="45"
+                HorizontalOptions="Fill"
+                HorizontalTextAlignment="Start"
+                Placeholder="Search ..."
+                PlaceholderColor="#A6B2C3"
+                TextChanged="Recherche_TextChanged"
+                TextColor="#A6B2C3"
+                VerticalOptions="Start" />
+
+            <Picker
+                Title="Site, Entité, service, demandeur , statut"
+                Margin="10,0"
+                BackgroundColor="#dbdbdb"
+                FontSize="14"
+                HeightRequest="45"
+                HorizontalOptions="Fill" />
+
+            <ListView
+                x:Name="myListe"
+                CachingStrategy="RecycleElementAndDataTemplate"
+                HasUnevenRows="True"
+                ItemSelected="myListe_ItemSelected"
+                SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ContentView Padding="10,5" VerticalOptions="StartAndExpand">
+                                <Frame
+                                    Padding="10,10"
+                                    BackgroundColor="White"
+                                    CornerRadius="10"
+                                    IsClippedToBounds="true"
+                                    VerticalOptions="CenterAndExpand">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="75" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="120" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackLayout
+                                            Grid.Column="0"
+                                            Spacing="0"
+                                            VerticalOptions="CenterAndExpand">
+
+                                            <Label
+                                                FontSize="14"
+                                                HorizontalOptions="Center"
+                                                Text="AT n°" />
+                                            <Label
+                                                FontSize="13"
+                                                HorizontalOptions="Center"
+                                                Text="{Binding AutorisationNum}"
+                                                TextColor="Blue" />
+                                        </StackLayout>
+
+                                        <StackLayout Grid.Column="1" Spacing="0">
+
+                                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                                <Label
+                                                    Margin="0,0,2,0"
+                                                    FontSize="16"
+                                                    Text="EP:"
+                                                    TextColor="#233558"
+                                                    VerticalOptions="Center" />
+                                                <Label
+                                                    Margin="0,0,10,0"
+                                                    FontAttributes="Bold"
+                                                    FontSize="14"
+                                                    Text="{Binding AutorisationSite}"
+                                                    TextColor="#233558"
+                                                    VerticalOptions="Center" />
+                                                <Label
+                                                    Margin="0,0,2,0"
+                                                    FontSize="16"
+                                                    Text="EE:"
+                                                    TextColor="#233558"
+                                                    VerticalOptions="Center" />
+                                                <Label
+                                                    FontAttributes="Bold"
+                                                    FontSize="14"
+                                                    Text="{Binding AutorisationEntite}"
+                                                    TextColor="#233558"
+                                                    VerticalOptions="Center" />
+                                            </StackLayout>
+
+                                            <StackLayout Spacing="0">
+                                                <Label
+                                                    Margin="0,0,5,0"
+                                                    FontAttributes="Bold"
+                                                    FontSize="14"
+                                                    Text="{Binding AutorisationDemandeur}"
+                                                    TextColor="#233558" />
+                                                <StackLayout Orientation="Horizontal" Spacing="0">
+                                                    <Label
+                                                        Margin="0,0,5,0"
+                                                        FontSize="14"
+                                                        Text="Fait le"
+                                                        TextColor="#233558" />
+                                                    <Label FontAttributes="Bold" Text="{Binding AutorisationDate, StringFormat='{0:dd/MM/yyyy}'}" />
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal" Spacing="0">
+                                                    <Label
+                                                        Margin="0,0,5,0"
+                                                        FontSize="14"
+                                                        Text="Date:"
+                                                        TextColor="#233558" />
+                                                    <Label
+                                                        FontAttributes="Bold"
+                                                        FontSize="14"
+                                                        Text="{Binding AutorisationDateIntervention, StringFormat='{0:dd/MM/yyyy}'}" />
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </StackLayout>
+
+                                        <StackLayout
+                                            Grid.Column="2"
+                                            Spacing="0"
+                                            VerticalOptions="Center">
+                                            <Frame
+                                                Padding="10"
+                                                BackgroundColor="{Binding AutorisationStatutColor}"
+                                                CornerRadius="6"
+                                                HasShadow="False">
+                                                <Label
+                                                    Margin="0,0,5,0"
+                                                    FontAttributes="Bold"
+                                                    FontSize="16"
+                                                    HorizontalOptions="CenterAndExpand"
+                                                    HorizontalTextAlignment="Center"
+                                                    Text="{Binding AutorisationStatut}"
+                                                    TextColor="White" />
+                                            </Frame>
+
+                                        </StackLayout>
+
+                                    </Grid>
+                                </Frame>
+                            </ContentView>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
