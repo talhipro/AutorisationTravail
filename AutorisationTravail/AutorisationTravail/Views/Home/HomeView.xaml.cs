@@ -31,7 +31,7 @@ namespace AutorisationTravail.Views.Home
         }
         private async void ListPermis_Tapped(object sender, EventArgs e)
         {
-            await Application.Current.MainPage.Navigation.PushAsync(new Permis.AddPermisFeu());
+            await Application.Current.MainPage.Navigation.PushAsync(new Permis.ListPermis());
         }
     }
 }

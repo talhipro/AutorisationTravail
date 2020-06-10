@@ -16,5 +16,11 @@ namespace AutorisationTravail.Views.Permis
         {
             InitializeComponent();
         }
+
+        private async void RisqueOui_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            if(e.Value)
+            await Application.Current.MainPage.DisplayAlert("Info!", "Après l'enregistrement du permis une notification sera envoyée à l'Hse Site pour avoir la validation du ce Permis!", "Ok");
+        }
     }
 }

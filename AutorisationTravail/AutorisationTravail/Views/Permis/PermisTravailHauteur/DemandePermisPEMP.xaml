@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AutorisationTravail.Views.Permis.PermisTravailHauteur.DemandePermisPEMP"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout x:Name="Page">
+                <StackLayout x:Name="Header">
+                    <Frame BackgroundColor="#fcb32a" HasShadow="False">
+                        <Grid>
+                            <Grid.Padding>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <On Platform="iOS" Value="0, 11, 8, 0" />
+                                </OnPlatform>
+                            </Grid.Padding>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <StackLayout
+                                Grid.Column="0"
+                                Margin="0"
+                                VerticalOptions="Center">
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="26"
+                                    HorizontalOptions="Center"
+                                    Text="Demande de Permis d'utilisation de la PEMP"
+                                    TextColor="White" />
+                            </StackLayout>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+                <StackLayout x:Name="Content" Margin="10">
+                    <StackLayout x:Name="Infos">
+                        <Grid RowSpacing="5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Frame
+                                Grid.Row="0"
+                                Padding="10,2,10,10"
+                                BackgroundColor="#dbdbdb"
+                                CornerRadius="4"
+                                HasShadow="False">
+                                <StackLayout>
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="18"
+                                        Text="Localisation"
+                                        TextColor="Gray" />
+                                    <Entry BackgroundColor="White" HorizontalOptions="FillAndExpand" />
+                                </StackLayout>
+                            </Frame>
+                            <Frame
+                                Grid.Row="1"
+                                Padding="10,2,10,10"
+                                BackgroundColor="#dbdbdb"
+                                CornerRadius="4"
+                                HasShadow="False">
+                                <StackLayout>
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="18"
+                                        Text="Service Demandeur"
+                                        TextColor="Gray" />
+
+                                    <Picker Title="Choisir le Type de la PEMP" BackgroundColor="White">
+                                        <Picker.ItemsSource>
+                                            <x:Array Type="{x:Type x:String}">
+                                                <x:String>Service 1</x:String>
+                                                <x:String>Service 2</x:String>
+                                                <x:String>Service 3</x:String>
+                                                <x:String>Service 4</x:String>
+                                                <x:String>Service 5</x:String>
+                                            </x:Array>
+                                        </Picker.ItemsSource>
+                                    </Picker>
+                                </StackLayout>
+                            </Frame>
+                            <Frame
+                                Grid.Row="2"
+                                Padding="10,2,10,10"
+                                BackgroundColor="#dbdbdb"
+                                CornerRadius="4"
+                                HasShadow="False">
+                                <StackLayout>
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="18"
+                                        Text="Nᵒ DI"
+                                        TextColor="Gray" />
+                                    <Entry BackgroundColor="White" HorizontalOptions="FillAndExpand" />
+                                </StackLayout>
+                            </Frame>
+                            <Frame
+                                Grid.Row="3"
+                                Padding="10,2,10,10"
+                                BackgroundColor="#dbdbdb"
+                                CornerRadius="4"
+                                HasShadow="False">
+                                <StackLayout>
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="18"
+                                        Text="Désignation Travail"
+                                        TextColor="Gray" />
+                                    <Entry BackgroundColor="White" HorizontalOptions="FillAndExpand" />
+                                </StackLayout>
+                            </Frame>
+                            <Frame
+                                Grid.Row="4"
+                                Padding="10,2,10,10"
+                                BackgroundColor="#dbdbdb"
+                                CornerRadius="4"
+                                HasShadow="False">
+                                <StackLayout>
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="18"
+                                        Text="Type de la PEMP"
+                                        TextColor="Gray" />
+                                    <Picker Title="Choisir un Contact" BackgroundColor="White">
+                                        <Picker.ItemsSource>
+                                            <x:Array Type="{x:Type x:String}">
+                                                <x:String>PEMP 1</x:String>
+                                                <x:String>PEMP 2</x:String>
+                                                <x:String>PEMP 3</x:String>
+                                                <x:String>PEMP 4</x:String>
+                                                <x:String>PEMP 5</x:String>
+                                            </x:Array>
+                                        </Picker.ItemsSource>
+                                    </Picker>
+                                </StackLayout>
+                            </Frame>
+                            <Frame
+                                Grid.Row="5"
+                                Padding="10,2,10,10"
+                                BackgroundColor="#dbdbdb"
+                                CornerRadius="4"
+                                HasShadow="False">
+                                <StackLayout>
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="18"
+                                        Text="Date de début de travail"
+                                        TextColor="Gray" />
+                                    <DatePicker BackgroundColor="White" HorizontalOptions="FillAndExpand" />
+                                </StackLayout>
+                            </Frame>
+                            <Frame
+                                Grid.Row="6"
+                                Padding="10,2,10,10"
+                                BackgroundColor="#dbdbdb"
+                                CornerRadius="4"
+                                HasShadow="False">
+                                <StackLayout>
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="18"
+                                        Text="Heure"
+                                        TextColor="Gray" />
+                                    <TimePicker BackgroundColor="White" HorizontalOptions="FillAndExpand" />
+                                </StackLayout>
+                            </Frame>
+                            <Frame
+                                Grid.Row="7"
+                                Padding="10,2,10,10"
+                                BackgroundColor="#dbdbdb"
+                                CornerRadius="4"
+                                HasShadow="False">
+                                <StackLayout>
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="18"
+                                        Text="Date de fin de travail"
+                                        TextColor="Gray" />
+                                    <DatePicker BackgroundColor="White" HorizontalOptions="FillAndExpand" />
+                                </StackLayout>
+                            </Frame>
+                            <Frame
+                                Grid.Row="8"
+                                Padding="10,2,10,10"
+                                BackgroundColor="#dbdbdb"
+                                CornerRadius="4"
+                                HasShadow="False">
+                                <StackLayout>
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="18"
+                                        Text="Heure"
+                                        TextColor="Gray" />
+                                    <TimePicker BackgroundColor="White" HorizontalOptions="FillAndExpand" />
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout x:Name="Actions" VerticalOptions="End">
+                    <StackLayout.Margin>
+                        <OnIdiom
+                            x:TypeArguments="Thickness"
+                            Phone="10"
+                            Tablet="15" />
+                    </StackLayout.Margin>
+                    <Button
+                        BackgroundColor="#fcb32a"
+                        Clicked="SendDemande_Clicked"
+                        CornerRadius="5"
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        Text="Envoyer la demande"
+                        TextColor="White"
+                        VerticalOptions="Center" />
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

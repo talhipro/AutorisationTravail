@@ -130,7 +130,7 @@
                                         <Frame Padding="10" HasShadow="False">
                                             <StackLayout Orientation="Horizontal">
 
-                                                <CheckBox Margin="-5,0" />
+                                                <CheckBox Margin="-5,0" CheckedChanged="RisqueOui_CheckedChanged" />
                                                 <Label
                                                     FontAttributes="Bold"
                                                     FontSize="16"

@@ -1,15 +1,150 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             x:Class="AutorisationTravail.Views.Permis.ListPermis">
+<ContentPage
+    x:Class="AutorisationTravail.Views.Permis.ListPermis"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <StackLayout>
+
+                <StackLayout
+                    Margin="0"
+                    Padding="0,20,10,20"
+                    BackgroundColor="#fcb32a"
+                    Orientation="Horizontal">
+                    <Label
+                        Margin="0"
+                        FontAttributes="Bold"
+                        FontSize="24"
+                        HorizontalOptions="CenterAndExpand"
+                        Text="Liste des Permis"
+                        TextColor="White" />
+                    <Frame
+                        Padding="0"
+                        BackgroundColor="#dbdbdb"
+                        CornerRadius="20"
+                        HasShadow="False"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"
+                        WidthRequest="30">
+                        <Image Source="add.png">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="NewPermis_Tapped" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Frame>
+                </StackLayout>
+            </StackLayout>
+
+            <Picker
+                Title="Type de permis, Demandeur ,Statut"
+                Margin="10,0"
+                BackgroundColor="#dbdbdb"
+                FontSize="14"
+                HeightRequest="45"
+                HorizontalOptions="Fill" />
+
+            <ListView
+                x:Name="myListe"
+                CachingStrategy="RecycleElementAndDataTemplate"
+                HasUnevenRows="True"
+                ItemSelected="myListe_ItemSelected"
+                SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10,5" VerticalOptions="StartAndExpand">
+                                <Frame
+                                    Padding="10,10"
+                                    BackgroundColor="White"
+                                    CornerRadius="10"
+                                    IsClippedToBounds="true"
+                                    VerticalOptions="CenterAndExpand">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width=".2*" />
+                                            <ColumnDefinition Width=".5*" />
+                                            <ColumnDefinition Width=".3*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackLayout Grid.Column="0" VerticalOptions="Center">
+                                            <Label
+                                                FontSize="14"
+                                                HorizontalOptions="Center"
+                                                Text="AT n°" />
+                                            <Label
+                                                FontSize="13"
+                                                HorizontalOptions="Center"
+                                                Text="{Binding NumAT}"
+                                                TextColor="Blue" />
+                                        </StackLayout>
+
+                                        <StackLayout Grid.Column="1">
+
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label
+                                                    Margin="0,0,10,0"
+                                                    FontAttributes="Bold"
+                                                    FontSize="14"
+                                                    Text="{Binding Type}"
+                                                    TextColor="#233558"
+                                                    VerticalOptions="Center" />
+                                            </StackLayout>
+
+                                            <StackLayout Spacing="0">
+                                                <Label
+                                                    Margin="0,0,5,0"
+                                                    FontAttributes="Bold"
+                                                    FontSize="14"
+                                                    Text="{Binding Demandeur}"
+                                                    TextColor="#233558" />
+                                                <StackLayout Orientation="Horizontal" Spacing="0">
+                                                    <Label
+                                                        Margin="0,0,5,0"
+                                                        FontSize="14"
+                                                        Text="Créé le: "
+                                                        TextColor="#233558" />
+                                                    <Label
+                                                        Margin="0,0,10,0"
+                                                        FontAttributes="Bold"
+                                                        FontSize="14"
+                                                        Text="{Binding CreatedDate}"
+                                                        TextColor="#233558"
+                                                        VerticalOptions="Center" />
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </StackLayout>
+
+                                        <StackLayout
+                                            Grid.Column="2"
+                                            Spacing="0"
+                                            VerticalOptions="Center">
+                                            <Frame
+                                                Padding="5"
+                                                BackgroundColor="{Binding StatutColor}"
+                                                CornerRadius="6"
+                                                HasShadow="False">
+                                                <Label
+                                                    FontAttributes="Bold"
+                                                    HorizontalOptions="CenterAndExpand"
+                                                    HorizontalTextAlignment="Center"
+                                                    Text="{Binding StatutValue}"
+                                                    TextColor="White" />
+                                            </Frame>
+
+                                        </StackLayout>
+
+                                    </Grid>
+                                </Frame>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
