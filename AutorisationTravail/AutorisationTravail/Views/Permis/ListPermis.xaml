@@ -3,148 +3,207 @@
     x:Class="AutorisationTravail.Views.Permis.ListPermis"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Controls="clr-namespace:AutorisationTravail.Controls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
     <ContentPage.Content>
-        <StackLayout>
-            <StackLayout>
-
-                <StackLayout
-                    Margin="0"
-                    Padding="0,20,10,20"
-                    BackgroundColor="#fcb32a"
-                    Orientation="Horizontal">
-                    <Label
-                        Margin="0"
-                        FontAttributes="Bold"
-                        FontSize="24"
-                        HorizontalOptions="CenterAndExpand"
-                        Text="Liste des Permis"
-                        TextColor="White" />
-                    <Frame
-                        Padding="0"
-                        BackgroundColor="#dbdbdb"
-                        CornerRadius="20"
-                        HasShadow="False"
-                        HorizontalOptions="End"
-                        VerticalOptions="Center"
-                        WidthRequest="30">
-                        <Image Source="add.png">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="NewPermis_Tapped" />
-                            </Image.GestureRecognizers>
-                        </Image>
-                    </Frame>
-                </StackLayout>
+        <StackLayout BackgroundColor="#e6ebfc">
+            <StackLayout x:Name="Header">
+                <Frame
+                    Margin="0,-15,0,0"
+                    Padding="10,40,10,30"
+                    BackgroundColor="#3185DE"
+                    CornerRadius="15"
+                    HasShadow="False"
+                    VerticalOptions="Center">
+                    <StackLayout Orientation="Horizontal">
+                        <Frame
+                            Padding="5"
+                            BackgroundColor="#5294d9"
+                            CornerRadius="8"
+                            HasShadow="False">
+                            <Image
+                                HeightRequest="25"
+                                HorizontalOptions="End"
+                                Source="arrowleft.png"
+                                WidthRequest="25" />
+                        </Frame>
+                        <Label
+                            Margin="0"
+                            FontAttributes="Bold"
+                            FontSize="18"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="Liste des Permis"
+                            TextColor="White"
+                            VerticalOptions="Center" />
+                        <Frame
+                            Padding="5"
+                            BackgroundColor="#5294d9"
+                            CornerRadius="8"
+                            HasShadow="False"
+                            VerticalOptions="Center">
+                            <Image
+                                HeightRequest="25"
+                                HorizontalOptions="End"
+                                Source="add.png"
+                                WidthRequest="25">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="NewPermis_Tapped" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Frame>
+                    </StackLayout>
+                </Frame>
             </StackLayout>
 
-            <Picker
-                Title="Type de permis, Demandeur ,Statut"
-                Margin="10,0"
-                BackgroundColor="#dbdbdb"
-                FontSize="14"
-                HeightRequest="45"
-                HorizontalOptions="Fill" />
+            <StackLayout Margin="10">
+                <Controls:CustomRoundedPicker Title="Site, Entité, Service,Type de permis, Demandeur, Statut" />
+            </StackLayout>
 
             <ListView
                 x:Name="myListe"
+                Margin="10"
                 CachingStrategy="RecycleElementAndDataTemplate"
                 HasUnevenRows="True"
                 ItemSelected="myListe_ItemSelected"
-                SeparatorVisibility="None">
+                SeparatorVisibility="None"
+                VerticalScrollBarVisibility="Never">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Padding="10,5" VerticalOptions="StartAndExpand">
-                                <Frame
-                                    Padding="10,10"
-                                    BackgroundColor="White"
-                                    CornerRadius="10"
-                                    IsClippedToBounds="true"
-                                    VerticalOptions="CenterAndExpand">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width=".2*" />
-                                            <ColumnDefinition Width=".5*" />
-                                            <ColumnDefinition Width=".3*" />
-                                        </Grid.ColumnDefinitions>
+                            <Frame
+                                Margin="0,4"
+                                Padding="2"
+                                CornerRadius="8"
+                                HasShadow="False">
+                                <StackLayout Spacing="0">
+                                    <StackLayout Orientation="Horizontal" Spacing="0">
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="Item_Tapped" />
+                                        </StackLayout.GestureRecognizers>
+                                        <BoxView
+                                            Margin="-2,0,0,0"
+                                            BackgroundColor="{Binding PermisStatutTxtColor}"
+                                            HeightRequest="30"
+                                            VerticalOptions="Center"
+                                            WidthRequest="3" />
+                                        <Frame
+                                            Padding="10"
+                                            CornerRadius="8"
+                                            HasShadow="False"
+                                            HorizontalOptions="FillAndExpand">
+                                            <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                                                <Grid HorizontalOptions="FillAndExpand">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width=".6*" />
+                                                        <ColumnDefinition Width=".4*" />
 
-                                        <StackLayout Grid.Column="0" VerticalOptions="Center">
-                                            <Label
-                                                FontSize="14"
-                                                HorizontalOptions="Center"
-                                                Text="AT n°" />
-                                            <Label
-                                                FontSize="13"
-                                                HorizontalOptions="Center"
-                                                Text="{Binding NumAT}"
-                                                TextColor="Blue" />
-                                        </StackLayout>
-
-                                        <StackLayout Grid.Column="1">
-
-                                            <StackLayout Orientation="Horizontal">
-                                                <Label
-                                                    Margin="0,0,10,0"
-                                                    FontAttributes="Bold"
-                                                    FontSize="14"
-                                                    Text="{Binding Type}"
-                                                    TextColor="#233558"
-                                                    VerticalOptions="Center" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <StackLayout
+                                                        Grid.Column="0"
+                                                        Spacing="2"
+                                                        VerticalOptions="Center">
+                                                        <Label
+                                                            FontAttributes="Bold"
+                                                            FontSize="16"
+                                                            Text="{Binding PermisNumAT, StringFormat='AT N°{0}'}"
+                                                            TextColor="#172952" />
+                                                        <Label
+                                                            FontSize="16"
+                                                            Text="{Binding PermisType}"
+                                                            TextColor="#3F4576" />
+                                                    </StackLayout>
+                                                    <StackLayout
+                                                        Grid.Column="1"
+                                                        Spacing="0"
+                                                        VerticalOptions="Center">
+                                                        <Frame
+                                                            Padding="10"
+                                                            BackgroundColor="{Binding PermisStatutBgColor}"
+                                                            CornerRadius="6"
+                                                            HasShadow="False"
+                                                            HorizontalOptions="EndAndExpand">
+                                                            <Label
+                                                                Margin="0,0,5,0"
+                                                                FontAttributes="Bold"
+                                                                FontSize="16"
+                                                                HorizontalOptions="CenterAndExpand"
+                                                                HorizontalTextAlignment="Center"
+                                                                Text="{Binding PermisStatutValue}"
+                                                                TextColor="{Binding PermisStatutTxtColor}" />
+                                                        </Frame>
+                                                    </StackLayout>
+                                                </Grid>
                                             </StackLayout>
-
-                                            <StackLayout Spacing="0">
-                                                <Label
-                                                    Margin="0,0,5,0"
-                                                    FontAttributes="Bold"
-                                                    FontSize="14"
-                                                    Text="{Binding Demandeur}"
-                                                    TextColor="#233558" />
-                                                <StackLayout Orientation="Horizontal" Spacing="0">
-                                                    <Label
-                                                        Margin="0,0,5,0"
-                                                        FontSize="14"
-                                                        Text="Créé le: "
-                                                        TextColor="#233558" />
-                                                    <Label
-                                                        Margin="0,0,10,0"
-                                                        FontAttributes="Bold"
-                                                        FontSize="14"
-                                                        Text="{Binding CreatedDate}"
-                                                        TextColor="#233558"
-                                                        VerticalOptions="Center" />
-                                                </StackLayout>
+                                        </Frame>
+                                    </StackLayout>
+                                    <StackLayout
+                                        Margin="0"
+                                        Padding="0,2,0,0"
+                                        BackgroundColor="#F5F5F5"
+                                        IsVisible="{Binding DetailsColapse}"
+                                        Spacing="2">
+                                        <Grid ColumnSpacing="2" RowSpacing="2">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width=".5*" />
+                                                <ColumnDefinition Width=".5*" />
+                                            </Grid.ColumnDefinitions>
+                                            <StackLayout
+                                                Grid.Row="0"
+                                                Grid.Column="0"
+                                                Padding="15"
+                                                BackgroundColor="White">
+                                                <Label Text="Fait le" TextColor="#AEB4BF" />
+                                                <Label Text="{Binding PermisDate, StringFormat='{0:dd/MM/yyyy}'}" TextColor="#3F4576" />
                                             </StackLayout>
+                                            <StackLayout
+                                                Grid.Row="0"
+                                                Grid.Column="1"
+                                                Padding="15"
+                                                BackgroundColor="White">
+                                                <Label Text="entité" TextColor="#AEB4BF" />
+                                                <Label Text="{Binding PermisEntite}" TextColor="#3F4576" />
+                                            </StackLayout>
+                                            <StackLayout
+                                                Grid.Row="1"
+                                                Grid.Column="0"
+                                                Padding="15"
+                                                BackgroundColor="White">
+                                                <Label Text="demandeur" TextColor="#AEB4BF" />
+                                                <Label Text="{Binding PermisDemandeur}" TextColor="#3F4576" />
+                                            </StackLayout>
+                                            <StackLayout
+                                                Grid.Row="1"
+                                                Grid.Column="1"
+                                                Padding="15"
+                                                BackgroundColor="White">
+                                                <Label Text="sevice" TextColor="#AEB4BF" />
+                                                <Label Text="{Binding PermisService}" TextColor="#3F4576" />
+                                            </StackLayout>
+                                        </Grid>
+                                        <StackLayout Padding="20" BackgroundColor="White">
+                                            <Button
+                                                BackgroundColor="#3F4478"
+                                                BorderColor="White"
+                                                FontSize="16"
+                                                Text="Voir détail"
+                                                TextColor="White" />
                                         </StackLayout>
+                                    </StackLayout>
+                                </StackLayout>
 
-                                        <StackLayout
-                                            Grid.Column="2"
-                                            Spacing="0"
-                                            VerticalOptions="Center">
-                                            <Frame
-                                                Padding="5"
-                                                BackgroundColor="{Binding StatutColor}"
-                                                CornerRadius="6"
-                                                HasShadow="False">
-                                                <Label
-                                                    FontAttributes="Bold"
-                                                    HorizontalOptions="CenterAndExpand"
-                                                    HorizontalTextAlignment="Center"
-                                                    Text="{Binding StatutValue}"
-                                                    TextColor="White" />
-                                            </Frame>
-
-                                        </StackLayout>
-
-                                    </Grid>
-                                </Frame>
-                            </StackLayout>
+                            </Frame>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

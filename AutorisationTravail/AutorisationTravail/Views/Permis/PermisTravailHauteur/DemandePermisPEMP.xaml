@@ -11,7 +11,7 @@
         <ScrollView>
             <StackLayout x:Name="Page">
                 <StackLayout x:Name="Header">
-                    <Frame BackgroundColor="#fcb32a" HasShadow="False">
+                    <Frame BackgroundColor="#3185DE" HasShadow="False">
                         <Grid>
                             <Grid.Padding>
                                 <OnPlatform x:TypeArguments="Thickness">
@@ -41,6 +41,13 @@
                     <StackLayout x:Name="Infos">
                         <Grid RowSpacing="5">
                             <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
@@ -129,7 +136,7 @@
                                         FontSize="18"
                                         Text="Type de la PEMP"
                                         TextColor="Gray" />
-                                    <Picker Title="Choisir un Contact" BackgroundColor="White">
+                                    <Picker Title="Choisir un type de PEMP" BackgroundColor="White">
                                         <Picker.ItemsSource>
                                             <x:Array Type="{x:Type x:String}">
                                                 <x:String>PEMP 1</x:String>
@@ -152,13 +159,87 @@
                                     <Label
                                         FontAttributes="Bold"
                                         FontSize="18"
+                                        Text="Représentant de l'entité chargée PEMP site"
+                                        TextColor="Gray" />
+                                    <Picker Title="Choisir un Représentant" BackgroundColor="White">
+                                        <Picker.ItemsSource>
+                                            <x:Array Type="{x:Type x:String}">
+                                                <x:String>Représentant 1</x:String>
+                                                <x:String>Représentant 2</x:String>
+                                                <x:String>Représentant 3</x:String>
+                                                <x:String>Représentant 4</x:String>
+                                                <x:String>Représentant 5</x:String>
+                                            </x:Array>
+                                        </Picker.ItemsSource>
+                                    </Picker>
+                                </StackLayout>
+                            </Frame>
+                            <StackLayout Grid.Row="6" Orientation="Horizontal">
+                                <Grid HorizontalOptions="FillAndExpand">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width=".5*" />
+                                        <ColumnDefinition Width=".5*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Frame
+                                        Grid.Column="0"
+                                        Padding="10,2,10,10"
+                                        BackgroundColor="#dbdbdb"
+                                        CornerRadius="4"
+                                        HasShadow="False">
+                                        <StackLayout>
+                                            <Label
+                                                FontAttributes="Bold"
+                                                FontSize="18"
+                                                Text="Certificat d'aptitude"
+                                                TextColor="Gray" />
+                                            <Button
+                                                BackgroundColor="White"
+                                                Clicked="PickFileAptitude_Clicked"
+                                                Text="Choisir un fichier"
+                                                VerticalOptions="Center" />
+                                            <Label x:Name="AptitudeFileName" Text="" />
+                                        </StackLayout>
+                                    </Frame>
+                                    <Frame
+                                        Grid.Column="1"
+                                        Padding="10,2,10,10"
+                                        BackgroundColor="#dbdbdb"
+                                        CornerRadius="4"
+                                        HasShadow="False">
+                                        <StackLayout>
+                                            <Label
+                                                FontAttributes="Bold"
+                                                FontSize="18"
+                                                Text="Certificat d'habilitation"
+                                                TextColor="Gray" />
+                                            <Button
+                                                BackgroundColor="White"
+                                                Clicked="PickFileHabilitation_Clicked"
+                                                Text="Choisir un fichier"
+                                                VerticalOptions="Center" />
+                                            <Label x:Name="HabilitationFileName" Text="" />
+                                        </StackLayout>
+                                    </Frame>
+                                </Grid>
+
+                            </StackLayout>
+                            <Frame
+                                Grid.Row="7"
+                                Padding="10,2,10,10"
+                                BackgroundColor="#dbdbdb"
+                                CornerRadius="4"
+                                HasShadow="False">
+                                <StackLayout>
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="18"
                                         Text="Date de début de travail"
                                         TextColor="Gray" />
                                     <DatePicker BackgroundColor="White" HorizontalOptions="FillAndExpand" />
                                 </StackLayout>
                             </Frame>
                             <Frame
-                                Grid.Row="6"
+                                Grid.Row="8"
                                 Padding="10,2,10,10"
                                 BackgroundColor="#dbdbdb"
                                 CornerRadius="4"
@@ -173,7 +254,7 @@
                                 </StackLayout>
                             </Frame>
                             <Frame
-                                Grid.Row="7"
+                                Grid.Row="9"
                                 Padding="10,2,10,10"
                                 BackgroundColor="#dbdbdb"
                                 CornerRadius="4"
@@ -188,7 +269,7 @@
                                 </StackLayout>
                             </Frame>
                             <Frame
-                                Grid.Row="8"
+                                Grid.Row="10"
                                 Padding="10,2,10,10"
                                 BackgroundColor="#dbdbdb"
                                 CornerRadius="4"

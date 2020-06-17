@@ -8,9 +8,9 @@
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
     <ContentPage.Content>
-        <StackLayout>
-            <StackLayout>
-                <Frame BackgroundColor="#fcb32a" HasShadow="False">
+        <StackLayout BackgroundColor="#e6ebfc">
+            <StackLayout x:Name="Header">
+                <Frame BackgroundColor="#3185DE" HasShadow="False">
 
                     <StackLayout Margin="0" VerticalOptions="Center">
                         <Label
@@ -24,107 +24,101 @@
                 </Frame>
             </StackLayout>
             <Grid
-                Margin="20"
-                ColumnSpacing="15"
-                RowSpacing="15"
+                Margin="10"
+                RowSpacing="5"
                 VerticalOptions="CenterAndExpand">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width=".5*" />
-                    <ColumnDefinition Width=".5*" />
-                </Grid.ColumnDefinitions>
                 <Frame
                     Grid.Row="0"
-                    Grid.Column="0"
-                    Padding="10"
-                    BackgroundColor="#dbdbdb"
+                    Margin="10,5"
                     CornerRadius="8">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="Demande_Tapped" />
-                    </Frame.GestureRecognizers>
-                    <StackLayout>
+                    <StackLayout Orientation="Horizontal">
                         <Image
-                            HeightRequest="80"
+                            Margin="0,0,10,0"
+                            HeightRequest="50"
                             Source="list_demande.png"
-                            WidthRequest="80" />
+                            WidthRequest="50" />
                         <Label
                             FontAttributes="Bold"
                             FontSize="16"
                             HorizontalTextAlignment="Center"
-                            Text="Demande Autorisation de Travail" />
-
+                            Text="Demande Autorisation de Travail"
+                            TextColor="#172952"
+                            VerticalOptions="Center" />
                     </StackLayout>
                 </Frame>
 
                 <Frame
-                    Grid.Row="0"
-                    Grid.Column="1"
-                    Padding="10"
-                    BackgroundColor="#dbdbdb"
+                    Grid.Row="1"
+                    Margin="10,5"
                     CornerRadius="8">
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Tapped="AddAT_Tapped" />
                     </Frame.GestureRecognizers>
-                    <StackLayout>
+                    <StackLayout Orientation="Horizontal">
                         <Image
-                            HeightRequest="80"
+                            Margin="0,0,10,0"
+                            HeightRequest="50"
                             Source="add_at.png"
-                            WidthRequest="80" />
+                            WidthRequest="50" />
                         <Label
                             FontAttributes="Bold"
                             FontSize="16"
                             HorizontalTextAlignment="Center"
-                            Text="Création Autorisation de Travail" />
-
+                            Text="Création Autorisation de Travail"
+                            TextColor="#172952"
+                            VerticalOptions="Center" />
                     </StackLayout>
                 </Frame>
 
                 <Frame
-                    Grid.Row="1"
-                    Grid.Column="0"
-                    Padding="10"
-                    BackgroundColor="#dbdbdb"
+                    Grid.Row="2"
+                    Margin="10,5"
                     CornerRadius="8">
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Tapped="ListAT_Tapped" />
                     </Frame.GestureRecognizers>
-                    <StackLayout>
+                    <StackLayout Orientation="Horizontal">
                         <Image
-                            HeightRequest="80"
+                            Margin="0,0,10,0"
+                            HeightRequest="50"
                             Source="list_at.png"
-                            WidthRequest="80" />
+                            WidthRequest="50" />
                         <Label
                             FontAttributes="Bold"
                             FontSize="16"
                             HorizontalTextAlignment="Center"
-                            Text="Liste Autorisation de Travail" />
-
+                            Text="Liste Autorisation de Travail"
+                            TextColor="#172952"
+                            VerticalOptions="Center" />
                     </StackLayout>
                 </Frame>
 
                 <Frame
-                    Grid.Row="1"
-                    Grid.Column="1"
-                    Padding="10"
-                    BackgroundColor="#dbdbdb"
+                    Grid.Row="3"
+                    Margin="10,5"
                     CornerRadius="8">
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Tapped="ListPermis_Tapped" />
                     </Frame.GestureRecognizers>
-                    <StackLayout>
+                    <StackLayout Orientation="Horizontal">
                         <Image
-                            HeightRequest="80"
+                            Margin="0,0,10,0"
+                            HeightRequest="50"
                             Source="list_permis.png"
-                            WidthRequest="80" />
+                            WidthRequest="50" />
                         <Label
                             FontAttributes="Bold"
                             FontSize="16"
                             HorizontalTextAlignment="Center"
-                            Text="Liste Permis" />
-
+                            Text="Liste Permis"
+                            TextColor="#172952"
+                            VerticalOptions="Center" />
                     </StackLayout>
                 </Frame>
             </Grid>

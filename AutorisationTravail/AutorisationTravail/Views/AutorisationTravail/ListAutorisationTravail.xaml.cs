@@ -57,7 +57,8 @@ namespace AutorisationTravail.Views.AutorisationTravail
                 AutorisationHeureDebut = "15:00",
                 AutorisationHeureFin = "17:30",
                 AutorisationStatut = "Draft",
-                AutorisationStatutColor = "#d92027"
+                AutorisationStatutBgColor = "#F5F5F5",
+                AutorisationStatutTxtColor = "#AEB4BF"
             });
 
             DemandeList.Add(new ListATModel
@@ -73,7 +74,8 @@ namespace AutorisationTravail.Views.AutorisationTravail
                 AutorisationHeureDebut = "14:00",
                 AutorisationHeureFin = "18:00",
                 AutorisationStatut = "Attente permis",
-                AutorisationStatutColor = "#40bad5"
+                AutorisationStatutBgColor = "#FFF1F7",
+                AutorisationStatutTxtColor = "#CF464A"
             });
 
             DemandeList.Add(new ListATModel
@@ -89,7 +91,8 @@ namespace AutorisationTravail.Views.AutorisationTravail
                 AutorisationHeureDebut = "10:00",
                 AutorisationHeureFin = "16:00",
                 AutorisationStatut = "En exécution",
-                AutorisationStatutColor = "#f9d89c"
+                AutorisationStatutBgColor = "#F1FFF2",
+                AutorisationStatutTxtColor = "#2CD920"
             });
 
             DemandeList.Add(new ListATModel
@@ -105,7 +108,8 @@ namespace AutorisationTravail.Views.AutorisationTravail
                 AutorisationHeureDebut = "12:00",
                 AutorisationHeureFin = "17:00",
                 AutorisationStatut = "Attente Validation",
-                AutorisationStatutColor = "#feceab"
+                AutorisationStatutBgColor = "#FFEDE6",
+                AutorisationStatutTxtColor = "#F67D49"
             });
 
             DemandeList.Add(new ListATModel
@@ -117,11 +121,12 @@ namespace AutorisationTravail.Views.AutorisationTravail
                 AutorisationService = "mécanique",
                 AutorisationDemandeur = "soufiane tazi",
                 AutorisationDate = DateTime.Parse("10/06/2020"),
-                AutorisationDateIntervention = DateTime.Parse("06/15/2020"),
+                AutorisationDateIntervention = DateTime.Parse("12/06/2020"),
                 AutorisationHeureDebut = "09:00",
                 AutorisationHeureFin = "11:00",
                 AutorisationStatut = "Attente réception",
-                AutorisationStatutColor = "#0a97b0"
+                AutorisationStatutBgColor = "#FFEDE6",
+                AutorisationStatutTxtColor = "#F67D49"
             });
 
             DemandeList.Add(new ListATModel
@@ -137,7 +142,8 @@ namespace AutorisationTravail.Views.AutorisationTravail
                 AutorisationHeureDebut = "09:00",
                 AutorisationHeureFin = "11:00",
                 AutorisationStatut = "Réceptionné",
-                AutorisationStatutColor = "#99b898"
+                AutorisationStatutBgColor = "#8cc1fa",
+                AutorisationStatutTxtColor = "#2583e8"
             });
 
             myListe.ItemsSource = DemandeList;
@@ -163,6 +169,20 @@ namespace AutorisationTravail.Views.AutorisationTravail
             {
                 myListe.SelectedItem = null;
             }
+        }
+
+        private void SearchBtn_Tapped(object sender, EventArgs e)
+        {
+            if (SearchSection.IsVisible) SearchSection.IsVisible = false;
+            else  SearchSection.IsVisible = true;
+        }
+
+        private void Item_Tapped(object sender, EventArgs e)
+        {
+            var ItemContext = ((StackLayout)sender).BindingContext as ListATModel;
+
+            if (ItemContext.DetailsColapse) ItemContext.DetailsColapse = false;
+            else ItemContext.DetailsColapse = true;
         }
     }
 }

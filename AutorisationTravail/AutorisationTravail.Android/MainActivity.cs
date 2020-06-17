@@ -10,7 +10,8 @@ using Android.Graphics;
 
 namespace AutorisationTravail.Droid
 {
-    [Activity(Label = "AutorisationTravail", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    //NoHistory = false
+    [Activity(Label = "AutorisationTravail", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, LaunchMode = LaunchMode.SingleTop, ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
@@ -20,7 +21,8 @@ namespace AutorisationTravail.Droid
 
             base.OnCreate(savedInstanceState);
 
-            Window.SetStatusBarColor(Color.ParseColor("#fcb32a"));
+            Window.SetStatusBarColor(Color.ParseColor("#3185DE"));
+            //Window.SetNavigationBarColor(Android.Graphics.Color.ParseColor("#FFFFFF"));
 
             #region Plugins Init
             Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
@@ -35,6 +37,18 @@ namespace AutorisationTravail.Droid
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+
+        public override void OnBackPressed()
+        {
+            if (Rg.Plugins.Popup.Popup.SendBackPressed(base.OnBackPressed))
+            {
+                // Do something if there are some pages in the `PopupStack`
+            }
+            else
+            {
+                // Do something if there are not any pages in the `PopupStack`
+            }
         }
     }
 }

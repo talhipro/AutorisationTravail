@@ -22,5 +22,10 @@ namespace AutorisationTravail.Views.Permis
             if(e.Value)
             await Application.Current.MainPage.DisplayAlert("Info!", "Après l'enregistrement du permis une notification sera envoyée à l'Hse Site pour avoir la validation du ce Permis!", "Ok");
         }
+
+        private void Submit_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -42,39 +42,51 @@ namespace AutorisationTravail.Views.Permis
 
             PermisList.Add(new PermisListModel
             {
-                NumAT = "0039884",
-                Demandeur = "ibrahim alaoui",
-                Type = "Permis de feu",
-                StatutValue = "En cours de preparation",
-                StatutColor = "#dbdbdb",
-                CreatedDate = "05/07/2020"
+                PermisNumAT = "0039884",
+                PermisDemandeur = "ibrahim alaoui",
+                PermisType = "Permis de feu",
+                PermisStatutValue = "En cours de preparation",
+                PermisStatutBgColor = "#F5F5F5",
+                PermisStatutTxtColor = "#AEB4BF",
+                PermisDate = "05/07/2020",
+                PermisEntite = "Entité 01",
+                PermisService = "Service 01"
             });
             PermisList.Add(new PermisListModel
             {
-                NumAT = "0039884",
-                Demandeur = "samir benmakhlouf",
-                Type = "Permis de fouille",
-                StatutValue = "Attente Validation",
-                StatutColor = "Accent",
-                CreatedDate = "09/06/2020"
+                PermisNumAT = "0039884",
+                PermisDemandeur = "samir benmakhlouf",
+                PermisType = "Permis de fouille",
+                PermisStatutValue = "Attente Validation",
+                PermisStatutBgColor = "#FFEDE6",
+                PermisStatutTxtColor = "#F67D49",
+                PermisDate = "09/06/2020",
+                PermisEntite = "Entité 02",
+                PermisService = "Service 02"
             });
             PermisList.Add(new PermisListModel
             {
-                NumAT = "0039884",
-                Demandeur = "samir benmakhlouf",
-                Type = "Permis de pénétration dans un espace confiné",
-                StatutValue = "Validé",
-                StatutColor = "LightGreen",
-                CreatedDate = "09/06/2020"
+                PermisNumAT = "0039884",
+                PermisDemandeur = "samir benmakhlouf",
+                PermisType = "Permis de pénétration dans un espace confiné",
+                PermisStatutValue = "Validé",
+                PermisStatutBgColor = "#F1FFF2",
+                PermisStatutTxtColor = "#2CD920",
+                PermisDate = "09/06/2020",
+                PermisEntite = "Entité 03",
+                PermisService = "Service 03"
             });
             PermisList.Add(new PermisListModel
             {
-                NumAT = "0039884",
-                Demandeur = "ibrahim alaoui",
-                Type = "Permis de Travail en Hauteur avec EPI",
-                StatutValue = "En cours de preparation",
-                StatutColor = "#dbdbdb",
-                CreatedDate = "05/07/2020"
+                PermisNumAT = "0039884",
+                PermisDemandeur = "ibrahim alaoui",
+                PermisType = "Permis de Travail en Hauteur avec EPI",
+                PermisStatutValue = "En cours de preparation",
+                PermisStatutBgColor = "#F5F5F5",
+                PermisStatutTxtColor = "#AEB4BF",
+                PermisDate = "05/07/2020",
+                PermisEntite = "Entité 04",
+                PermisService = "Service 04"
             });
 
             myListe.ItemsSource = PermisList;
@@ -91,6 +103,13 @@ namespace AutorisationTravail.Views.Permis
         private async void NewPermis_Tapped(object sender, EventArgs e)
         {
             await PopupNavigation.Instance.PushAsync( new Popups.MenuPermis());
+        }
+        private void Item_Tapped(object sender, EventArgs e)
+        {
+            var ItemContext = ((StackLayout)sender).BindingContext as PermisListModel;
+
+            if (ItemContext.DetailsColapse) ItemContext.DetailsColapse = false;
+            else ItemContext.DetailsColapse = true;
         }
     }
 }

@@ -3,1205 +3,408 @@
     x:Class="AutorisationTravail.Views.AutorisationTravail.AddAutorisationTravail"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Controls="clr-namespace:AutorisationTravail.Controls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout>
-                <!--#region Version Tablet-->
-                <StackLayout Padding="0,0,0,20">
-                    <StackLayout.IsVisible>
-                        <OnIdiom
-                            x:TypeArguments="x:Boolean"
-                            Phone="False"
-                            Tablet="True" />
-                    </StackLayout.IsVisible>
-                    <StackLayout x:Name="Header">
-                        <Frame BackgroundColor="#fcb32a" HasShadow="False">
-                            <Grid>
-                                <Grid.Padding>
-                                    <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="iOS" Value="0, 11, 8, 0" />
-                                    </OnPlatform>
-                                </Grid.Padding>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-
-                                <StackLayout
-                                    Grid.Column="0"
-                                    Margin="0"
-                                    VerticalOptions="Center">
-                                    <Label
-                                        Margin="35,0,0,0"
-                                        FontAttributes="Bold"
-                                        FontSize="35"
-                                        HorizontalOptions="Center"
-                                        Text="Nouvelle Autorisation de Travail"
-                                        TextColor="White">
-                                        <Label.FontSize>
-                                            <OnIdiom
-                                                x:TypeArguments="x:Double"
-                                                Phone="26"
-                                                Tablet="35" />
-                                        </Label.FontSize>
-                                    </Label>
-                                </StackLayout>
-                            </Grid>
-                        </Frame>
-                    </StackLayout>
-
-                    <StackLayout Margin="15">
-                        <!--#region  #Formulaire Section 1-->
-                        <Grid ColumnSpacing="10" RowSpacing="30">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width=".33*" />
-                                <ColumnDefinition Width=".33*" />
-                                <ColumnDefinition Width=".33*" />
-                            </Grid.ColumnDefinitions>
-                            <StackLayout
-                                Grid.Row="0"
-                                Grid.Column="0"
-                                Orientation="Vertical">
-                                <Label
-                                    FontAttributes="Bold"
-                                    FontSize="20"
-                                    Text="Site"
-                                    TextColor="Black" />
-                                <Frame
-                                    Padding="0"
-                                    BackgroundColor="#dbdbdb"
-                                    CornerRadius="0">
-                                    <Picker Title="Choisir un Site">
-                                        <Picker.ItemsSource>
-                                            <x:Array Type="{x:Type x:String}">
-                                                <x:String>Site 1</x:String>
-                                                <x:String>Site 2</x:String>
-                                                <x:String>Site 3</x:String>
-                                                <x:String>Site 4</x:String>
-                                                <x:String>Site 5</x:String>
-                                            </x:Array>
-                                        </Picker.ItemsSource>
-                                    </Picker>
-                                </Frame>
-                            </StackLayout>
-                            <StackLayout
-                                Grid.Row="0"
-                                Grid.Column="1"
-                                Orientation="Vertical">
-                                <Label
-                                    FontAttributes="Bold"
-                                    FontSize="20"
-                                    Text="Entité"
-                                    TextColor="Black" />
-                                <Frame
-                                    Padding="0"
-                                    BackgroundColor="#dbdbdb"
-                                    CornerRadius="0">
-                                    <Picker Title="Choisir une Entité">
-                                        <Picker.ItemsSource>
-                                            <x:Array Type="{x:Type x:String}">
-                                                <x:String>Entité 1</x:String>
-                                                <x:String>Entité 2</x:String>
-                                                <x:String>Entité 3</x:String>
-                                                <x:String>Entité 4</x:String>
-                                                <x:String>Entité 5</x:String>
-                                            </x:Array>
-                                        </Picker.ItemsSource>
-                                    </Picker>
-                                </Frame>
-                            </StackLayout>
-                            <StackLayout
-                                Grid.Row="0"
-                                Grid.Column="2"
-                                Orientation="Vertical">
-                                <Label
-                                    FontAttributes="Bold"
-                                    FontSize="20"
-                                    Text="AT №"
-                                    TextColor="Black" />
-                                <Frame
-                                    Padding="0"
-                                    BackgroundColor="#dbdbdb"
-                                    CornerRadius="0">
-
-                                    <Entry HorizontalOptions="FillAndExpand" />
-                                </Frame>
-                            </StackLayout>
-
-                            <StackLayout
-                                Grid.Row="1"
-                                Grid.Column="0"
-                                Orientation="Vertical">
-                                <Label
-                                    FontAttributes="Bold"
-                                    FontSize="20"
-                                    Text="DI №"
-                                    TextColor="Black" />
-                                <Frame
-                                    Padding="0"
-                                    BackgroundColor="#dbdbdb"
-                                    CornerRadius="0">
-                                    <Entry HorizontalOptions="FillAndExpand" />
-                                </Frame>
-                            </StackLayout>
-                            <StackLayout
-                                Grid.Row="1"
-                                Grid.Column="1"
-                                Orientation="Vertical">
-                                <Label
-                                    FontAttributes="Bold"
-                                    FontSize="20"
-                                    Text="OT №"
-                                    TextColor="Black" />
-                                <Frame
-                                    Padding="0"
-                                    BackgroundColor="#dbdbdb"
-                                    CornerRadius="0">
-                                    <Entry HorizontalOptions="FillAndExpand" />
-                                </Frame>
-                            </StackLayout>
-                            <StackLayout
-                                Grid.Row="1"
-                                Grid.Column="2"
-                                Orientation="Vertical">
-                                <Label
-                                    FontAttributes="Bold"
-                                    FontSize="20"
-                                    Text="BT №"
-                                    TextColor="Black" />
-                                <Frame
-                                    Padding="0"
-                                    BackgroundColor="#dbdbdb"
-                                    CornerRadius="0">
-
-                                    <Entry HorizontalOptions="FillAndExpand" />
-                                </Frame>
-                            </StackLayout>
-
-                            <StackLayout
-                                Grid.Row="2"
-                                Grid.Column="0"
-                                Orientation="Vertical">
-                                <Label
-                                    FontAttributes="Bold"
-                                    FontSize="20"
-                                    Text="Lieu d'intervention"
-                                    TextColor="Black" />
-                                <Frame
-                                    Padding="0"
-                                    BackgroundColor="#dbdbdb"
-                                    CornerRadius="0">
-                                    <Entry HorizontalOptions="FillAndExpand" />
-                                </Frame>
-                            </StackLayout>
-                            <StackLayout
-                                Grid.Row="2"
-                                Grid.Column="1"
-                                Orientation="Vertical">
-                                <Label
-                                    FontAttributes="Bold"
-                                    FontSize="20"
-                                    Text="Services intervenants"
-                                    TextColor="Black" />
-                                <Frame
-                                    Padding="0"
-                                    BackgroundColor="#dbdbdb"
-                                    CornerRadius="0">
-                                    <Picker Title="Choisir un Service">
-                                        <Picker.ItemsSource>
-                                            <x:Array Type="{x:Type x:String}">
-                                                <x:String>Service 1</x:String>
-                                                <x:String>Service 2</x:String>
-                                                <x:String>Service 3</x:String>
-                                                <x:String>Service 4</x:String>
-                                                <x:String>Service 5</x:String>
-                                            </x:Array>
-                                        </Picker.ItemsSource>
-                                    </Picker>
-                                </Frame>
-                            </StackLayout>
-                            <StackLayout
-                                Grid.Row="2"
-                                Grid.Column="2"
-                                Orientation="Vertical">
-                                <Label
-                                    FontAttributes="Bold"
-                                    FontSize="20"
-                                    Text="Entreprises intervenants"
-                                    TextColor="Black" />
-                                <Frame
-                                    Padding="0"
-                                    BackgroundColor="#dbdbdb"
-                                    CornerRadius="0">
-
-                                    <Entry HorizontalOptions="FillAndExpand" />
-                                </Frame>
-                            </StackLayout>
-                        </Grid>
-                        <!--  #EndFormulaire Section 1  -->
-
-                        <!--  #Formulaire Section 2  -->
-                        <Grid Margin="0,30,0,0" ColumnSpacing="10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width=".5*" />
-                                <ColumnDefinition Width=".5*" />
-                            </Grid.ColumnDefinitions>
-                            <StackLayout Grid.Column="0" Orientation="Vertical">
-                                <Label
-                                    FontAttributes="Bold"
-                                    FontSize="20"
-                                    Text="Description de l'intervention"
-                                    TextColor="Black" />
-                                <Frame
-                                    Padding="0"
-                                    BackgroundColor="#dbdbdb"
-                                    CornerRadius="0"
-                                    VerticalOptions="FillAndExpand">
-                                    <Editor HorizontalOptions="FillAndExpand" />
-                                </Frame>
-                            </StackLayout>
-                            <StackLayout Grid.Column="1" Orientation="Vertical">
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width=".5*" />
-                                        <ColumnDefinition Width=".5*" />
-                                    </Grid.ColumnDefinitions>
-                                    <StackLayout
-                                        Grid.Row="0"
-                                        Grid.Column="0"
-                                        Grid.ColumnSpan="2">
-                                        <Label
-                                            FontAttributes="Bold"
-                                            FontSize="20"
-                                            Text="Date de l'intervention"
-                                            TextColor="Black" />
-                                        <Frame
-                                            Padding="0"
-                                            BackgroundColor="#dbdbdb"
-                                            CornerRadius="0">
-                                            <DatePicker HorizontalOptions="FillAndExpand" />
-                                        </Frame>
-                                    </StackLayout>
-                                    <StackLayout Grid.Row="1" Grid.Column="0">
-                                        <Label
-                                            FontAttributes="Bold"
-                                            FontSize="20"
-                                            Text="Heure début"
-                                            TextColor="Black" />
-                                        <Frame
-                                            Padding="0"
-                                            BackgroundColor="#dbdbdb"
-                                            CornerRadius="0">
-                                            <TimePicker HorizontalOptions="FillAndExpand" />
-                                        </Frame>
-                                    </StackLayout>
-                                    <StackLayout Grid.Row="1" Grid.Column="1">
-                                        <Label
-                                            FontAttributes="Bold"
-                                            FontSize="20"
-                                            Text="Heure fin (prévu)"
-                                            TextColor="Black" />
-                                        <Frame
-                                            Padding="0"
-                                            BackgroundColor="#dbdbdb"
-                                            CornerRadius="0">
-                                            <TimePicker HorizontalOptions="FillAndExpand" />
-                                        </Frame>
-                                    </StackLayout>
-                                </Grid>
-                            </StackLayout>
-                        </Grid>
-                        <!--  #EndFormulaire Section 2  -->
-                    </StackLayout>
-
-                    <StackLayout x:Name="Risques" Margin="15">
-                        <StackLayout
-                            x:Name="RisquesHeader"
-                            Margin="0,0,0,10"
-                            Orientation="Horizontal">
+            <StackLayout BackgroundColor="#e6ebfc">
+                <StackLayout x:Name="Header">
+                    <Frame
+                        Margin="0,-15,0,0"
+                        Padding="10,40,10,30"
+                        BackgroundColor="#3185DE"
+                        CornerRadius="15"
+                        HasShadow="False"
+                        VerticalOptions="Center">
+                        <StackLayout Orientation="Horizontal">
+                            <Frame
+                                Padding="5"
+                                BackgroundColor="#5294d9"
+                                CornerRadius="8"
+                                HasShadow="False">
+                                <Image
+                                    HeightRequest="25"
+                                    HorizontalOptions="End"
+                                    Source="arrowleft.png"
+                                    WidthRequest="25" />
+                            </Frame>
                             <Label
+                                Margin="0"
                                 FontAttributes="Bold"
-                                FontSize="20"
-                                Text="Risques évalués liés à / au"
-                                TextColor="Black"
+                                FontSize="18"
+                                HorizontalOptions="CenterAndExpand"
+                                Text="Nouvelle autorisation de travail"
+                                TextColor="White"
                                 VerticalOptions="Center" />
                             <Frame
-                                Padding="0"
-                                BackgroundColor="#fcb32a"
-                                CornerRadius="20"
+                                Padding="5"
+                                BackgroundColor="#5294d9"
+                                CornerRadius="8"
                                 HasShadow="False"
-                                HorizontalOptions="EndAndExpand"
-                                WidthRequest="40">
-                                <Image Source="add.png">
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="AddRisques_Tapped" />
-                                    </Image.GestureRecognizers>
-                                </Image>
-                            </Frame>
-                        </StackLayout>
-                        <StackLayout x:Name="RisquesSelected" HeightRequest="90">
-                            <Frame
-                                Padding="0"
-                                BackgroundColor="Transparent"
-                                CornerRadius="5"
-                                HorizontalOptions="FillAndExpand"
                                 VerticalOptions="Center">
-                                <StackLayout Orientation="Vertical">
-                                    <CollectionView SelectionMode="Multiple">
-                                        <CollectionView.ItemsSource>
-                                            <x:Array Type="{x:Type x:String}">
-                                                <x:String>Proximité aux réseaux enterrés</x:String>
-                                                <x:String>Produits inflammatables</x:String>
-                                                <x:String>Bruit (&gt; 80 dB)</x:String>
-                                                <x:String>Circulation personnes</x:String>
-                                            </x:Array>
-                                        </CollectionView.ItemsSource>
-                                        <CollectionView.ItemsLayout>
-                                            <GridItemsLayout
-                                                HorizontalItemSpacing="5"
-                                                Orientation="Vertical"
-                                                Span="3"
-                                                VerticalItemSpacing="10" />
-                                        </CollectionView.ItemsLayout>
-                                        <CollectionView.ItemTemplate>
-                                            <DataTemplate>
-                                                <Frame
-                                                    Padding="10"
-                                                    BackgroundColor="#FFFFFF"
-                                                    BorderColor="#979797"
-                                                    CornerRadius="3"
-                                                    HasShadow="False"
-                                                    VerticalOptions="Center">
-                                                    <StackLayout Orientation="Horizontal">
-                                                        <Label
-                                                            HorizontalOptions="Center"
-                                                            Text="{Binding}"
-                                                            TextColor="#979797"
-                                                            VerticalOptions="Center" />
-                                                        <Frame
-                                                            Padding="0"
-                                                            BackgroundColor="Red"
-                                                            CornerRadius="20"
-                                                            HasShadow="False"
-                                                            HorizontalOptions="EndAndExpand"
-                                                            VerticalOptions="Center"
-                                                            WidthRequest="20">
-                                                            <Image Source="close.png" />
-                                                        </Frame>
-                                                    </StackLayout>
-                                                </Frame>
-                                            </DataTemplate>
-                                        </CollectionView.ItemTemplate>
-                                    </CollectionView>
-                                </StackLayout>
+                                <Image
+                                    HeightRequest="25"
+                                    HorizontalOptions="End"
+                                    Source="save.png"
+                                    WidthRequest="25" />
                             </Frame>
                         </StackLayout>
-                    </StackLayout>
-
-                    <StackLayout x:Name="Mesures" Margin="15">
-                        <StackLayout
-                            x:Name="MesuresHeader"
-                            Margin="0,0,0,10"
-                            Orientation="Horizontal">
-                            <Label
-                                FontAttributes="Bold"
-                                FontSize="20"
-                                Text="Mesures prises pour préparer l'intervention"
-                                TextColor="Black"
-                                VerticalOptions="Center" />
-                            <Frame
-                                Padding="0"
-                                BackgroundColor="#fcb32a"
-                                CornerRadius="20"
-                                HasShadow="False"
-                                HorizontalOptions="EndAndExpand"
-                                WidthRequest="40">
-                                <Image Source="add.png">
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="AddMesures_Tapped" />
-                                    </Image.GestureRecognizers>
-                                </Image>
-                            </Frame>
-                        </StackLayout>
-                        <StackLayout x:Name="MesuresSelected" HeightRequest="90">
-                            <Frame
-                                Padding="0"
-                                BackgroundColor="Transparent"
-                                CornerRadius="5"
-                                HorizontalOptions="FillAndExpand"
-                                VerticalOptions="Center">
-                                <StackLayout Orientation="Vertical">
-                                    <CollectionView SelectionMode="Multiple">
-                                        <CollectionView.ItemsSource>
-                                            <x:Array Type="{x:Type x:String}">
-                                                <x:String>Vidange de l'équipement et ses circuits</x:String>
-                                                <x:String>Eclairage</x:String>
-                                            </x:Array>
-                                        </CollectionView.ItemsSource>
-                                        <CollectionView.ItemsLayout>
-                                            <GridItemsLayout
-                                                HorizontalItemSpacing="5"
-                                                Orientation="Vertical"
-                                                Span="3"
-                                                VerticalItemSpacing="10" />
-                                        </CollectionView.ItemsLayout>
-                                        <CollectionView.ItemTemplate>
-                                            <DataTemplate>
-                                                <Frame
-                                                    Padding="10"
-                                                    BackgroundColor="#FFFFFF"
-                                                    BorderColor="#979797"
-                                                    CornerRadius="3"
-                                                    HasShadow="False"
-                                                    VerticalOptions="Center">
-                                                    <StackLayout Orientation="Horizontal">
-                                                        <Label
-                                                            HorizontalOptions="Center"
-                                                            Text="{Binding}"
-                                                            TextColor="#979797"
-                                                            VerticalOptions="Center" />
-                                                        <Frame
-                                                            Padding="0"
-                                                            BackgroundColor="Red"
-                                                            CornerRadius="20"
-                                                            HasShadow="False"
-                                                            HorizontalOptions="EndAndExpand"
-                                                            VerticalOptions="Center"
-                                                            WidthRequest="20">
-                                                            <Image Source="close.png" />
-                                                        </Frame>
-                                                    </StackLayout>
-                                                </Frame>
-                                            </DataTemplate>
-                                        </CollectionView.ItemTemplate>
-                                    </CollectionView>
-                                </StackLayout>
-                            </Frame>
-                        </StackLayout>
-                    </StackLayout>
-
-                    <StackLayout x:Name="MoyensAcces" Margin="15">
-                        <StackLayout
-                            x:Name="MoyensAccesHeader"
-                            Margin="0,0,0,10"
-                            Orientation="Horizontal">
-                            <Label
-                                FontAttributes="Bold"
-                                FontSize="20"
-                                Text="Moyens d'accés nécessaires"
-                                TextColor="Black"
-                                VerticalOptions="Center" />
-                            <Frame
-                                Padding="0"
-                                BackgroundColor="#fcb32a"
-                                CornerRadius="20"
-                                HasShadow="False"
-                                HorizontalOptions="EndAndExpand"
-                                WidthRequest="40">
-                                <Image Source="add.png">
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="AddMoyensAcces_Tapped" />
-                                    </Image.GestureRecognizers>
-                                </Image>
-                            </Frame>
-                        </StackLayout>
-                        <StackLayout x:Name="MoyensAccesSelected" HeightRequest="90">
-                            <Frame
-                                Padding="0"
-                                BackgroundColor="Transparent"
-                                CornerRadius="5"
-                                HorizontalOptions="FillAndExpand"
-                                VerticalOptions="Center">
-                                <StackLayout Orientation="Vertical">
-                                    <CollectionView SelectionMode="Multiple">
-                                        <CollectionView.ItemsSource>
-                                            <x:Array Type="{x:Type x:String}">
-                                                <x:String>Escabeau</x:String>
-                                                <x:String>Nacelle, PEMP</x:String>
-                                            </x:Array>
-                                        </CollectionView.ItemsSource>
-                                        <CollectionView.ItemsLayout>
-                                            <GridItemsLayout
-                                                HorizontalItemSpacing="5"
-                                                Orientation="Vertical"
-                                                Span="3"
-                                                VerticalItemSpacing="10" />
-                                        </CollectionView.ItemsLayout>
-                                        <CollectionView.ItemTemplate>
-                                            <DataTemplate>
-                                                <Frame
-                                                    Padding="10"
-                                                    BackgroundColor="#FFFFFF"
-                                                    BorderColor="#979797"
-                                                    CornerRadius="3"
-                                                    HasShadow="False"
-                                                    VerticalOptions="Center">
-                                                    <StackLayout Orientation="Horizontal">
-                                                        <Label
-                                                            HorizontalOptions="Center"
-                                                            Text="{Binding}"
-                                                            TextColor="#979797"
-                                                            VerticalOptions="Center" />
-                                                        <Frame
-                                                            Padding="0"
-                                                            BackgroundColor="Red"
-                                                            CornerRadius="20"
-                                                            HasShadow="False"
-                                                            HorizontalOptions="EndAndExpand"
-                                                            VerticalOptions="Center"
-                                                            WidthRequest="20">
-                                                            <Image Source="close.png" />
-                                                        </Frame>
-                                                    </StackLayout>
-                                                </Frame>
-                                            </DataTemplate>
-                                        </CollectionView.ItemTemplate>
-                                    </CollectionView>
-                                </StackLayout>
-                            </Frame>
-                        </StackLayout>
-                    </StackLayout>
-
-                    <StackLayout x:Name="EPI" Margin="15">
-                        <StackLayout
-                            x:Name="EPIHeader"
-                            Margin="0,0,0,10"
-                            Orientation="Horizontal">
-                            <Label
-                                FontAttributes="Bold"
-                                FontSize="20"
-                                Text="EPI spécifiques nécessaires"
-                                TextColor="Black"
-                                VerticalOptions="Center" />
-                            <Frame
-                                Padding="0"
-                                BackgroundColor="#fcb32a"
-                                CornerRadius="20"
-                                HasShadow="False"
-                                HorizontalOptions="EndAndExpand"
-                                WidthRequest="40">
-                                <Image Source="add.png">
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="AddEPI_Tapped" />
-                                    </Image.GestureRecognizers>
-                                </Image>
-                            </Frame>
-                        </StackLayout>
-                        <StackLayout x:Name="EPISelected" HeightRequest="90">
-                            <Frame
-                                Padding="0"
-                                BackgroundColor="Transparent"
-                                CornerRadius="5"
-                                HorizontalOptions="FillAndExpand"
-                                VerticalOptions="Center">
-                                <StackLayout Orientation="Vertical">
-                                    <CollectionView SelectionMode="Multiple">
-                                        <CollectionView.ItemsSource>
-                                            <x:Array Type="{x:Type x:String}">
-                                                <x:String>Casque soudure</x:String>
-                                                <x:String>Masque à gaz</x:String>
-                                                <x:String>Guêtres</x:String>
-                                                <x:String>Ecran facial</x:String>
-                                            </x:Array>
-                                        </CollectionView.ItemsSource>
-                                        <CollectionView.ItemsLayout>
-                                            <GridItemsLayout
-                                                HorizontalItemSpacing="5"
-                                                Orientation="Vertical"
-                                                Span="3"
-                                                VerticalItemSpacing="10" />
-                                        </CollectionView.ItemsLayout>
-                                        <CollectionView.ItemTemplate>
-                                            <DataTemplate>
-                                                <Frame
-                                                    Padding="10"
-                                                    BackgroundColor="#FFFFFF"
-                                                    BorderColor="#979797"
-                                                    CornerRadius="3"
-                                                    HasShadow="False"
-                                                    VerticalOptions="Center">
-                                                    <StackLayout Orientation="Horizontal">
-                                                        <Label
-                                                            HorizontalOptions="Center"
-                                                            Text="{Binding}"
-                                                            TextColor="#979797"
-                                                            VerticalOptions="Center" />
-                                                        <Frame
-                                                            Padding="0"
-                                                            BackgroundColor="Red"
-                                                            CornerRadius="20"
-                                                            HasShadow="False"
-                                                            HorizontalOptions="EndAndExpand"
-                                                            VerticalOptions="Center"
-                                                            WidthRequest="20">
-                                                            <Image Source="close.png" />
-                                                        </Frame>
-                                                    </StackLayout>
-                                                </Frame>
-                                            </DataTemplate>
-                                        </CollectionView.ItemTemplate>
-                                    </CollectionView>
-                                </StackLayout>
-                            </Frame>
-                        </StackLayout>
-                    </StackLayout>
-
-                    <StackLayout x:Name="Permis" Margin="15">
-                        <StackLayout
-                            x:Name="PermisHeader"
-                            Margin="0,0,0,10"
-                            Orientation="Horizontal">
-                            <Label
-                                FontAttributes="Bold"
-                                FontSize="20"
-                                Text="Permis nécessaires"
-                                TextColor="Black"
-                                VerticalOptions="Center" />
-                            <Frame
-                                Padding="0"
-                                BackgroundColor="#fcb32a"
-                                CornerRadius="20"
-                                HasShadow="False"
-                                HorizontalOptions="EndAndExpand"
-                                WidthRequest="40">
-                                <Image Source="add.png">
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="AddPermis_Tapped" />
-                                    </Image.GestureRecognizers>
-                                </Image>
-                            </Frame>
-                        </StackLayout>
-                        <StackLayout x:Name="PermisSelected" HeightRequest="90">
-                            <Frame
-                                Padding="0"
-                                BackgroundColor="Transparent"
-                                CornerRadius="5"
-                                HorizontalOptions="FillAndExpand"
-                                VerticalOptions="Center">
-                                <StackLayout Orientation="Vertical">
-                                    <CollectionView SelectionMode="Multiple">
-                                        <CollectionView.ItemsSource>
-                                            <x:Array Type="{x:Type x:String}">
-                                                <x:String>Permis pour espace confiné</x:String>
-                                                <x:String>Permis pour travail en hauteur</x:String>
-                                                <x:String>Permis de feu</x:String>
-                                            </x:Array>
-                                        </CollectionView.ItemsSource>
-                                        <CollectionView.ItemsLayout>
-                                            <GridItemsLayout
-                                                HorizontalItemSpacing="5"
-                                                Orientation="Vertical"
-                                                Span="3"
-                                                VerticalItemSpacing="10" />
-                                        </CollectionView.ItemsLayout>
-                                        <CollectionView.ItemTemplate>
-                                            <DataTemplate>
-                                                <Frame
-                                                    Padding="10"
-                                                    BackgroundColor="#FFFFFF"
-                                                    BorderColor="#979797"
-                                                    CornerRadius="3"
-                                                    HasShadow="False"
-                                                    VerticalOptions="Center">
-                                                    <StackLayout Orientation="Horizontal">
-                                                        <Label
-                                                            HorizontalOptions="Center"
-                                                            Text="{Binding}"
-                                                            TextColor="#979797"
-                                                            VerticalOptions="Center" />
-                                                        <Frame
-                                                            Padding="0"
-                                                            BackgroundColor="Red"
-                                                            CornerRadius="20"
-                                                            HasShadow="False"
-                                                            HorizontalOptions="EndAndExpand"
-                                                            VerticalOptions="Center"
-                                                            WidthRequest="20">
-                                                            <Image Source="close.png" />
-                                                        </Frame>
-                                                    </StackLayout>
-                                                </Frame>
-                                            </DataTemplate>
-                                        </CollectionView.ItemTemplate>
-                                    </CollectionView>
-                                </StackLayout>
-                            </Frame>
-                        </StackLayout>
-                    </StackLayout>
-
-                    <!--#region Save Button-->
-                    <StackLayout VerticalOptions="End">
-                        <StackLayout.Margin>
-                            <OnIdiom
-                                x:TypeArguments="Thickness"
-                                Phone="10"
-                                Tablet="15" />
-                        </StackLayout.Margin>
-                        <Button
-                            BackgroundColor="#B2B6BF"
-                            CornerRadius="5"
-                            FontAttributes="Bold"
-                            FontSize="26"
-                            HeightRequest="70"
-                            Text="Sauvegarder le Brouillon"
-                            TextColor="White"
-                            VerticalOptions="Center">
-                            <Button.FontSize>
-                                <OnIdiom
-                                    x:TypeArguments="x:Double"
-                                    Phone="20"
-                                    Tablet="26" />
-                            </Button.FontSize>
-                            <Button.HeightRequest>
-                                <OnIdiom
-                                    x:TypeArguments="x:Double"
-                                    Phone="50"
-                                    Tablet="70" />
-                            </Button.HeightRequest>
-                        </Button>
-                        <Button
-                            BackgroundColor="#fcb32a"
-                            CornerRadius="5"
-                            FontAttributes="Bold"
-                            FontSize="26"
-                            HeightRequest="70"
-                            Text="Envoyer"
-                            TextColor="White"
-                            VerticalOptions="Center">
-                            <Button.FontSize>
-                                <OnIdiom
-                                    x:TypeArguments="x:Double"
-                                    Phone="20"
-                                    Tablet="26" />
-                            </Button.FontSize>
-                            <Button.HeightRequest>
-                                <OnIdiom
-                                    x:TypeArguments="x:Double"
-                                    Phone="50"
-                                    Tablet="70" />
-                            </Button.HeightRequest>
-                        </Button>
-                    </StackLayout>
-                    <!--#endregion-->
-
+                    </Frame>
                 </StackLayout>
-                <!--#endregion-->
 
-                <!--#region Version Mobile-->
-                <StackLayout Padding="0,0,0,20">
-                    <StackLayout.IsVisible>
-                        <OnIdiom
-                            x:TypeArguments="x:Boolean"
-                            Phone="True"
-                            Tablet="False" />
-                    </StackLayout.IsVisible>
-                    <StackLayout x:Name="HeaderMob">
-                        <Frame BackgroundColor="#fcb32a" HasShadow="False">
-
-                            <StackLayout Margin="0" VerticalOptions="Center">
-                                <Label
-                                    Margin="0"
-                                    FontAttributes="Bold"
-                                    FontSize="24"
-                                    HorizontalOptions="Center"
-                                    Text="Nouvelle Autorisation de Travail"
-                                    TextColor="White" />
-                            </StackLayout>
-                        </Frame>
-                    </StackLayout>
-
-                    <StackLayout Margin="15">
-                        <!--#region  #Formulaire Section 1-->
-                        <Grid ColumnSpacing="10" RowSpacing="30">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width=".5*" />
-                                <ColumnDefinition Width=".5*" />
-                            </Grid.ColumnDefinitions>
-                            <StackLayout
-                                Grid.Row="0"
-                                Grid.Column="0"
-                                Orientation="Vertical">
+                <StackLayout
+                    x:Name="Content"
+                    Margin="10"
+                    Padding="0,0,0,20"
+                    Spacing="10">
+                    <Frame CornerRadius="8" HasShadow="False">
+                        <StackLayout Spacing="15">
+                            <StackLayout>
                                 <Label
                                     FontAttributes="Bold"
-                                    FontSize="20"
+                                    FontSize="16"
                                     Text="Site"
-                                    TextColor="Black" />
+                                    TextColor="#3F4050" />
                                 <Frame
-                                    Padding="0"
-                                    BackgroundColor="#dbdbdb"
-                                    CornerRadius="0">
-                                    <Picker Title="Choisir un Site">
-                                        <Picker.ItemsSource>
-                                            <x:Array Type="{x:Type x:String}">
-                                                <x:String>Site 1</x:String>
-                                                <x:String>Site 2</x:String>
-                                                <x:String>Site 3</x:String>
-                                                <x:String>Site 4</x:String>
-                                                <x:String>Site 5</x:String>
-                                            </x:Array>
-                                        </Picker.ItemsSource>
-                                    </Picker>
+                                    Padding="1"
+                                    BorderColor="#DEE1E8"
+                                    HasShadow="False">
+                                    <Controls:CustomRoundedPicker
+                                        x:Name="SitePicker"
+                                        Title="Choisissez un site"
+                                        ItemDisplayBinding="{Binding SiteName}"
+                                        ItemsSource="{Binding SiteList}"
+                                        SelectedItem="{Binding AutorisationTravail.AtSite, Mode=TwoWay}"
+                                        TitleColor="#9495A8" />
                                 </Frame>
                             </StackLayout>
-                            <StackLayout
-                                Grid.Row="0"
-                                Grid.Column="1"
-                                Orientation="Vertical">
+                            <StackLayout>
                                 <Label
                                     FontAttributes="Bold"
-                                    FontSize="20"
+                                    FontSize="16"
                                     Text="Entité"
-                                    TextColor="Black" />
+                                    TextColor="#3F4050" />
                                 <Frame
-                                    Padding="0"
-                                    BackgroundColor="#dbdbdb"
-                                    CornerRadius="0">
-                                    <Picker Title="Choisir une Entité">
-                                        <Picker.ItemsSource>
-                                            <x:Array Type="{x:Type x:String}">
-                                                <x:String>Entité 1</x:String>
-                                                <x:String>Entité 2</x:String>
-                                                <x:String>Entité 3</x:String>
-                                                <x:String>Entité 4</x:String>
-                                                <x:String>Entité 5</x:String>
-                                            </x:Array>
-                                        </Picker.ItemsSource>
-                                    </Picker>
+                                    Padding="1"
+                                    BorderColor="#DEE1E8"
+                                    HasShadow="False">
+                                    <Controls:CustomRoundedPicker
+                                        Title="Choisissez une entité"
+                                        ItemDisplayBinding="{Binding EntiteName}"
+                                        ItemsSource="{Binding EntiteList}"
+                                        TitleColor="#9495A8" />
                                 </Frame>
                             </StackLayout>
-                            <StackLayout
-                                Grid.Row="1"
-                                Grid.Column="0"
-                                Orientation="Vertical">
-                                <Label
-                                    FontAttributes="Bold"
-                                    FontSize="20"
-                                    Text="AT №"
-                                    TextColor="Black" />
-                                <Frame
-                                    Padding="0"
-                                    BackgroundColor="#dbdbdb"
-                                    CornerRadius="0">
-
-                                    <Entry HorizontalOptions="FillAndExpand" />
-                                </Frame>
+                        </StackLayout>
+                    </Frame>
+                    <Frame CornerRadius="8" HasShadow="False">
+                        <StackLayout Spacing="15">
+                            <StackLayout Orientation="Horizontal">
+                                <StackLayout HorizontalOptions="FillAndExpand">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="16"
+                                        Text="AT N°"
+                                        TextColor="#3F4050" />
+                                    <Frame
+                                        Padding="1"
+                                        BorderColor="#DEE1E8"
+                                        HasShadow="False">
+                                        <Entry />
+                                    </Frame>
+                                </StackLayout>
+                                <StackLayout HorizontalOptions="FillAndExpand">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="16"
+                                        Text="DI N°"
+                                        TextColor="#3F4050" />
+                                    <Frame
+                                        Padding="1"
+                                        BorderColor="#DEE1E8"
+                                        HasShadow="False">
+                                        <Entry />
+                                    </Frame>
+                                </StackLayout>
                             </StackLayout>
-
-                            <StackLayout
-                                Grid.Row="1"
-                                Grid.Column="1"
-                                Orientation="Vertical">
-                                <Label
-                                    FontAttributes="Bold"
-                                    FontSize="20"
-                                    Text="DI №"
-                                    TextColor="Black" />
-                                <Frame
-                                    Padding="0"
-                                    BackgroundColor="#dbdbdb"
-                                    CornerRadius="0">
-                                    <Entry HorizontalOptions="FillAndExpand" />
-                                </Frame>
+                            <StackLayout Orientation="Horizontal">
+                                <StackLayout HorizontalOptions="FillAndExpand">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="16"
+                                        Text="OT N°"
+                                        TextColor="#3F4050" />
+                                    <Frame
+                                        Padding="1"
+                                        BorderColor="#DEE1E8"
+                                        HasShadow="False">
+                                        <Entry />
+                                    </Frame>
+                                </StackLayout>
+                                <StackLayout HorizontalOptions="FillAndExpand">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="16"
+                                        Text="BT N°"
+                                        TextColor="#3F4050" />
+                                    <Frame
+                                        Padding="1"
+                                        BorderColor="#DEE1E8"
+                                        HasShadow="False">
+                                        <Entry />
+                                    </Frame>
+                                </StackLayout>
                             </StackLayout>
-                            <StackLayout
-                                Grid.Row="2"
-                                Grid.Column="0"
-                                Orientation="Vertical">
+                        </StackLayout>
+                    </Frame>
+                    <Frame CornerRadius="8" HasShadow="False">
+                        <StackLayout Spacing="15">
+                            <StackLayout>
                                 <Label
                                     FontAttributes="Bold"
-                                    FontSize="20"
-                                    Text="OT №"
-                                    TextColor="Black" />
-                                <Frame
-                                    Padding="0"
-                                    BackgroundColor="#dbdbdb"
-                                    CornerRadius="0">
-                                    <Entry HorizontalOptions="FillAndExpand" />
-                                </Frame>
-                            </StackLayout>
-                            <StackLayout
-                                Grid.Row="2"
-                                Grid.Column="1"
-                                Orientation="Vertical">
-                                <Label
-                                    FontAttributes="Bold"
-                                    FontSize="20"
-                                    Text="BT №"
-                                    TextColor="Black" />
-                                <Frame
-                                    Padding="0"
-                                    BackgroundColor="#dbdbdb"
-                                    CornerRadius="0">
-
-                                    <Entry HorizontalOptions="FillAndExpand" />
-                                </Frame>
-                            </StackLayout>
-
-                            <StackLayout
-                                Grid.Row="3"
-                                Grid.Column="0"
-                                Orientation="Vertical">
-                                <Label
-                                    FontAttributes="Bold"
-                                    FontSize="20"
+                                    FontSize="16"
                                     Text="Lieu d'intervention"
-                                    TextColor="Black" />
+                                    TextColor="#3F4050" />
                                 <Frame
-                                    Padding="0"
-                                    BackgroundColor="#dbdbdb"
-                                    CornerRadius="0">
-                                    <Entry HorizontalOptions="FillAndExpand" />
+                                    Padding="1"
+                                    BorderColor="#DEE1E8"
+                                    HasShadow="False">
+                                    <Entry />
                                 </Frame>
                             </StackLayout>
-                            <StackLayout
-                                Grid.Row="3"
-                                Grid.Column="1"
-                                Orientation="Vertical">
+                            <StackLayout>
                                 <Label
                                     FontAttributes="Bold"
-                                    FontSize="20"
+                                    FontSize="16"
                                     Text="Services intervenants"
-                                    TextColor="Black" />
+                                    TextColor="#3F4050" />
                                 <Frame
-                                    Padding="0"
-                                    BackgroundColor="#dbdbdb"
-                                    CornerRadius="0">
-                                    <Picker Title="Choisir un Service">
-                                        <Picker.ItemsSource>
-                                            <x:Array Type="{x:Type x:String}">
-                                                <x:String>Service 1</x:String>
-                                                <x:String>Service 2</x:String>
-                                                <x:String>Service 3</x:String>
-                                                <x:String>Service 4</x:String>
-                                                <x:String>Service 5</x:String>
-                                            </x:Array>
-                                        </Picker.ItemsSource>
-                                    </Picker>
+                                    Padding="1"
+                                    BorderColor="#DEE1E8"
+                                    HasShadow="False">
+                                    <Controls:CustomRoundedPicker Title="Choisissez une entité" TitleColor="#9495A8" />
                                 </Frame>
                             </StackLayout>
-                            <StackLayout
-                                Grid.Row="4"
-                                Grid.Column="0"
-                                Grid.ColumnSpan="2"
-                                Orientation="Vertical">
+                            <StackLayout>
                                 <Label
                                     FontAttributes="Bold"
-                                    FontSize="20"
+                                    FontSize="16"
                                     Text="Entreprises intervenants"
-                                    TextColor="Black" />
+                                    TextColor="#3F4050" />
                                 <Frame
-                                    Padding="0"
-                                    BackgroundColor="#dbdbdb"
-                                    CornerRadius="0">
-
-                                    <Entry HorizontalOptions="FillAndExpand" />
+                                    Padding="1"
+                                    BorderColor="#DEE1E8"
+                                    HasShadow="False">
+                                    <Controls:CustomRoundedPicker Title="Choisissez une entité" TitleColor="#9495A8" />
                                 </Frame>
                             </StackLayout>
-                        </Grid>
-                        <!--  #EndFormulaire Section 1  -->
 
-                        <!--  #Formulaire Section 2  -->
-                        <Grid Margin="0,30,0,0" ColumnSpacing="10">
-                            <StackLayout
-                                Grid.Row="0"
-                                Margin="0,0,0,20"
-                                Orientation="Vertical">
+                            <StackLayout>
                                 <Label
                                     FontAttributes="Bold"
-                                    FontSize="20"
+                                    FontSize="16"
                                     Text="Description de l'intervention"
-                                    TextColor="Black" />
+                                    TextColor="#3F4050" />
                                 <Frame
-                                    Padding="0"
-                                    BackgroundColor="#dbdbdb"
-                                    CornerRadius="0"
-                                    VerticalOptions="FillAndExpand">
-                                    <Editor HorizontalOptions="FillAndExpand" />
+                                    Padding="1"
+                                    BorderColor="#DEE1E8"
+                                    HasShadow="False">
+                                    <Editor HeightRequest="100" />
                                 </Frame>
                             </StackLayout>
-                            <StackLayout Grid.Row="1" Orientation="Vertical">
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width=".5*" />
-                                        <ColumnDefinition Width=".5*" />
-                                    </Grid.ColumnDefinitions>
-                                    <StackLayout
-                                        Grid.Row="0"
-                                        Grid.Column="0"
-                                        Grid.ColumnSpan="2">
-                                        <Label
-                                            FontAttributes="Bold"
-                                            FontSize="20"
-                                            Text="Date de l'intervention"
-                                            TextColor="Black" />
-                                        <Frame
-                                            Padding="0"
-                                            BackgroundColor="#dbdbdb"
-                                            CornerRadius="0">
-                                            <DatePicker HorizontalOptions="FillAndExpand" />
-                                        </Frame>
-                                    </StackLayout>
-                                    <StackLayout Grid.Row="1" Grid.Column="0">
-                                        <Label
-                                            FontAttributes="Bold"
-                                            FontSize="20"
-                                            Text="Heure début"
-                                            TextColor="Black" />
-                                        <Frame
-                                            Padding="0"
-                                            BackgroundColor="#dbdbdb"
-                                            CornerRadius="0">
-                                            <TimePicker HorizontalOptions="FillAndExpand" />
-                                        </Frame>
-                                    </StackLayout>
-                                    <StackLayout Grid.Row="1" Grid.Column="1">
-                                        <Label
-                                            FontAttributes="Bold"
-                                            FontSize="20"
-                                            Text="Heure fin (prévu)"
-                                            TextColor="Black" />
-                                        <Frame
-                                            Padding="0"
-                                            BackgroundColor="#dbdbdb"
-                                            CornerRadius="0">
-                                            <TimePicker HorizontalOptions="FillAndExpand" />
-                                        </Frame>
-                                    </StackLayout>
-                                </Grid>
-                            </StackLayout>
-                        </Grid>
-                        <!--  #EndFormulaire Section 2  -->
-                    </StackLayout>
 
-                    <StackLayout x:Name="RisquesMob" Margin="15">
-                        <StackLayout
-                            x:Name="RisquesHeaderMob"
-                            Margin="0,0,0,10"
-                            Orientation="Horizontal">
+
+                        </StackLayout>
+                    </Frame>
+                    <Frame CornerRadius="8" HasShadow="False">
+                        <StackLayout Spacing="15">
+                            <StackLayout>
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="16"
+                                    Text="Date de l'intervention"
+                                    TextColor="#3F4050" />
+                                <Frame
+                                    Padding="1"
+                                    BorderColor="#DEE1E8"
+                                    HasShadow="False">
+                                    <DatePicker Format="dd/MM/yyyy" HorizontalOptions="FillAndExpand" />
+                                </Frame>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <StackLayout HorizontalOptions="FillAndExpand">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="16"
+                                        Text="Heure début"
+                                        TextColor="#3F4050" />
+                                    <Frame
+                                        Padding="1"
+                                        BorderColor="#DEE1E8"
+                                        HasShadow="False">
+                                        <TimePicker Format="HH:mm" />
+                                    </Frame>
+                                </StackLayout>
+                                <StackLayout HorizontalOptions="FillAndExpand">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="16"
+                                        Text="Heure fin"
+                                        TextColor="#3F4050" />
+                                    <Frame
+                                        Padding="1"
+                                        BorderColor="#DEE1E8"
+                                        HasShadow="False">
+                                        <TimePicker Format="HH:mm" />
+                                    </Frame>
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame CornerRadius="8" HasShadow="False">
+                        <StackLayout Orientation="Horizontal" Spacing="0">
                             <Label
                                 FontAttributes="Bold"
-                                FontSize="20"
-                                Text="Risques évalués liés à / au"
-                                TextColor="Black"
-                                VerticalOptions="Center" />
+                                FontSize="16"
+                                Text="Risque évalués liés à / au"
+                                TextColor="#3F4050" />
+                            <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                                <StackLayout.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding AutorisationTravail.AtRisquesShowAddEditBtn, Mode=TwoWay}"
+                                        TargetType="StackLayout"
+                                        Value="true">
+                                        <Setter Property="IsVisible" Value="False" />
+                                    </DataTrigger>
+                                    <DataTrigger
+                                        Binding="{Binding AutorisationTravail.AtRisquesShowAddEditBtn, Mode=TwoWay}"
+                                        TargetType="StackLayout"
+                                        Value="false">
+                                        <Setter Property="IsVisible" Value="True" />
+                                    </DataTrigger>
+                                </StackLayout.Triggers>
+                                <Frame
+                                    Padding="0"
+                                    CornerRadius="20"
+                                    HasShadow="False">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="20"
+                                        Text="{Binding AutorisationTravail.AtRisquesCount, Mode=TwoWay}"
+                                        TextColor="#FF3B30" />
+                                </Frame>
+                                <Frame
+                                    Padding="0"
+                                    BackgroundColor="#04DE71"
+                                    CornerRadius="20"
+                                    HasShadow="False">
+                                    <Image
+                                        HeightRequest="28"
+                                        Source="pencil.png"
+                                        WidthRequest="28">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="AddRisques_Tapped" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </Frame>
+                            </StackLayout>
                             <Frame
                                 Padding="0"
-                                BackgroundColor="#fcb32a"
+                                BackgroundColor="#5AC8FA"
                                 CornerRadius="20"
                                 HasShadow="False"
                                 HorizontalOptions="EndAndExpand"
-                                WidthRequest="30">
-                                <Image Source="add.png">
+                                IsVisible="{Binding AutorisationTravail.AtRisquesShowAddEditBtn, Mode=TwoWay}">
+                                <Image
+                                    HeightRequest="28"
+                                    Source="add.png"
+                                    WidthRequest="28">
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="AddRisques_Tapped" />
                                     </Image.GestureRecognizers>
                                 </Image>
                             </Frame>
                         </StackLayout>
-                        <StackLayout x:Name="RisquesSelectedMob" HeightRequest="90">
-                            <Frame
-                                Padding="0"
-                                BackgroundColor="Transparent"
-                                CornerRadius="5"
-                                HorizontalOptions="FillAndExpand"
-                                VerticalOptions="Center">
-                                <StackLayout Orientation="Vertical">
-                                    <CollectionView SelectionMode="Multiple">
-                                        <CollectionView.ItemsSource>
-                                            <x:Array Type="{x:Type x:String}">
-                                                <x:String>Proximité aux réseaux enterrés</x:String>
-                                                <x:String>Produits inflammatables</x:String>
-                                                <x:String>Bruit (&gt; 80 dB)</x:String>
-                                                <x:String>Circulation personnes</x:String>
-                                            </x:Array>
-                                        </CollectionView.ItemsSource>
-                                        <CollectionView.ItemsLayout>
-                                            <GridItemsLayout
-                                                HorizontalItemSpacing="5"
-                                                Orientation="Vertical"
-                                                Span="2"
-                                                VerticalItemSpacing="10" />
-                                        </CollectionView.ItemsLayout>
-                                        <CollectionView.ItemTemplate>
-                                            <DataTemplate>
-                                                <Frame
-                                                    Padding="10"
-                                                    BackgroundColor="#FFFFFF"
-                                                    BorderColor="#979797"
-                                                    CornerRadius="3"
-                                                    HasShadow="False"
-                                                    VerticalOptions="Center">
-                                                    <StackLayout Orientation="Horizontal">
-                                                        <Label
-                                                            HorizontalOptions="Center"
-                                                            Text="{Binding}"
-                                                            TextColor="#979797"
-                                                            VerticalOptions="Center" />
-                                                        <Frame
-                                                            Padding="0"
-                                                            BackgroundColor="Red"
-                                                            CornerRadius="20"
-                                                            HasShadow="False"
-                                                            HorizontalOptions="EndAndExpand"
-                                                            VerticalOptions="Center"
-                                                            WidthRequest="20">
-                                                            <Image Source="close.png" />
-                                                        </Frame>
-                                                    </StackLayout>
-                                                </Frame>
-                                            </DataTemplate>
-                                        </CollectionView.ItemTemplate>
-                                    </CollectionView>
-                                </StackLayout>
-                            </Frame>
-                        </StackLayout>
-                    </StackLayout>
+                    </Frame>
 
-                    <StackLayout x:Name="MesuresMob" Margin="15">
-
-                        <StackLayout
-                            x:Name="MesuresHeaderMob"
-                            Margin="0,0,0,10"
-                            Orientation="Horizontal">
+                    <Frame CornerRadius="8" HasShadow="False">
+                        <StackLayout Orientation="Horizontal" Spacing="0">
                             <Grid>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width=".7*" />
+                                    <ColumnDefinition Width=".3*" />
                                 </Grid.ColumnDefinitions>
                                 <Label
                                     Grid.Column="0"
                                     FontAttributes="Bold"
-                                    FontSize="20"
+                                    FontSize="16"
+                                    HorizontalOptions="Center"
                                     Text="Mesures prises pour préparer l'intervention"
-                                    TextColor="Black"
+                                    TextColor="#3F4050"
                                     VerticalOptions="Center" />
+                                <StackLayout
+                                    Grid.Column="1"
+                                    HorizontalOptions="EndAndExpand"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="Center">
+                                    <StackLayout.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding AutorisationTravail.AtMesuresShowAddEditBtn}"
+                                            TargetType="StackLayout"
+                                            Value="true">
+                                            <Setter Property="IsVisible" Value="False" />
+                                        </DataTrigger>
+                                        <DataTrigger
+                                            Binding="{Binding AutorisationTravail.AtMesuresShowAddEditBtn}"
+                                            TargetType="StackLayout"
+                                            Value="false">
+                                            <Setter Property="IsVisible" Value="True" />
+                                        </DataTrigger>
+                                    </StackLayout.Triggers>
+                                    <Frame
+                                        Padding="0"
+                                        CornerRadius="20"
+                                        HasShadow="False"
+                                        VerticalOptions="Center">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="20"
+                                            Text="{Binding AutorisationTravail.AtMesuresCount}"
+                                            TextColor="#FF3B30" />
+                                    </Frame>
+                                    <Frame
+                                        Padding="0"
+                                        BackgroundColor="#04DE71"
+                                        CornerRadius="20"
+                                        HasShadow="False"
+                                        VerticalOptions="Center">
+                                        <Image
+                                            HeightRequest="28"
+                                            Source="pencil.png"
+                                            WidthRequest="28">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="AddMesures_Tapped" />
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                    </Frame>
+                                </StackLayout>
                                 <Frame
                                     Grid.Column="1"
                                     Padding="0"
-                                    BackgroundColor="#fcb32a"
+                                    BackgroundColor="#5AC8FA"
                                     CornerRadius="20"
                                     HasShadow="False"
                                     HorizontalOptions="EndAndExpand"
-                                    VerticalOptions="Center"
-                                    WidthRequest="30">
-                                    <Image Source="add.png">
+                                    IsVisible="{Binding AutorisationTravail.AtMesuresShowAddEditBtn}"
+                                    VerticalOptions="Center">
+                                    <Image
+                                        HeightRequest="28"
+                                        Source="add.png"
+                                        WidthRequest="28">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="AddMesures_Tapped" />
                                         </Image.GestureRecognizers>
@@ -1209,367 +412,220 @@
                                 </Frame>
                             </Grid>
                         </StackLayout>
-                        <StackLayout x:Name="MesuresSelectedMob" HeightRequest="90">
-                            <Frame
-                                Padding="0"
-                                BackgroundColor="Transparent"
-                                CornerRadius="5"
-                                HorizontalOptions="FillAndExpand"
-                                VerticalOptions="Center">
-                                <StackLayout Orientation="Vertical">
-                                    <CollectionView SelectionMode="Multiple">
-                                        <CollectionView.ItemsSource>
-                                            <x:Array Type="{x:Type x:String}">
-                                                <x:String>Vidange de l'équipement et ses circuits</x:String>
-                                                <x:String>Eclairage</x:String>
-                                            </x:Array>
-                                        </CollectionView.ItemsSource>
-                                        <CollectionView.ItemsLayout>
-                                            <GridItemsLayout
-                                                HorizontalItemSpacing="5"
-                                                Orientation="Vertical"
-                                                Span="2"
-                                                VerticalItemSpacing="10" />
-                                        </CollectionView.ItemsLayout>
-                                        <CollectionView.ItemTemplate>
-                                            <DataTemplate>
-                                                <Frame
-                                                    Padding="10"
-                                                    BackgroundColor="#FFFFFF"
-                                                    BorderColor="#979797"
-                                                    CornerRadius="3"
-                                                    HasShadow="False"
-                                                    VerticalOptions="Center">
-                                                    <StackLayout Orientation="Horizontal">
-                                                        <Label
-                                                            HorizontalOptions="Center"
-                                                            Text="{Binding}"
-                                                            TextColor="#979797"
-                                                            VerticalOptions="Center" />
-                                                        <Frame
-                                                            Padding="0"
-                                                            BackgroundColor="Red"
-                                                            CornerRadius="20"
-                                                            HasShadow="False"
-                                                            HorizontalOptions="EndAndExpand"
-                                                            VerticalOptions="Center"
-                                                            WidthRequest="20">
-                                                            <Image Source="close.png" />
-                                                        </Frame>
-                                                    </StackLayout>
-                                                </Frame>
-                                            </DataTemplate>
-                                        </CollectionView.ItemTemplate>
-                                    </CollectionView>
-                                </StackLayout>
-                            </Frame>
-                        </StackLayout>
-                    </StackLayout>
+                    </Frame>
 
-                    <StackLayout x:Name="MoyensAccesMob" Margin="15">
-                        <StackLayout
-                            x:Name="MoyensAccesHeaderMob"
-                            Margin="0,0,0,10"
-                            Orientation="Horizontal">
+
+                    <Frame CornerRadius="8" HasShadow="False">
+                        <StackLayout Orientation="Horizontal" Spacing="0">
                             <Label
                                 FontAttributes="Bold"
-                                FontSize="20"
+                                FontSize="16"
                                 Text="Moyens d'accés nécessaires"
-                                TextColor="Black"
-                                VerticalOptions="Center" />
+                                TextColor="#3F4050" />
+                            <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                                <StackLayout.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding AutorisationTravail.AtMoyensAccesShowAddEditBtn}"
+                                        TargetType="StackLayout"
+                                        Value="true">
+                                        <Setter Property="IsVisible" Value="False" />
+                                    </DataTrigger>
+                                    <DataTrigger
+                                        Binding="{Binding AutorisationTravail.AtMoyensAccesShowAddEditBtn}"
+                                        TargetType="StackLayout"
+                                        Value="false">
+                                        <Setter Property="IsVisible" Value="True" />
+                                    </DataTrigger>
+                                </StackLayout.Triggers>
+                                <Frame
+                                    Padding="0"
+                                    CornerRadius="20"
+                                    HasShadow="False">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="20"
+                                        Text="{Binding AutorisationTravail.AtMoyensAccesCount}"
+                                        TextColor="#FF3B30" />
+                                </Frame>
+                                <Frame
+                                    Padding="0"
+                                    BackgroundColor="#04DE71"
+                                    CornerRadius="20"
+                                    HasShadow="False">
+                                    <Image
+                                        HeightRequest="28"
+                                        Source="pencil.png"
+                                        WidthRequest="28">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="AddMoyensAcces_Tapped" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </Frame>
+                            </StackLayout>
                             <Frame
                                 Padding="0"
-                                BackgroundColor="#fcb32a"
+                                BackgroundColor="#5AC8FA"
                                 CornerRadius="20"
                                 HasShadow="False"
                                 HorizontalOptions="EndAndExpand"
-                                WidthRequest="30">
-                                <Image Source="add.png">
+                                IsVisible="{Binding AutorisationTravail.AtMoyensAccesShowAddEditBtn}">
+                                <Image
+                                    HeightRequest="28"
+                                    Source="add.png"
+                                    WidthRequest="28">
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="AddMoyensAcces_Tapped" />
                                     </Image.GestureRecognizers>
                                 </Image>
                             </Frame>
                         </StackLayout>
-                        <StackLayout x:Name="MoyensAccesSelectedMob" HeightRequest="90">
-                            <Frame
-                                Padding="0"
-                                BackgroundColor="Transparent"
-                                CornerRadius="5"
-                                HorizontalOptions="FillAndExpand"
-                                VerticalOptions="Center">
-                                <StackLayout Orientation="Vertical">
-                                    <CollectionView SelectionMode="Multiple">
-                                        <CollectionView.ItemsSource>
-                                            <x:Array Type="{x:Type x:String}">
-                                                <x:String>Escabeau</x:String>
-                                                <x:String>Nacelle, PEMP</x:String>
-                                            </x:Array>
-                                        </CollectionView.ItemsSource>
-                                        <CollectionView.ItemsLayout>
-                                            <GridItemsLayout
-                                                HorizontalItemSpacing="5"
-                                                Orientation="Vertical"
-                                                Span="2"
-                                                VerticalItemSpacing="10" />
-                                        </CollectionView.ItemsLayout>
-                                        <CollectionView.ItemTemplate>
-                                            <DataTemplate>
-                                                <Frame
-                                                    Padding="10"
-                                                    BackgroundColor="#FFFFFF"
-                                                    BorderColor="#979797"
-                                                    CornerRadius="3"
-                                                    HasShadow="False"
-                                                    VerticalOptions="Center">
-                                                    <StackLayout Orientation="Horizontal">
-                                                        <Label
-                                                            HorizontalOptions="Center"
-                                                            Text="{Binding}"
-                                                            TextColor="#979797"
-                                                            VerticalOptions="Center" />
-                                                        <Frame
-                                                            Padding="0"
-                                                            BackgroundColor="Red"
-                                                            CornerRadius="20"
-                                                            HasShadow="False"
-                                                            HorizontalOptions="EndAndExpand"
-                                                            VerticalOptions="Center"
-                                                            WidthRequest="20">
-                                                            <Image Source="close.png" />
-                                                        </Frame>
-                                                    </StackLayout>
-                                                </Frame>
-                                            </DataTemplate>
-                                        </CollectionView.ItemTemplate>
-                                    </CollectionView>
-                                </StackLayout>
-                            </Frame>
-                        </StackLayout>
-                    </StackLayout>
+                    </Frame>
 
-                    <StackLayout x:Name="EPIMob" Margin="15">
-                        <StackLayout
-                            x:Name="EPIHeaderMob"
-                            Margin="0,0,0,10"
-                            Orientation="Horizontal">
+                    <Frame CornerRadius="8" HasShadow="False">
+                        <StackLayout Orientation="Horizontal" Spacing="0">
                             <Label
                                 FontAttributes="Bold"
-                                FontSize="20"
+                                FontSize="16"
                                 Text="EPI spécifiques nécessaires"
-                                TextColor="Black"
-                                VerticalOptions="Center" />
+                                TextColor="#3F4050" />
+                            <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                                <StackLayout.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding AutorisationTravail.AtEpiSpecifiquesShowAddEditBtn}"
+                                        TargetType="StackLayout"
+                                        Value="true">
+                                        <Setter Property="IsVisible" Value="False" />
+                                    </DataTrigger>
+                                    <DataTrigger
+                                        Binding="{Binding AutorisationTravail.AtEpiSpecifiquesShowAddEditBtn}"
+                                        TargetType="StackLayout"
+                                        Value="false">
+                                        <Setter Property="IsVisible" Value="True" />
+                                    </DataTrigger>
+                                </StackLayout.Triggers>
+                                <Frame
+                                    Padding="0"
+                                    CornerRadius="20"
+                                    HasShadow="False">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="20"
+                                        Text="{Binding AutorisationTravail.AtEpiSpecifiquesCount}"
+                                        TextColor="#FF3B30" />
+                                </Frame>
+                                <Frame
+                                    Padding="0"
+                                    BackgroundColor="#04DE71"
+                                    CornerRadius="20"
+                                    HasShadow="False">
+                                    <Image
+                                        HeightRequest="28"
+                                        Source="pencil.png"
+                                        WidthRequest="28">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="AddEPI_Tapped" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </Frame>
+                            </StackLayout>
                             <Frame
                                 Padding="0"
-                                BackgroundColor="#fcb32a"
+                                BackgroundColor="#5AC8FA"
                                 CornerRadius="20"
                                 HasShadow="False"
                                 HorizontalOptions="EndAndExpand"
-                                WidthRequest="30">
-                                <Image Source="add.png">
+                                IsVisible="{Binding AutorisationTravail.AtEpiSpecifiquesShowAddEditBtn}">
+                                <Image
+                                    HeightRequest="28"
+                                    Source="add.png"
+                                    WidthRequest="28">
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="AddEPI_Tapped" />
                                     </Image.GestureRecognizers>
                                 </Image>
                             </Frame>
                         </StackLayout>
-                        <StackLayout x:Name="EPISelectedMob" HeightRequest="90">
-                            <Frame
-                                Padding="0"
-                                BackgroundColor="Transparent"
-                                CornerRadius="5"
-                                HorizontalOptions="FillAndExpand"
-                                VerticalOptions="Center">
-                                <StackLayout Orientation="Vertical">
-                                    <CollectionView SelectionMode="Multiple">
-                                        <CollectionView.ItemsSource>
-                                            <x:Array Type="{x:Type x:String}">
-                                                <x:String>Casque soudure</x:String>
-                                                <x:String>Masque à gaz</x:String>
-                                                <x:String>Guêtres</x:String>
-                                                <x:String>Ecran facial</x:String>
-                                            </x:Array>
-                                        </CollectionView.ItemsSource>
-                                        <CollectionView.ItemsLayout>
-                                            <GridItemsLayout
-                                                HorizontalItemSpacing="5"
-                                                Orientation="Vertical"
-                                                Span="2"
-                                                VerticalItemSpacing="10" />
-                                        </CollectionView.ItemsLayout>
-                                        <CollectionView.ItemTemplate>
-                                            <DataTemplate>
-                                                <Frame
-                                                    Padding="10"
-                                                    BackgroundColor="#FFFFFF"
-                                                    BorderColor="#979797"
-                                                    CornerRadius="3"
-                                                    HasShadow="False"
-                                                    VerticalOptions="Center">
-                                                    <StackLayout Orientation="Horizontal">
-                                                        <Label
-                                                            HorizontalOptions="Center"
-                                                            Text="{Binding}"
-                                                            TextColor="#979797"
-                                                            VerticalOptions="Center" />
-                                                        <Frame
-                                                            Padding="0"
-                                                            BackgroundColor="Red"
-                                                            CornerRadius="20"
-                                                            HasShadow="False"
-                                                            HorizontalOptions="EndAndExpand"
-                                                            VerticalOptions="Center"
-                                                            WidthRequest="20">
-                                                            <Image Source="close.png" />
-                                                        </Frame>
-                                                    </StackLayout>
-                                                </Frame>
-                                            </DataTemplate>
-                                        </CollectionView.ItemTemplate>
-                                    </CollectionView>
-                                </StackLayout>
-                            </Frame>
-                        </StackLayout>
-                    </StackLayout>
+                    </Frame>
 
-                    <StackLayout x:Name="PermisMob" Margin="15">
-                        <StackLayout
-                            x:Name="PermisHeaderMob"
-                            Margin="0,0,0,10"
-                            Orientation="Horizontal">
+                    <Frame CornerRadius="8" HasShadow="False">
+                        <StackLayout Orientation="Horizontal" Spacing="0">
                             <Label
                                 FontAttributes="Bold"
-                                FontSize="20"
+                                FontSize="16"
                                 Text="Permis nécessaires"
-                                TextColor="Black"
-                                VerticalOptions="Center" />
+                                TextColor="#3F4050" />
+                            <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                                <StackLayout.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding AutorisationTravail.AtPermisShowAddEditBtn}"
+                                        TargetType="StackLayout"
+                                        Value="true">
+                                        <Setter Property="IsVisible" Value="False" />
+                                    </DataTrigger>
+                                    <DataTrigger
+                                        Binding="{Binding AutorisationTravail.AtPermisShowAddEditBtn}"
+                                        TargetType="StackLayout"
+                                        Value="false">
+                                        <Setter Property="IsVisible" Value="True" />
+                                    </DataTrigger>
+                                </StackLayout.Triggers>
+                                <Frame
+                                    Padding="0"
+                                    CornerRadius="20"
+                                    HasShadow="False">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="20"
+                                        Text="{Binding AutorisationTravail.AtPermisCount}"
+                                        TextColor="#FF3B30" />
+                                </Frame>
+                                <Frame
+                                    Padding="0"
+                                    BackgroundColor="#04DE71"
+                                    CornerRadius="20"
+                                    HasShadow="False">
+                                    <Image
+                                        HeightRequest="28"
+                                        Source="pencil.png"
+                                        WidthRequest="28">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="AddPermis_Tapped" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </Frame>
+                            </StackLayout>
                             <Frame
                                 Padding="0"
-                                BackgroundColor="#fcb32a"
+                                BackgroundColor="#5AC8FA"
                                 CornerRadius="20"
                                 HasShadow="False"
                                 HorizontalOptions="EndAndExpand"
-                                WidthRequest="30">
-                                <Image Source="add.png">
+                                IsVisible="{Binding AutorisationTravail.AtPermisShowAddEditBtn}">
+                                <Image
+                                    HeightRequest="28"
+                                    Source="add.png"
+                                    WidthRequest="28">
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="AddPermis_Tapped" />
                                     </Image.GestureRecognizers>
                                 </Image>
                             </Frame>
                         </StackLayout>
-                        <StackLayout x:Name="PermisSelectedMob" HeightRequest="90">
-                            <Frame
-                                Padding="0"
-                                BackgroundColor="Transparent"
-                                CornerRadius="5"
-                                HorizontalOptions="FillAndExpand"
-                                VerticalOptions="Center">
-                                <StackLayout Orientation="Vertical">
-                                    <CollectionView SelectionMode="Multiple">
-                                        <CollectionView.ItemsSource>
-                                            <x:Array Type="{x:Type x:String}">
-                                                <x:String>Permis pour espace confiné</x:String>
-                                                <x:String>Permis pour travail en hauteur</x:String>
-                                                <x:String>Permis de feu</x:String>
-                                            </x:Array>
-                                        </CollectionView.ItemsSource>
-                                        <CollectionView.ItemsLayout>
-                                            <GridItemsLayout
-                                                HorizontalItemSpacing="5"
-                                                Orientation="Vertical"
-                                                Span="2"
-                                                VerticalItemSpacing="10" />
-                                        </CollectionView.ItemsLayout>
-                                        <CollectionView.ItemTemplate>
-                                            <DataTemplate>
-                                                <Frame
-                                                    Padding="10"
-                                                    BackgroundColor="#FFFFFF"
-                                                    BorderColor="#979797"
-                                                    CornerRadius="3"
-                                                    HasShadow="False"
-                                                    VerticalOptions="Center">
-                                                    <StackLayout Orientation="Horizontal">
-                                                        <Label
-                                                            HorizontalOptions="Center"
-                                                            Text="{Binding}"
-                                                            TextColor="#979797"
-                                                            VerticalOptions="Center" />
-                                                        <Frame
-                                                            Padding="0"
-                                                            BackgroundColor="Red"
-                                                            CornerRadius="20"
-                                                            HasShadow="False"
-                                                            HorizontalOptions="EndAndExpand"
-                                                            VerticalOptions="Center"
-                                                            WidthRequest="20">
-                                                            <Image Source="close.png" />
-                                                        </Frame>
-                                                    </StackLayout>
-                                                </Frame>
-                                            </DataTemplate>
-                                        </CollectionView.ItemTemplate>
-                                    </CollectionView>
-                                </StackLayout>
-                            </Frame>
-                        </StackLayout>
-                    </StackLayout>
+                    </Frame>
 
-                    <!--#region Save Button-->
-                    <StackLayout VerticalOptions="End">
-                        <StackLayout.Margin>
-                            <OnIdiom
-                                x:TypeArguments="Thickness"
-                                Phone="10"
-                                Tablet="15" />
-                        </StackLayout.Margin>
-                        <Button
-                            BackgroundColor="#B2B6BF"
-                            CornerRadius="5"
-                            FontAttributes="Bold"
-                            FontSize="26"
-                            HeightRequest="70"
-                            Text="Sauvegarder le Brouillon"
-                            TextColor="White"
-                            VerticalOptions="Center">
-                            <Button.FontSize>
-                                <OnIdiom
-                                    x:TypeArguments="x:Double"
-                                    Phone="20"
-                                    Tablet="26" />
-                            </Button.FontSize>
-                            <Button.HeightRequest>
-                                <OnIdiom
-                                    x:TypeArguments="x:Double"
-                                    Phone="50"
-                                    Tablet="70" />
-                            </Button.HeightRequest>
-                        </Button>
-                        <Button
-                            BackgroundColor="#fcb32a"
-                            CornerRadius="5"
-                            FontAttributes="Bold"
-                            FontSize="26"
-                            HeightRequest="70"
-                            Text="Envoyer"
-                            TextColor="White"
-                            VerticalOptions="Center">
-                            <Button.FontSize>
-                                <OnIdiom
-                                    x:TypeArguments="x:Double"
-                                    Phone="20"
-                                    Tablet="26" />
-                            </Button.FontSize>
-                            <Button.HeightRequest>
-                                <OnIdiom
-                                    x:TypeArguments="x:Double"
-                                    Phone="50"
-                                    Tablet="70" />
-                            </Button.HeightRequest>
-                        </Button>
-                    </StackLayout>
-                    <!--#endregion-->
+                </StackLayout>
 
+                <!--#region Save Button-->
+                <StackLayout Margin="10" VerticalOptions="End">
+                    <Button
+                        BackgroundColor="#3F4478"
+                        Clicked="Submit_Clicked"
+                        CornerRadius="8"
+                        FontSize="18"
+                        HeightRequest="60"
+                        Text="Créer autorisation"
+                        TextColor="White"
+                        VerticalOptions="Center" />
                 </StackLayout>
                 <!--#endregion-->
             </StackLayout>

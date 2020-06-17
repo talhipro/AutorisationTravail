@@ -10,128 +10,144 @@
     mc:Ignorable="d">
     <Popup:PopupPage.Animation>
         <animations:ScaleAnimation
-            DurationIn="400"
-            DurationOut="300"
-            EasingIn="SinOut"
-            EasingOut="SinIn"
-            HasBackgroundAnimation="True"
-            PositionIn="Center"
-            PositionOut="Center"
+            DurationIn="100"
+            DurationOut="100"
+            EasingIn="Linear"
+            EasingOut="Linear"
+            HasBackgroundAnimation="False"
+            PositionIn="Bottom"
+            PositionOut="Bottom"
             ScaleIn="1.2"
-            ScaleOut="0.8" />
+            ScaleOut="1.6" />
     </Popup:PopupPage.Animation>
     <Frame
-        Margin="20"
-        Padding="15"
-        BackgroundColor="White"
-        CornerRadius="5"
+        Margin="0,200,0,0"
+        Padding="0"
+        CornerRadius="15"
         HorizontalOptions="FillAndExpand"
-        VerticalOptions="Center">
-        <ScrollView>
-            <StackLayout Orientation="Vertical">
-                <Label
-                    Margin="0,15"
-                    FontAttributes="Bold"
-                    FontSize="20"
-                    Text="Veuillez choisir les Risques à ajouter."
-                    TextColor="Black" />
-                <CollectionView HeightRequest="200" SelectionMode="Multiple">
-                    <CollectionView.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
-                            <x:String>Travail en hauteur</x:String>
-                            <x:String>Proximité aux réseaux enterrés</x:String>
-                            <x:String>Produits inflammatables</x:String>
-                            <x:String>Manutention mécanique</x:String>
-                            <x:String>Outillage</x:String>
-                            <x:String>Bruit (&gt; 80 dB)</x:String>
-                            <x:String>Circulation personnes</x:String>
-                        </x:Array>
-                    </CollectionView.ItemsSource>
-                    <CollectionView.ItemsLayout>
-                        <GridItemsLayout
-                            HorizontalItemSpacing="5"
-                            Orientation="Vertical"
-                            Span="{OnIdiom Phone=2,
-                                           Tablet=3}"
-                            VerticalItemSpacing="10" />
-                    </CollectionView.ItemsLayout>
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Frame
-                                BackgroundColor="#FFFFFF"
-                                BorderColor="#979797"
-                                CornerRadius="3"
-                                HasShadow="False"
-                                VerticalOptions="Center">
-                                <Frame.Padding>
-                                    <OnIdiom
-                                        x:TypeArguments="Thickness"
-                                        Phone="5"
-                                        Tablet="10" />
-                                </Frame.Padding>
-                                <StackLayout Orientation="Horizontal">
-                                    <CheckBox />
-                                    <Label
-                                        HorizontalOptions="Center"
-                                        Text="{Binding}"
-                                        TextColor="#979797"
-                                        VerticalOptions="Center" />
-                                </StackLayout>
-                            </Frame>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+        VerticalOptions="Fill">
+        <StackLayout Orientation="Vertical">
+            <StackLayout Margin="20,10" Orientation="Horizontal">
 
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width=".7*" />
-                        <ColumnDefinition Width=".3*" />
-                    </Grid.ColumnDefinitions>
-                    <Frame
-                        Grid.Column="0"
-                        Margin="0,20,0,0"
-                        BackgroundColor="#fcb32a"
-                        CornerRadius="6"
-                        HasShadow="False"
-                        HorizontalOptions="FillAndExpand"
-                        VerticalOptions="End">
-                        <Frame.Padding>
-                            <OnPlatform
-                                x:TypeArguments="Thickness"
-                                Android="-6,-5"
-                                iOS="6,-5" />
-                        </Frame.Padding>
-                        <Button
-                            BackgroundColor="Transparent"
-                            FontAttributes="Bold"
-                            FontSize="15"
-                            Text="Ajouter"
-                            TextColor="White" />
-                    </Frame>
-                    <Frame
-                        Grid.Column="1"
-                        Margin="0,20,0,0"
-                        BackgroundColor="#A8A8A8"
-                        CornerRadius="6"
-                        HasShadow="False"
-                        HorizontalOptions="FillAndExpand"
-                        VerticalOptions="End">
-                        <Frame.Padding>
-                            <OnPlatform
-                                x:TypeArguments="Thickness"
-                                Android="-6,-5"
-                                iOS="6,-5" />
-                        </Frame.Padding>
-                        <Button
-                            BackgroundColor="Transparent"
-                            Clicked="ClosePopup_Clicked"
-                            FontAttributes="Bold"
-                            FontSize="15"
-                            Text="Fermer"
-                            TextColor="White" />
-                    </Frame>
-                </Grid>
+                <StackLayout VerticalOptions="Center">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="Risque évalués liés à / au"
+                        TextColor="#3F4051"
+                        VerticalOptions="Center" />
+                </StackLayout>
+
+                <Frame
+                    Margin="10"
+                    Padding="0"
+                    BackgroundColor="#dbdbdb"
+                    CornerRadius="10"
+                    HasShadow="False"
+                    HorizontalOptions="EndAndExpand"
+                    VerticalOptions="Center">
+                    <Image
+                        HeightRequest="25"
+                        Source="close.png"
+                        WidthRequest="25">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ClosePopup_Clicked" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Frame>
             </StackLayout>
-        </ScrollView>
+
+            <StackLayout Padding="0" BackgroundColor="#3F4478">
+                <ListView
+                    x:Name="myListe"
+                    CachingStrategy="RecycleElementAndDataTemplate"
+                    HasUnevenRows="True"
+                    ItemSelected="myListe_ItemSelected"
+                    SeparatorColor="#3F4478"
+                    SeparatorVisibility="None"
+                    VerticalScrollBarVisibility="Never">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout
+                                    Margin="0,.1,0,0"
+                                    Padding="20"
+                                    BackgroundColor="White"
+                                    Orientation="Horizontal">
+                                    <StackLayout.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding IsSelected}"
+                                            TargetType="StackLayout"
+                                            Value="true">
+                                            <Setter Property="BackgroundColor" Value="#EBF2F5" />
+                                        </DataTrigger>
+                                    </StackLayout.Triggers>
+                                    <Label
+                                        FontSize="18"
+                                        Text="{Binding Name}"
+                                        TextColor="#3F4051"
+                                        VerticalOptions="Center" />
+                                    <Frame
+                                        Padding="0"
+                                        BackgroundColor="#FF3B30"
+                                        CornerRadius="20"
+                                        HasShadow="False"
+                                        HorizontalOptions="EndAndExpand"
+                                        IsVisible="{Binding IsSelected}"
+                                        VerticalOptions="Center">
+                                        <Image
+                                            HeightRequest="25"
+                                            Source="close.png"
+                                            WidthRequest="25" />
+                                    </Frame>
+                                    <Frame
+                                        Padding="0"
+                                        BackgroundColor="#5AC8FA"
+                                        CornerRadius="20"
+                                        HasShadow="False"
+                                        HorizontalOptions="EndAndExpand"
+                                        VerticalOptions="Center">
+                                        <Frame.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding IsSelected}"
+                                                TargetType="Frame"
+                                                Value="true">
+                                                <Setter Property="IsVisible" Value="False" />
+                                            </DataTrigger>
+                                            <DataTrigger
+                                                Binding="{Binding IsSelected}"
+                                                TargetType="Frame"
+                                                Value="false">
+                                                <Setter Property="IsVisible" Value="True" />
+                                            </DataTrigger>
+                                        </Frame.Triggers>
+                                        <Image
+                                            HeightRequest="25"
+                                            Source="add.png"
+                                            WidthRequest="25" />
+                                    </Frame>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+
+            <StackLayout
+                Padding="20"
+                BackgroundColor="White"
+                VerticalOptions="EndAndExpand">
+                <Button
+                    BackgroundColor="#3F4478"
+                    BorderColor="White"
+                    Clicked="AddItems_Clicked"
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    Text="Ajouter"
+                    TextColor="White" />
+            </StackLayout>
+
+
+        </StackLayout>
     </Frame>
 </Popup:PopupPage>

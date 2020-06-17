@@ -11,7 +11,7 @@
         <ScrollView>
             <StackLayout Spacing="0">
                 <StackLayout x:Name="Header">
-                    <Frame BackgroundColor="#fcb32a" HasShadow="False">
+                    <Frame BackgroundColor="#3185DE" HasShadow="False">
                         <Grid>
                             <Grid.Padding>
                                 <OnPlatform x:TypeArguments="Thickness">
@@ -45,6 +45,7 @@
                             HasShadow="False">
                             <Grid RowSpacing="10">
                                 <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
@@ -170,6 +171,19 @@
                                         FontAttributes="Bold"
                                         FontSize="18"
                                         Text="18:00"
+                                        TextColor="Gray" />
+                                </StackLayout>
+                                <StackLayout Grid.Row="9">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="14"
+                                        Text="Représentant de l'entité chargée PEMP site: "
+                                        TextColor="#1496BC"
+                                        VerticalOptions="Center" />
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="18"
+                                        Text="Représentant 001"
                                         TextColor="Gray" />
                                 </StackLayout>
                             </Grid>
