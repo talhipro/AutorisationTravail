@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Rg.Plugins.Popup.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,6 +28,17 @@ namespace AutorisationTravail.Popups
         {
             await Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopAsync();
             await Application.Current.MainPage.Navigation.PushAsync(new Views.Permis.PermisTravailHauteur.DemandePermisPEMP());
+        }
+
+        private async void PermisPenetration_Clicked(object sender, EventArgs e)
+        {
+            await Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopAsync();
+            await Application.Current.MainPage.Navigation.PushAsync(new Views.Permis.PermisPenetrationEspaceConfine.DemandePermisPenetrationEspaceConfine());
+        }
+
+        private async void ClosePopup_Clicked(object sender, EventArgs e)
+        {
+            await PopupNavigation.Instance.PopAsync();
         }
     }
 }

@@ -5,57 +5,901 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:Controls="clr-namespace:AutorisationTravail.Controls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:magic="clr-namespace:MagicGradients;assembly=MagicGradients"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout BackgroundColor="#e6ebfc">
+            <StackLayout BackgroundColor="White">
                 <StackLayout x:Name="Header">
-                    <Frame
-                        Margin="0,-15,0,0"
-                        Padding="10,40,10,30"
-                        BackgroundColor="#3185DE"
-                        CornerRadius="15"
-                        HasShadow="False"
-                        VerticalOptions="Center">
-                        <StackLayout Orientation="Horizontal">
-                            <Frame
-                                Padding="5"
-                                BackgroundColor="#5294d9"
-                                CornerRadius="8"
-                                HasShadow="False">
-                                <Image
-                                    HeightRequest="25"
-                                    HorizontalOptions="End"
-                                    Source="arrowleft.png"
-                                    WidthRequest="25" />
-                            </Frame>
-                            <Label
-                                Margin="0"
-                                FontAttributes="Bold"
-                                FontSize="18"
-                                HorizontalOptions="CenterAndExpand"
-                                Text="Nouvelle autorisation de travail"
-                                TextColor="White"
-                                VerticalOptions="Center" />
-                            <Frame
-                                Padding="5"
-                                BackgroundColor="#5294d9"
-                                CornerRadius="8"
-                                HasShadow="False"
-                                VerticalOptions="Center">
-                                <Image
-                                    HeightRequest="25"
-                                    HorizontalOptions="End"
-                                    Source="save.png"
-                                    WidthRequest="25" />
-                            </Frame>
-                        </StackLayout>
-                    </Frame>
+                    <Grid>
+                        <Frame
+                            Margin="0,-15,0,0"
+                            Padding="10,40,10,30"
+                            BackgroundColor="Transparent"
+                            CornerRadius="15"
+                            HasShadow="False"
+                            VerticalOptions="Center">
+                            <StackLayout Orientation="Horizontal">
+                                <Frame
+                                    Padding="5"
+                                    CornerRadius="8"
+                                    HasShadow="False">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="BackBtn_Tapped" />
+                                    </Frame.GestureRecognizers>
+                                    <Image
+                                        HeightRequest="25"
+                                        HorizontalOptions="End"
+                                        Source="back_arrow.png"
+                                        WidthRequest="25" />
+                                </Frame>
+                                <Label
+                                    Margin="0"
+                                    FontAttributes="Bold"
+                                    FontSize="18"
+                                    HorizontalOptions="FillAndExpand"
+                                    Text="Nouvelle autorisation de travail"
+                                    TextColor="#696868"
+                                    VerticalOptions="Center" />
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
                 </StackLayout>
 
                 <StackLayout
+                    Padding="20,10"
+                    Spacing="0"
+                    VerticalOptions="Center">
+                    <StackLayout>
+
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Step1_Clicked" />
+                        </StackLayout.GestureRecognizers>
+                        <StackLayout Orientation="Horizontal">
+                            <Frame
+                                x:Name="Step1IconFrame"
+                                Margin="0"
+                                Padding="0"
+                                BackgroundColor="LightGray"
+                                CornerRadius="10"
+                                HasShadow="False"
+                                HeightRequest="20"
+                                HorizontalOptions="Start"
+                                VerticalOptions="Start"
+                                WidthRequest="20">
+                                <Label
+                                    x:Name="Step1IconText"
+                                    FontSize="10"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Text="1"
+                                    TextColor="White"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center" />
+                            </Frame>
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="13"
+                                HorizontalTextAlignment="Center"
+                                Text="Titre étape 1"
+                                TextColor="#333045"
+                                VerticalOptions="Center" />
+
+                            <Label
+                                FontSize="16"
+                                HorizontalOptions="EndAndExpand"
+                                Text="Enregistrer le bruillon"
+                                TextColor="#0645AD" />
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout
+                        x:Name="Step1ExpandableLayout"
+                        Margin="0,0,0,20"
+                        HorizontalOptions="FillAndExpand">
+                        <StackLayout x:Name="Step1ExpandableContent">
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <BoxView
+                                    Margin="10,5,0,0"
+                                    BackgroundColor="LightGray"
+                                    HorizontalOptions="Start"
+                                    VerticalOptions="FillAndExpand"
+                                    WidthRequest="1" />
+                                <!--#region from step 1-->
+
+                                <StackLayout
+                                    Margin="25,20,0,0"
+                                    HorizontalOptions="FillAndExpand"
+                                    Spacing="10"
+                                    VerticalOptions="FillAndExpand">
+
+                                    <StackLayout HorizontalOptions="FillAndExpand">
+                                        <Frame
+                                            Padding="0"
+                                            CornerRadius="8"
+                                            HasShadow="False">
+                                            <StackLayout Spacing="15">
+                                                <StackLayout>
+                                                    <Label
+                                                        FontAttributes="Bold"
+                                                        FontSize="16"
+                                                        Text="Site"
+                                                        TextColor="#3F4050" />
+                                                    <Frame
+                                                        Padding="1"
+                                                        BorderColor="#DEE1E8"
+                                                        HasShadow="False">
+                                                        <Controls:CustomRoundedPicker
+                                                            x:Name="SitePicker"
+                                                            Title="Choisissez un site"
+                                                            ItemDisplayBinding="{Binding SiteName}"
+                                                            ItemsSource="{Binding SiteList}"
+                                                            SelectedItem="{Binding AutorisationTravail.AtSite, Mode=TwoWay}"
+                                                            TitleColor="#9495A8" />
+                                                    </Frame>
+                                                </StackLayout>
+                                                <StackLayout>
+                                                    <Label
+                                                        FontAttributes="Bold"
+                                                        FontSize="16"
+                                                        Text="Entité"
+                                                        TextColor="#3F4050" />
+                                                    <Frame
+                                                        Padding="1"
+                                                        BorderColor="#DEE1E8"
+                                                        HasShadow="False">
+                                                        <Controls:CustomRoundedPicker
+                                                            Title="Choisissez une entité"
+                                                            ItemDisplayBinding="{Binding EntiteName}"
+                                                            ItemsSource="{Binding EntiteList}"
+                                                            TitleColor="#9495A8" />
+                                                    </Frame>
+                                                </StackLayout>
+                                                <StackLayout>
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="2*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <StackLayout
+                                                            Grid.Column="0"
+                                                            HorizontalOptions="FillAndExpand"
+                                                            VerticalOptions="FillAndExpand">
+                                                            <Frame
+                                                                Padding="1"
+                                                                BorderColor="#DEE1E8"
+                                                                HasShadow="False">
+                                                                <Controls:CustomRoundedPicker
+                                                                    Title="BT"
+                                                                    ItemsSource="{Binding DTList}"
+                                                                    TitleColor="#9495A8" />
+                                                            </Frame>
+                                                        </StackLayout>
+                                                        <StackLayout
+                                                            Grid.Column="1"
+                                                            HorizontalOptions="FillAndExpand"
+                                                            VerticalOptions="FillAndExpand">
+                                                            <Frame
+                                                                Padding="1"
+                                                                BorderColor="#DEE1E8"
+                                                                HasShadow="False"
+                                                                HorizontalOptions="FillAndExpand"
+                                                                VerticalOptions="FillAndExpand">
+                                                                <Entry
+                                                                    x:Name="NumeroEntry"
+                                                                    Keyboard="Numeric"
+                                                                    Placeholder="Numéro" />
+                                                            </Frame>
+                                                        </StackLayout>
+                                                    </Grid>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </Frame>
+                                    </StackLayout>
+
+
+                                    <StackLayout
+                                        Margin="0,25,0,0"
+                                        Orientation="Horizontal"
+                                        VerticalOptions="Center">
+
+                                        <Button
+                                            Padding="15,0"
+                                            BackgroundColor="LightGray"
+                                            Clicked="BackBtn_Tapped"
+                                            FontAttributes="Bold"
+                                            FontSize="15"
+                                            HeightRequest="35"
+                                            Text="ANNULER"
+                                            TextColor="Gray" />
+                                        <Button
+                                            Margin="10,0,0,0"
+                                            Padding="15,0"
+                                            BackgroundColor="#4a8803"
+                                            Clicked="Suivant_Step1_Clicked"
+                                            FontAttributes="Bold"
+                                            FontSize="15"
+                                            HeightRequest="35"
+                                            Text="SUIVANT"
+                                            TextColor="White" />
+                                    </StackLayout>
+                                </StackLayout>
+
+                                <!--#endregion form step 1-->
+                            </Grid>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout
+                    Padding="20,0,0,10"
+                    Spacing="0"
+                    VerticalOptions="Center">
+                    <StackLayout>
+
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Step2_Clicked" />
+                        </StackLayout.GestureRecognizers>
+                        <StackLayout Orientation="Horizontal">
+                            <Frame
+                                x:Name="Step2IconFrame"
+                                Margin="0"
+                                Padding="0"
+                                BackgroundColor="LightGray"
+                                CornerRadius="10"
+                                HasShadow="False"
+                                HeightRequest="20"
+                                HorizontalOptions="Start"
+                                VerticalOptions="Start"
+                                WidthRequest="20">
+                                <Label
+                                    x:Name="Step2IconText"
+                                    FontSize="10"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Text="2"
+                                    TextColor="White"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center" />
+                            </Frame>
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="13"
+                                HorizontalTextAlignment="Center"
+                                Text="Titre étape 2"
+                                TextColor="#333045"
+                                VerticalOptions="Center" />
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout
+                        x:Name="Step2ExpandableLayout"
+                        Margin="0,0,0,20"
+                        Padding="0"
+                        HorizontalOptions="FillAndExpand">
+                        <StackLayout x:Name="Step2ExpandableContent">
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <BoxView
+                                    Margin="10,5,0,0"
+                                    BackgroundColor="LightGray"
+                                    HorizontalOptions="Start"
+                                    VerticalOptions="FillAndExpand"
+                                    WidthRequest="1" />
+                                <!--#region from step 2-->
+
+                                <StackLayout
+                                    Margin="25,20,20,0"
+                                    HorizontalOptions="FillAndExpand"
+                                    Spacing="10"
+                                    VerticalOptions="FillAndExpand">
+
+                                    <StackLayout HorizontalOptions="FillAndExpand">
+                                        <Frame
+                                            Padding="0"
+                                            CornerRadius="8"
+                                            HasShadow="False">
+                                            <StackLayout Spacing="15">
+                                                <StackLayout>
+                                                    <Label
+                                                        FontAttributes="Bold"
+                                                        FontSize="16"
+                                                        Text="Lieu d'intervention"
+                                                        TextColor="#3F4050" />
+                                                    <Frame
+                                                        Padding="1"
+                                                        BorderColor="#DEE1E8"
+                                                        HasShadow="False">
+                                                        <Entry />
+                                                    </Frame>
+                                                </StackLayout>
+                                                <StackLayout>
+                                                    <Label
+                                                        FontAttributes="Bold"
+                                                        FontSize="16"
+                                                        Text="Services intervenants"
+                                                        TextColor="#3F4050" />
+                                                    <Frame
+                                                        Padding="1"
+                                                        BorderColor="#DEE1E8"
+                                                        HasShadow="False">
+                                                        <Controls:CustomRoundedPicker Title="Choisissez une entité" TitleColor="#9495A8" />
+                                                    </Frame>
+                                                </StackLayout>
+                                                <StackLayout>
+                                                    <Label
+                                                        FontAttributes="Bold"
+                                                        FontSize="16"
+                                                        Text="Entreprises intervenants"
+                                                        TextColor="#3F4050" />
+                                                    <Frame
+                                                        Padding="1"
+                                                        BorderColor="#DEE1E8"
+                                                        HasShadow="False">
+                                                        <Controls:CustomRoundedPicker Title="Choisissez une entité" TitleColor="#9495A8" />
+                                                    </Frame>
+                                                </StackLayout>
+
+                                                <StackLayout>
+                                                    <Label
+                                                        FontAttributes="Bold"
+                                                        FontSize="16"
+                                                        Text="Description de l'intervention"
+                                                        TextColor="#3F4050" />
+                                                    <Frame
+                                                        Padding="1"
+                                                        BorderColor="#DEE1E8"
+                                                        HasShadow="False">
+                                                        <Editor HeightRequest="100" />
+                                                    </Frame>
+                                                </StackLayout>
+                                                <StackLayout>
+                                                    <Label
+                                                        FontAttributes="Bold"
+                                                        FontSize="16"
+                                                        Text="Date de l'intervention"
+                                                        TextColor="#3F4050" />
+                                                    <Frame
+                                                        Padding="1"
+                                                        BorderColor="#DEE1E8"
+                                                        HasShadow="False">
+                                                        <DatePicker Format="dd/MM/yyyy" HorizontalOptions="FillAndExpand" />
+                                                    </Frame>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <StackLayout HorizontalOptions="FillAndExpand">
+                                                        <Label
+                                                            FontAttributes="Bold"
+                                                            FontSize="16"
+                                                            Text="Heure début"
+                                                            TextColor="#3F4050" />
+                                                        <Frame
+                                                            Padding="1"
+                                                            BorderColor="#DEE1E8"
+                                                            HasShadow="False">
+                                                            <TimePicker Format="HH:mm" />
+                                                        </Frame>
+                                                    </StackLayout>
+                                                    <StackLayout HorizontalOptions="FillAndExpand">
+                                                        <Label
+                                                            FontAttributes="Bold"
+                                                            FontSize="16"
+                                                            Text="Heure fin"
+                                                            TextColor="#3F4050" />
+                                                        <Frame
+                                                            Padding="1"
+                                                            BorderColor="#DEE1E8"
+                                                            HasShadow="False">
+                                                            <TimePicker Format="HH:mm" />
+                                                        </Frame>
+                                                    </StackLayout>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </Frame>
+                                    </StackLayout>
+
+
+                                    <StackLayout
+                                        Margin="0,25,0,0"
+                                        Orientation="Horizontal"
+                                        VerticalOptions="Center">
+                                        <Button
+                                            Padding="15,0"
+                                            BackgroundColor="LightGray"
+                                            Clicked="BackBtn_Tapped"
+                                            FontAttributes="Bold"
+                                            FontSize="16"
+                                            HeightRequest="35"
+                                            Text="ANNULER"
+                                            TextColor="Gray" />
+                                        <Button
+                                            Margin="0,0,0,0"
+                                            Padding="15,0"
+                                            BackgroundColor="#4a8803"
+                                            Clicked="Suivant_Step2_Clicked"
+                                            FontAttributes="Bold"
+                                            FontSize="16"
+                                            HeightRequest="35"
+                                            Text="SUIVANT"
+                                            TextColor="White" />
+
+
+
+                                    </StackLayout>
+                                </StackLayout>
+
+                                <!--#endregion form step 2-->
+
+                            </Grid>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout
+                    Padding="20,0,0,10"
+                    Spacing="0"
+                    VerticalOptions="Center">
+                    <StackLayout>
+
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Step3_Clicked" />
+                        </StackLayout.GestureRecognizers>
+                        <StackLayout Orientation="Horizontal">
+                            <Frame
+                                x:Name="Step3IconFrame"
+                                Margin="0"
+                                Padding="0"
+                                BackgroundColor="LightGray"
+                                CornerRadius="10"
+                                HasShadow="False"
+                                HeightRequest="20"
+                                HorizontalOptions="Start"
+                                VerticalOptions="Start"
+                                WidthRequest="20">
+
+                                <Label
+                                    x:Name="Step3IconText"
+                                    FontSize="10"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Text="3"
+                                    TextColor="White"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center" />
+                            </Frame>
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="13"
+                                HorizontalTextAlignment="Center"
+                                Text="Titre étape 3"
+                                TextColor="#333045"
+                                VerticalOptions="Center" />
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout
+                        x:Name="Step3ExpandableLayout"
+                        Margin="0,0,0,20"
+                        Padding="0"
+                        HorizontalOptions="FillAndExpand">
+                        <StackLayout x:Name="Step3ExpandableContent">
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <BoxView
+                                    Margin="10,5,0,0"
+                                    BackgroundColor="LightGray"
+                                    HorizontalOptions="Start"
+                                    VerticalOptions="FillAndExpand"
+                                    WidthRequest="1" />
+                                <!--#region from step 3-->
+                                <StackLayout
+                                    Margin="25,20,20,0"
+                                    HorizontalOptions="FillAndExpand"
+                                    Spacing="10"
+                                    VerticalOptions="FillAndExpand">
+                                    <StackLayout HorizontalOptions="FillAndExpand">
+                                        <Frame
+                                            Padding="10,15"
+                                            CornerRadius="8"
+                                            HasShadow="True">
+                                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                                <Label
+                                                    FontAttributes="Bold"
+                                                    FontSize="16"
+                                                    Text="Risque évalués liés à / au"
+                                                    TextColor="#3F4050" />
+                                                <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                                                    <StackLayout.Triggers>
+                                                        <DataTrigger
+                                                            Binding="{Binding AutorisationTravail.AtRisquesShowAddEditBtn, Mode=TwoWay}"
+                                                            TargetType="StackLayout"
+                                                            Value="true">
+                                                            <Setter Property="IsVisible" Value="False" />
+                                                        </DataTrigger>
+                                                        <DataTrigger
+                                                            Binding="{Binding AutorisationTravail.AtRisquesShowAddEditBtn, Mode=TwoWay}"
+                                                            TargetType="StackLayout"
+                                                            Value="false">
+                                                            <Setter Property="IsVisible" Value="True" />
+                                                        </DataTrigger>
+                                                    </StackLayout.Triggers>
+                                                    <Frame
+                                                        Padding="0"
+                                                        CornerRadius="20"
+                                                        HasShadow="False">
+                                                        <Label
+                                                            FontAttributes="Bold"
+                                                            FontSize="20"
+                                                            Text="{Binding AutorisationTravail.AtRisquesCount, Mode=TwoWay}"
+                                                            TextColor="#FF3B30" />
+                                                    </Frame>
+                                                    <Frame
+                                                        Padding="0"
+                                                        BackgroundColor="#04DE71"
+                                                        CornerRadius="20"
+                                                        HasShadow="False">
+                                                        <Image
+                                                            HeightRequest="28"
+                                                            Source="pencil.png"
+                                                            WidthRequest="28">
+                                                            <Image.GestureRecognizers>
+                                                                <TapGestureRecognizer Tapped="AddRisques_Tapped" />
+                                                            </Image.GestureRecognizers>
+                                                        </Image>
+                                                    </Frame>
+                                                </StackLayout>
+                                                <Frame
+                                                    Padding="0"
+                                                    BackgroundColor="#5AC8FA"
+                                                    CornerRadius="20"
+                                                    HasShadow="False"
+                                                    HorizontalOptions="EndAndExpand"
+                                                    IsVisible="{Binding AutorisationTravail.AtRisquesShowAddEditBtn, Mode=TwoWay}">
+                                                    <Image
+                                                        HeightRequest="28"
+                                                        Source="add.png"
+                                                        WidthRequest="28">
+                                                        <Image.GestureRecognizers>
+                                                            <TapGestureRecognizer Tapped="AddRisques_Tapped" />
+                                                        </Image.GestureRecognizers>
+                                                    </Image>
+                                                </Frame>
+                                            </StackLayout>
+                                        </Frame>
+                                        <Frame
+                                            Padding="10,15"
+                                            CornerRadius="8"
+                                            HasShadow="True">
+                                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width=".7*" />
+                                                        <ColumnDefinition Width=".3*" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Label
+                                                        Grid.Column="0"
+                                                        FontAttributes="Bold"
+                                                        FontSize="16"
+                                                        HorizontalOptions="Center"
+                                                        Text="Mesures prises pour préparer l'intervention"
+                                                        TextColor="#3F4050"
+                                                        VerticalOptions="Center" />
+                                                    <StackLayout
+                                                        Grid.Column="1"
+                                                        HorizontalOptions="EndAndExpand"
+                                                        Orientation="Horizontal"
+                                                        VerticalOptions="Center">
+                                                        <StackLayout.Triggers>
+                                                            <DataTrigger
+                                                                Binding="{Binding AutorisationTravail.AtMesuresShowAddEditBtn}"
+                                                                TargetType="StackLayout"
+                                                                Value="true">
+                                                                <Setter Property="IsVisible" Value="False" />
+                                                            </DataTrigger>
+                                                            <DataTrigger
+                                                                Binding="{Binding AutorisationTravail.AtMesuresShowAddEditBtn}"
+                                                                TargetType="StackLayout"
+                                                                Value="false">
+                                                                <Setter Property="IsVisible" Value="True" />
+                                                            </DataTrigger>
+                                                        </StackLayout.Triggers>
+                                                        <Frame
+                                                            Padding="0"
+                                                            CornerRadius="20"
+                                                            HasShadow="False"
+                                                            VerticalOptions="Center">
+                                                            <Label
+                                                                FontAttributes="Bold"
+                                                                FontSize="20"
+                                                                Text="{Binding AutorisationTravail.AtMesuresCount}"
+                                                                TextColor="#FF3B30" />
+                                                        </Frame>
+                                                        <Frame
+                                                            Padding="0"
+                                                            BackgroundColor="#04DE71"
+                                                            CornerRadius="20"
+                                                            HasShadow="False"
+                                                            VerticalOptions="Center">
+                                                            <Image
+                                                                HeightRequest="28"
+                                                                Source="pencil.png"
+                                                                WidthRequest="28">
+                                                                <Image.GestureRecognizers>
+                                                                    <TapGestureRecognizer Tapped="AddMesures_Tapped" />
+                                                                </Image.GestureRecognizers>
+                                                            </Image>
+                                                        </Frame>
+                                                    </StackLayout>
+                                                    <Frame
+                                                        Grid.Column="1"
+                                                        Padding="0"
+                                                        BackgroundColor="#5AC8FA"
+                                                        CornerRadius="20"
+                                                        HasShadow="False"
+                                                        HorizontalOptions="EndAndExpand"
+                                                        IsVisible="{Binding AutorisationTravail.AtMesuresShowAddEditBtn}"
+                                                        VerticalOptions="Center">
+                                                        <Image
+                                                            HeightRequest="28"
+                                                            Source="add.png"
+                                                            WidthRequest="28">
+                                                            <Image.GestureRecognizers>
+                                                                <TapGestureRecognizer Tapped="AddMesures_Tapped" />
+                                                            </Image.GestureRecognizers>
+                                                        </Image>
+                                                    </Frame>
+                                                </Grid>
+                                            </StackLayout>
+                                        </Frame>
+                                        <Frame
+                                            Padding="10,15"
+                                            CornerRadius="8"
+                                            HasShadow="False">
+                                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                                <Label
+                                                    FontAttributes="Bold"
+                                                    FontSize="16"
+                                                    Text="Moyens d'accés nécessaires"
+                                                    TextColor="#3F4050" />
+                                                <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                                                    <StackLayout.Triggers>
+                                                        <DataTrigger
+                                                            Binding="{Binding AutorisationTravail.AtMoyensAccesShowAddEditBtn}"
+                                                            TargetType="StackLayout"
+                                                            Value="true">
+                                                            <Setter Property="IsVisible" Value="False" />
+                                                        </DataTrigger>
+                                                        <DataTrigger
+                                                            Binding="{Binding AutorisationTravail.AtMoyensAccesShowAddEditBtn}"
+                                                            TargetType="StackLayout"
+                                                            Value="false">
+                                                            <Setter Property="IsVisible" Value="True" />
+                                                        </DataTrigger>
+                                                    </StackLayout.Triggers>
+                                                    <Frame
+                                                        Padding="0"
+                                                        CornerRadius="20"
+                                                        HasShadow="False">
+                                                        <Label
+                                                            FontAttributes="Bold"
+                                                            FontSize="20"
+                                                            Text="{Binding AutorisationTravail.AtMoyensAccesCount}"
+                                                            TextColor="#FF3B30" />
+                                                    </Frame>
+                                                    <Frame
+                                                        Padding="0"
+                                                        BackgroundColor="#04DE71"
+                                                        CornerRadius="20"
+                                                        HasShadow="False">
+                                                        <Image
+                                                            HeightRequest="28"
+                                                            Source="pencil.png"
+                                                            WidthRequest="28">
+                                                            <Image.GestureRecognizers>
+                                                                <TapGestureRecognizer Tapped="AddMoyensAcces_Tapped" />
+                                                            </Image.GestureRecognizers>
+                                                        </Image>
+                                                    </Frame>
+                                                </StackLayout>
+                                                <Frame
+                                                    Padding="0"
+                                                    BackgroundColor="#5AC8FA"
+                                                    CornerRadius="20"
+                                                    HasShadow="False"
+                                                    HorizontalOptions="EndAndExpand"
+                                                    IsVisible="{Binding AutorisationTravail.AtMoyensAccesShowAddEditBtn}">
+                                                    <Image
+                                                        HeightRequest="28"
+                                                        Source="add.png"
+                                                        WidthRequest="28">
+                                                        <Image.GestureRecognizers>
+                                                            <TapGestureRecognizer Tapped="AddMoyensAcces_Tapped" />
+                                                        </Image.GestureRecognizers>
+                                                    </Image>
+                                                </Frame>
+                                            </StackLayout>
+                                        </Frame>
+                                        <Frame
+                                            Padding="10,15"
+                                            CornerRadius="8"
+                                            HasShadow="False">
+                                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                                <Label
+                                                    FontAttributes="Bold"
+                                                    FontSize="16"
+                                                    Text="EPI spécifiques nécessaires"
+                                                    TextColor="#3F4050" />
+                                                <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                                                    <StackLayout.Triggers>
+                                                        <DataTrigger
+                                                            Binding="{Binding AutorisationTravail.AtEpiSpecifiquesShowAddEditBtn}"
+                                                            TargetType="StackLayout"
+                                                            Value="true">
+                                                            <Setter Property="IsVisible" Value="False" />
+                                                        </DataTrigger>
+                                                        <DataTrigger
+                                                            Binding="{Binding AutorisationTravail.AtEpiSpecifiquesShowAddEditBtn}"
+                                                            TargetType="StackLayout"
+                                                            Value="false">
+                                                            <Setter Property="IsVisible" Value="True" />
+                                                        </DataTrigger>
+                                                    </StackLayout.Triggers>
+                                                    <Frame
+                                                        Padding="0"
+                                                        CornerRadius="20"
+                                                        HasShadow="False">
+                                                        <Label
+                                                            FontAttributes="Bold"
+                                                            FontSize="20"
+                                                            Text="{Binding AutorisationTravail.AtEpiSpecifiquesCount}"
+                                                            TextColor="#FF3B30" />
+                                                    </Frame>
+                                                    <Frame
+                                                        Padding="0"
+                                                        BackgroundColor="#04DE71"
+                                                        CornerRadius="20"
+                                                        HasShadow="False">
+                                                        <Image
+                                                            HeightRequest="28"
+                                                            Source="pencil.png"
+                                                            WidthRequest="28">
+                                                            <Image.GestureRecognizers>
+                                                                <TapGestureRecognizer Tapped="AddEPI_Tapped" />
+                                                            </Image.GestureRecognizers>
+                                                        </Image>
+                                                    </Frame>
+                                                </StackLayout>
+                                                <Frame
+                                                    Padding="0"
+                                                    BackgroundColor="#5AC8FA"
+                                                    CornerRadius="20"
+                                                    HasShadow="False"
+                                                    HorizontalOptions="EndAndExpand"
+                                                    IsVisible="{Binding AutorisationTravail.AtEpiSpecifiquesShowAddEditBtn}">
+                                                    <Image
+                                                        HeightRequest="28"
+                                                        Source="add.png"
+                                                        WidthRequest="28">
+                                                        <Image.GestureRecognizers>
+                                                            <TapGestureRecognizer Tapped="AddEPI_Tapped" />
+                                                        </Image.GestureRecognizers>
+                                                    </Image>
+                                                </Frame>
+                                            </StackLayout>
+                                        </Frame>
+                                        <Frame
+                                            Padding="10,15"
+                                            CornerRadius="8"
+                                            HasShadow="False">
+                                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                                <Label
+                                                    FontAttributes="Bold"
+                                                    FontSize="16"
+                                                    Text="Permis nécessaires"
+                                                    TextColor="#3F4050" />
+                                                <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                                                    <StackLayout.Triggers>
+                                                        <DataTrigger
+                                                            Binding="{Binding AutorisationTravail.AtPermisShowAddEditBtn}"
+                                                            TargetType="StackLayout"
+                                                            Value="true">
+                                                            <Setter Property="IsVisible" Value="False" />
+                                                        </DataTrigger>
+                                                        <DataTrigger
+                                                            Binding="{Binding AutorisationTravail.AtPermisShowAddEditBtn}"
+                                                            TargetType="StackLayout"
+                                                            Value="false">
+                                                            <Setter Property="IsVisible" Value="True" />
+                                                        </DataTrigger>
+                                                    </StackLayout.Triggers>
+                                                    <Frame
+                                                        Padding="0"
+                                                        CornerRadius="20"
+                                                        HasShadow="False">
+                                                        <Label
+                                                            FontAttributes="Bold"
+                                                            FontSize="20"
+                                                            Text="{Binding AutorisationTravail.AtPermisCount}"
+                                                            TextColor="#FF3B30" />
+                                                    </Frame>
+                                                    <Frame
+                                                        Padding="0"
+                                                        BackgroundColor="#04DE71"
+                                                        CornerRadius="20"
+                                                        HasShadow="False">
+                                                        <Image
+                                                            HeightRequest="28"
+                                                            Source="pencil.png"
+                                                            WidthRequest="28">
+                                                            <Image.GestureRecognizers>
+                                                                <TapGestureRecognizer Tapped="AddPermis_Tapped" />
+                                                            </Image.GestureRecognizers>
+                                                        </Image>
+                                                    </Frame>
+                                                </StackLayout>
+                                                <Frame
+                                                    Padding="0"
+                                                    BackgroundColor="#5AC8FA"
+                                                    CornerRadius="20"
+                                                    HasShadow="False"
+                                                    HorizontalOptions="EndAndExpand"
+                                                    IsVisible="{Binding AutorisationTravail.AtPermisShowAddEditBtn}">
+                                                    <Image
+                                                        HeightRequest="28"
+                                                        Source="add.png"
+                                                        WidthRequest="28">
+                                                        <Image.GestureRecognizers>
+                                                            <TapGestureRecognizer Tapped="AddPermis_Tapped" />
+                                                        </Image.GestureRecognizers>
+                                                    </Image>
+                                                </Frame>
+                                            </StackLayout>
+                                        </Frame>
+                                    </StackLayout>
+
+                                    <StackLayout
+                                        Margin="0,25,0,0"
+                                        Orientation="Horizontal"
+                                        VerticalOptions="Center">
+
+                                        <Button
+                                            Padding="15,0"
+                                            BackgroundColor="LightGray"
+                                            Clicked="BackBtn_Tapped"
+                                            FontAttributes="Bold"
+                                            FontSize="16"
+                                            HeightRequest="35"
+                                            Text="ANNULER"
+                                            TextColor="Gray" />
+                                        <Button
+                                            Margin="10,0,0,0"
+                                            Padding="15,0"
+                                            BackgroundColor="#4a8803"
+                                            Clicked="Suivant_Step3_Clicked"
+                                            FontAttributes="Bold"
+                                            FontSize="16"
+                                            HeightRequest="35"
+                                            Text="VALIDER"
+                                            TextColor="White" />
+                                    </StackLayout>
+                                </StackLayout>
+                                <!--#endregion form step 3-->
+
+                            </Grid>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+
+                <!--<StackLayout
                     x:Name="Content"
                     Margin="10"
                     Padding="0,0,0,20"
@@ -613,10 +1457,10 @@
                         </StackLayout>
                     </Frame>
 
-                </StackLayout>
+                </StackLayout>-->
 
                 <!--#region Save Button-->
-                <StackLayout Margin="10" VerticalOptions="End">
+                <!--<StackLayout Margin="10" VerticalOptions="End">
                     <Button
                         BackgroundColor="#3F4478"
                         Clicked="Submit_Clicked"
@@ -626,7 +1470,7 @@
                         Text="Créer autorisation"
                         TextColor="White"
                         VerticalOptions="Center" />
-                </StackLayout>
+                </StackLayout>-->
                 <!--#endregion-->
             </StackLayout>
         </ScrollView>

@@ -11,6 +11,7 @@ namespace AutorisationTravail
             InitializeComponent();
 
             MainPage = new NavigationPage(new Views.Home.HomeView());
+            //MainPage = new NavigationPage(new Views.DemandeAutorisationTravail.DemandeAutorisationDetails());
         }
 
         protected override void OnStart()

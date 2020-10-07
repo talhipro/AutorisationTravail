@@ -8,94 +8,6 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-    <!--
-    <StackLayout x:Name="PermisHauteur">
-                    <Frame
-                        BackgroundColor="#FFFFFF"
-                        BorderColor="#979797"
-                        CornerRadius="3"
-                        HasShadow="False"
-                        VerticalOptions="Center">
-                        <Frame.Padding>
-                            <OnIdiom
-                                x:TypeArguments="Thickness"
-                                Phone="5"
-                                Tablet="10" />
-                        </Frame.Padding>
-                        <StackLayout Orientation="Horizontal">
-                            <CheckBox CheckedChanged="CheckBox_CheckedChanged" />
-                            <Label Text="Permis de Travaux en hauteur:" VerticalOptions="Center" />
-
-                        </StackLayout>
-                    </Frame>
-                    <StackLayout x:Name="ListPermisHauteur" IsVisible="False">
-                        <Frame
-                            BackgroundColor="#FFFFFF"
-                            BorderColor="#979797"
-                            CornerRadius="3"
-                            HasShadow="False"
-                            VerticalOptions="Center">
-                            <Frame.Padding>
-                                <OnIdiom
-                                    x:TypeArguments="Thickness"
-                                    Phone="5"
-                                    Tablet="10" />
-                            </Frame.Padding>
-                            <StackLayout Orientation="Horizontal">
-                                <CheckBox />
-                                <Label
-                                    HorizontalOptions="Center"
-                                    Text="Permis de Travaux en hauteur 01"
-                                    TextColor="#979797"
-                                    VerticalOptions="Center" />
-                            </StackLayout>
-                        </Frame>
-                        <Frame
-                            BackgroundColor="#FFFFFF"
-                            BorderColor="#979797"
-                            CornerRadius="3"
-                            HasShadow="False"
-                            VerticalOptions="Center">
-                            <Frame.Padding>
-                                <OnIdiom
-                                    x:TypeArguments="Thickness"
-                                    Phone="5"
-                                    Tablet="10" />
-                            </Frame.Padding>
-                            <StackLayout Orientation="Horizontal">
-                                <CheckBox />
-                                <Label
-                                    HorizontalOptions="Center"
-                                    Text="Permis de Travaux en hauteur 02"
-                                    TextColor="#979797"
-                                    VerticalOptions="Center" />
-                            </StackLayout>
-                        </Frame>
-                        <Frame
-                            BackgroundColor="#FFFFFF"
-                            BorderColor="#979797"
-                            CornerRadius="3"
-                            HasShadow="False"
-                            VerticalOptions="Center">
-                            <Frame.Padding>
-                                <OnIdiom
-                                    x:TypeArguments="Thickness"
-                                    Phone="5"
-                                    Tablet="10" />
-                            </Frame.Padding>
-                            <StackLayout Orientation="Horizontal">
-                                <CheckBox />
-                                <Label
-                                    HorizontalOptions="Center"
-                                    Text="Permis de Travaux en hauteur 03"
-                                    TextColor="#979797"
-                                    VerticalOptions="Center" />
-                            </StackLayout>
-                        </Frame>
-                    </StackLayout>
-                </StackLayout>
-    -->
-
     <Popup:PopupPage.Animation>
         <animations:ScaleAnimation
             DurationIn="100"
@@ -115,18 +27,22 @@
         HorizontalOptions="FillAndExpand"
         VerticalOptions="Fill">
         <StackLayout Orientation="Vertical">
-            <StackLayout Orientation="Horizontal">
-                <Label
-                    Margin="20"
-                    FontAttributes="Bold"
-                    FontSize="18"
-                    Text="Permis nécessaires"
-                    TextColor="#3F4051" />
+            <StackLayout
+                Margin="15"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal">
+                <StackLayout VerticalOptions="Center">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="Permis nécessaires"
+                        TextColor="#3F4051"
+                        VerticalOptions="Center" />
+                </StackLayout>
                 <Frame
-                    Margin="10"
                     Padding="0"
                     BackgroundColor="#dbdbdb"
-                    CornerRadius="10"
+                    CornerRadius="30"
                     HasShadow="False"
                     HorizontalOptions="EndAndExpand"
                     VerticalOptions="Center">

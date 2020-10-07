@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using PropertyChanged;
 
 namespace Shared.Models.Permis
 {
-    public class PermisListModel : INotifyPropertyChanged
+	[AddINotifyPropertyChangedInterface]
+    public class PermisListModel
     {
-        public event PropertyChangedEventHandler PropertyChanged;
 		public string PermisNumAT { get; set; }
-		public string PermisType { get; set; }
 		public string PermisDemandeur { get; set; }
 		public string PermisStatutValue { get; set; }
 		public string PermisStatutBgColor { get; set; }
@@ -17,21 +17,8 @@ namespace Shared.Models.Permis
 		public string PermisDate { get; set; }
 		public string PermisService { get; set; }
 		public string PermisEntite { get; set; }
-
-        private bool _detailsColapse;
-        public bool DetailsColapse
-        {
-            get => _detailsColapse;
-            set
-            {
-                _detailsColapse = value;
-                OnPropertyChanged("DetailsColapse");
-            }
-        }
-
-        protected void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+		public string PermisSite { get; set; }
+		public string PermisType { get; set; }
+        public bool DetailsColapse { get; set; }
     }
 }

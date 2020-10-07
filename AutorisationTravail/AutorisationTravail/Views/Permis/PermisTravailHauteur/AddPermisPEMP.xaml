@@ -4,44 +4,82 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:magic="clr-namespace:MagicGradients;assembly=MagicGradients"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Spacing="0">
+            <StackLayout x:Name="Page" BackgroundColor="#e6ebfc">
                 <StackLayout x:Name="Header">
-                    <Frame BackgroundColor="#3185DE" HasShadow="False">
-                        <Grid>
-                            <Grid.Padding>
-                                <OnPlatform x:TypeArguments="Thickness">
-                                    <On Platform="iOS" Value="0, 11, 8, 0" />
-                                </OnPlatform>
-                            </Grid.Padding>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-
-                            <StackLayout
-                                Grid.Column="0"
-                                Margin="0"
-                                VerticalOptions="Center">
+                    <Grid>
+                        <!--#region Gradient-->
+                        <magic:GradientView VerticalOptions="FillAndExpand">
+                            <magic:GradientView.GradientSource>
+                                <magic:LinearGradient Angle="0">
+                                    <magic:GradientStop Offset="0" Color="#3185DE" />
+                                    <magic:GradientStop Offset="1" Color="#5163E9" />
+                                </magic:LinearGradient>
+                            </magic:GradientView.GradientSource>
+                        </magic:GradientView>
+                        <!--#endregion-->
+                        <Frame
+                            Margin="0,-15,0,0"
+                            Padding="10,40,10,30"
+                            BackgroundColor="Transparent"
+                            CornerRadius="15"
+                            HasShadow="False"
+                            VerticalOptions="Center">
+                            <StackLayout Orientation="Horizontal" Spacing="15">
+                                <Frame
+                                    Padding="5"
+                                    BackgroundColor="#5294d9"
+                                    CornerRadius="8"
+                                    HasShadow="False"
+                                    VerticalOptions="Center">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="BackBtn_Tapped" />
+                                    </Frame.GestureRecognizers>
+                                    <Image
+                                        HeightRequest="25"
+                                        HorizontalOptions="End"
+                                        Source="arrowleft.png"
+                                        WidthRequest="25" />
+                                </Frame>
                                 <Label
+                                    Margin="0"
                                     FontAttributes="Bold"
-                                    FontSize="26"
-                                    HorizontalOptions="Center"
+                                    FontSize="18"
+                                    HorizontalOptions="CenterAndExpand"
+                                    HorizontalTextAlignment="Center"
                                     Text="Nouveau Permis d'utilisation de la PEMP"
-                                    TextColor="White" />
+                                    TextColor="White"
+                                    VerticalOptions="Center" />
+                                <Frame
+                                    Padding="5"
+                                    BackgroundColor="#5294d9"
+                                    CornerRadius="8"
+                                    HasShadow="False"
+                                    VerticalOptions="Center">
+                                    <Image
+                                        HeightRequest="25"
+                                        HorizontalOptions="End"
+                                        Source="save.png"
+                                        WidthRequest="25" />
+                                </Frame>
                             </StackLayout>
-                        </Grid>
-                    </Frame>
+                        </Frame>
+                    </Grid>
                 </StackLayout>
-                <StackLayout>
-                    <StackLayout x:Name="Infos" Margin="10">
+
+                <StackLayout
+                    x:Name="Content"
+                    Margin="10"
+                    Spacing="10">
+                    <StackLayout x:Name="Infos">
                         <Frame
                             Padding="10"
-                            CornerRadius="4"
+                            CornerRadius="8"
                             HasShadow="False">
                             <Grid RowSpacing="10">
                                 <Grid.RowDefinitions>
@@ -59,152 +97,176 @@
                                 <StackLayout Grid.Row="0" Orientation="Horizontal">
                                     <Label
                                         FontAttributes="Bold"
-                                        FontSize="14"
+                                        FontSize="17"
                                         Text="Localisation:"
-                                        TextColor="#1496BC"
+                                        TextColor="#3F4050"
                                         VerticalOptions="Center" />
                                     <Label
                                         FontAttributes="Bold"
-                                        FontSize="18"
+                                        FontSize="16"
+                                        HorizontalOptions="EndAndExpand"
                                         Text="Casablanca"
+                                        TextColor="#3F4576"
                                         VerticalOptions="Center" />
                                 </StackLayout>
                                 <StackLayout Grid.Row="1" Orientation="Horizontal">
                                     <Label
                                         FontAttributes="Bold"
-                                        FontSize="14"
+                                        FontSize="17"
                                         Text="Service Demandeur:"
-                                        TextColor="#1496BC"
+                                        TextColor="#3F4050"
                                         VerticalOptions="Center" />
                                     <Label
                                         FontAttributes="Bold"
-                                        FontSize="18"
+                                        FontSize="16"
+                                        HorizontalOptions="EndAndExpand"
                                         Text="Service 01"
-                                        TextColor="Gray" />
+                                        TextColor="#3F4576"
+                                        VerticalOptions="Center" />
                                 </StackLayout>
                                 <StackLayout Grid.Row="2" Orientation="Horizontal">
                                     <Label
                                         FontAttributes="Bold"
-                                        FontSize="14"
+                                        FontSize="17"
                                         Text="Nᵒ DI:"
-                                        TextColor="#1496BC"
+                                        TextColor="#3F4050"
                                         VerticalOptions="Center" />
                                     <Label
                                         FontAttributes="Bold"
-                                        FontSize="18"
+                                        FontSize="16"
+                                        HorizontalOptions="EndAndExpand"
                                         Text="0015223"
-                                        TextColor="Gray" />
+                                        TextColor="#3F4576"
+                                        VerticalOptions="Center" />
                                 </StackLayout>
                                 <StackLayout Grid.Row="3" Orientation="Horizontal">
                                     <Label
                                         FontAttributes="Bold"
-                                        FontSize="14"
+                                        FontSize="17"
                                         Text="Type de la PEMP:"
-                                        TextColor="#1496BC"
+                                        TextColor="#3F4050"
                                         VerticalOptions="Center" />
                                     <Label
                                         FontAttributes="Bold"
-                                        FontSize="18"
+                                        FontSize="16"
+                                        HorizontalOptions="EndAndExpand"
                                         Text="PEMP 005"
-                                        TextColor="Gray" />
+                                        TextColor="#3F4576"
+                                        VerticalOptions="Center" />
                                 </StackLayout>
                                 <StackLayout Grid.Row="4">
                                     <Label
                                         FontAttributes="Bold"
-                                        FontSize="14"
+                                        FontSize="17"
                                         Text="Désignation des Travaux:"
-                                        TextColor="#1496BC"
+                                        TextColor="#3F4050"
                                         VerticalOptions="Center" />
                                     <Label
                                         FontAttributes="Bold"
-                                        FontSize="18"
-                                        Text="Mauris blandit aliquet elit, eget tincidunt nibh pulvinar."
-                                        TextColor="Gray" />
+                                        FontSize="16"
+                                        HorizontalOptions="EndAndExpand"
+                                        HorizontalTextAlignment="End"
+                                        Text="Mauris blandit aliquet elit, eget tincidunt nibh pulvinar Mauris blandit aliquet elit, eget tincidunt nibh pulvinar."
+                                        TextColor="#3F4576"
+                                        VerticalOptions="Center" />
                                 </StackLayout>
                                 <StackLayout Grid.Row="5" Orientation="Horizontal">
                                     <Label
                                         FontAttributes="Bold"
-                                        FontSize="14"
+                                        FontSize="17"
                                         Text="Date de Début:"
-                                        TextColor="#1496BC"
+                                        TextColor="#3F4050"
                                         VerticalOptions="Center" />
                                     <Label
                                         FontAttributes="Bold"
-                                        FontSize="18"
+                                        FontSize="16"
+                                        HorizontalOptions="EndAndExpand"
                                         Text="10/07/2020"
-                                        TextColor="Gray" />
+                                        TextColor="#3F4576"
+                                        VerticalOptions="Center" />
                                 </StackLayout>
                                 <StackLayout Grid.Row="6" Orientation="Horizontal">
                                     <Label
                                         FontAttributes="Bold"
-                                        FontSize="14"
+                                        FontSize="17"
                                         Text="Heure:"
-                                        TextColor="#1496BC"
+                                        TextColor="#3F4050"
                                         VerticalOptions="Center" />
                                     <Label
                                         FontAttributes="Bold"
-                                        FontSize="18"
+                                        FontSize="16"
+                                        HorizontalOptions="EndAndExpand"
                                         Text="15:00"
-                                        TextColor="Gray" />
+                                        TextColor="#3F4576"
+                                        VerticalOptions="Center" />
                                 </StackLayout>
                                 <StackLayout Grid.Row="7" Orientation="Horizontal">
                                     <Label
                                         FontAttributes="Bold"
-                                        FontSize="14"
+                                        FontSize="17"
                                         Text="Date de fin:"
-                                        TextColor="#1496BC"
+                                        TextColor="#3F4050"
                                         VerticalOptions="Center" />
                                     <Label
                                         FontAttributes="Bold"
-                                        FontSize="18"
+                                        FontSize="16"
+                                        HorizontalOptions="EndAndExpand"
                                         Text="12/07/2020"
-                                        TextColor="Gray" />
+                                        TextColor="#3F4576"
+                                        VerticalOptions="Center" />
                                 </StackLayout>
                                 <StackLayout Grid.Row="8" Orientation="Horizontal">
                                     <Label
                                         FontAttributes="Bold"
-                                        FontSize="14"
+                                        FontSize="17"
                                         Text="Heure:"
-                                        TextColor="#1496BC"
+                                        TextColor="#3F4050"
                                         VerticalOptions="Center" />
                                     <Label
                                         FontAttributes="Bold"
-                                        FontSize="18"
+                                        FontSize="16"
+                                        HorizontalOptions="EndAndExpand"
                                         Text="18:00"
-                                        TextColor="Gray" />
+                                        TextColor="#3F4576"
+                                        VerticalOptions="Center" />
                                 </StackLayout>
                                 <StackLayout Grid.Row="9">
                                     <Label
                                         FontAttributes="Bold"
-                                        FontSize="14"
-                                        Text="Représentant de l'entité chargée PEMP site: "
-                                        TextColor="#1496BC"
+                                        FontSize="17"
+                                        Text="Représentant de l'entité chargée PEMP site:"
+                                        TextColor="#3F4050"
                                         VerticalOptions="Center" />
                                     <Label
                                         FontAttributes="Bold"
-                                        FontSize="18"
+                                        FontSize="16"
+                                        HorizontalOptions="EndAndExpand"
                                         Text="Représentant 001"
-                                        TextColor="Gray" />
+                                        TextColor="#3F4576"
+                                        VerticalOptions="Center" />
                                 </StackLayout>
                             </Grid>
                         </Frame>
                     </StackLayout>
-                    <StackLayout x:Name="PointsControle" Margin="10,5">
+
+                    <StackLayout>
                         <Label
                             FontAttributes="Bold"
-                            FontSize="20"
-                            Text="Points à contrôler" />
+                            FontSize="18"
+                            Text="Points à contrôler"
+                            TextColor="#3F4050" />
+                    </StackLayout>
+                    <StackLayout x:Name="PointsControle">
                         <Frame
                             Padding="10"
-                            BackgroundColor="#dbdbdb"
-                            CornerRadius="4"
+                            CornerRadius="8"
                             HasShadow="False">
                             <StackLayout>
                                 <Label
                                     FontAttributes="Bold"
                                     FontSize="18"
                                     Text="Eléments relatifs à la PEMP"
-                                    TextColor="Gray" />
+                                    TextColor="#3F4050" />
                                 <StackLayout>
                                     <Grid>
                                         <Grid.RowDefinitions>
@@ -215,36 +277,38 @@
                                             <RowDefinition Height="Auto" />
                                             <RowDefinition Height="Auto" />
                                         </Grid.RowDefinitions>
-                                        <StackLayout
-                                            Grid.Row="0"
-                                            Padding="10"
-                                            BackgroundColor="White">
+                                        <StackLayout Grid.Row="0" BackgroundColor="White">
                                             <Label
                                                 FontAttributes="Bold"
                                                 FontSize="16"
-                                                Text="Garde-corps" />
+                                                Text="Garde-corps"
+                                                TextColor="#3F4050" />
                                             <StackLayout Orientation="Horizontal">
-                                                <Frame Padding="0" HasShadow="False">
+                                                <Frame
+                                                    Padding="10,5"
+                                                    BorderColor="#f2f5fa"
+                                                    HasShadow="False">
                                                     <StackLayout Orientation="Horizontal">
-                                                        <CheckBox Margin="-5,0" />
+
+                                                        <CheckBox Margin="-5,0" Color="#3F4478" />
                                                         <Label
-                                                            Margin="0"
-                                                            Padding="0"
                                                             FontAttributes="Bold"
-                                                            FontSize="14"
+                                                            FontSize="16"
                                                             Text="Oui"
                                                             TextColor="Gray"
                                                             VerticalTextAlignment="Center" />
                                                     </StackLayout>
                                                 </Frame>
-                                                <Frame Padding="0" HasShadow="False">
+                                                <Frame
+                                                    Padding="10,5"
+                                                    BorderColor="#f2f5fa"
+                                                    HasShadow="False">
                                                     <StackLayout Orientation="Horizontal">
-                                                        <CheckBox Margin="-5,0" />
+
+                                                        <CheckBox Margin="-5,0" Color="#3F4478" />
                                                         <Label
-                                                            Margin="0"
-                                                            Padding="0"
                                                             FontAttributes="Bold"
-                                                            FontSize="14"
+                                                            FontSize="16"
                                                             Text="Non"
                                                             TextColor="Gray"
                                                             VerticalTextAlignment="Center" />
@@ -257,49 +321,55 @@
                                                 Grid.Column="0"
                                                 Grid.ColumnSpan="2"
                                                 Padding="3"
-                                                BackgroundColor="#dbdbdb"
                                                 HasShadow="False">
                                                 <StackLayout Orientation="Vertical">
                                                     <Label
                                                         FontAttributes="Bold"
                                                         FontSize="16"
                                                         Text="Observations"
-                                                        TextColor="Gray"
+                                                        TextColor="#3F4050"
                                                         VerticalTextAlignment="Center" />
-                                                    <Entry BackgroundColor="White" HorizontalOptions="FillAndExpand" />
+                                                    <Frame
+                                                        Padding="1"
+                                                        BorderColor="#DEE1E8"
+                                                        HasShadow="False">
+                                                        <Entry BackgroundColor="White" HorizontalOptions="FillAndExpand" />
+                                                    </Frame>
                                                 </StackLayout>
                                             </Frame>
                                         </StackLayout>
-                                        <StackLayout
-                                            Grid.Row="1"
-                                            Padding="10"
-                                            BackgroundColor="White">
+                                        <StackLayout Grid.Row="1" BackgroundColor="White">
                                             <Label
                                                 FontAttributes="Bold"
                                                 FontSize="16"
-                                                Text="Arrêt d'urgance" />
+                                                Text="Arrêt d'urgance"
+                                                TextColor="#3F4050" />
                                             <StackLayout Orientation="Horizontal">
-                                                <Frame Padding="0" HasShadow="False">
+                                                <Frame
+                                                    Padding="10,5"
+                                                    BorderColor="#f2f5fa"
+                                                    HasShadow="False">
                                                     <StackLayout Orientation="Horizontal">
-                                                        <CheckBox Margin="-5,0" />
+
+                                                        <CheckBox Margin="-5,0" Color="#3F4478" />
                                                         <Label
-                                                            Margin="0"
-                                                            Padding="0"
                                                             FontAttributes="Bold"
-                                                            FontSize="14"
+                                                            FontSize="16"
                                                             Text="Oui"
                                                             TextColor="Gray"
                                                             VerticalTextAlignment="Center" />
                                                     </StackLayout>
                                                 </Frame>
-                                                <Frame Padding="0" HasShadow="False">
+                                                <Frame
+                                                    Padding="10,5"
+                                                    BorderColor="#f2f5fa"
+                                                    HasShadow="False">
                                                     <StackLayout Orientation="Horizontal">
-                                                        <CheckBox Margin="-5,0" />
+
+                                                        <CheckBox Margin="-5,0" Color="#3F4478" />
                                                         <Label
-                                                            Margin="0"
-                                                            Padding="0"
                                                             FontAttributes="Bold"
-                                                            FontSize="14"
+                                                            FontSize="16"
                                                             Text="Non"
                                                             TextColor="Gray"
                                                             VerticalTextAlignment="Center" />
@@ -312,49 +382,55 @@
                                                 Grid.Column="0"
                                                 Grid.ColumnSpan="2"
                                                 Padding="3"
-                                                BackgroundColor="#dbdbdb"
                                                 HasShadow="False">
                                                 <StackLayout Orientation="Vertical">
                                                     <Label
                                                         FontAttributes="Bold"
                                                         FontSize="16"
                                                         Text="Observations"
-                                                        TextColor="Gray"
+                                                        TextColor="#3F4050"
                                                         VerticalTextAlignment="Center" />
-                                                    <Entry BackgroundColor="White" HorizontalOptions="FillAndExpand" />
+                                                    <Frame
+                                                        Padding="1"
+                                                        BorderColor="#DEE1E8"
+                                                        HasShadow="False">
+                                                        <Entry BackgroundColor="White" HorizontalOptions="FillAndExpand" />
+                                                    </Frame>
                                                 </StackLayout>
                                             </Frame>
                                         </StackLayout>
-                                        <StackLayout
-                                            Grid.Row="2"
-                                            Padding="10"
-                                            BackgroundColor="White">
+                                        <StackLayout Grid.Row="2" BackgroundColor="White">
                                             <Label
                                                 FontAttributes="Bold"
                                                 FontSize="16"
-                                                Text="Commande de secours" />
+                                                Text="Commande de secours"
+                                                TextColor="#3F4050" />
                                             <StackLayout Orientation="Horizontal">
-                                                <Frame Padding="0" HasShadow="False">
+                                                <Frame
+                                                    Padding="10,5"
+                                                    BorderColor="#f2f5fa"
+                                                    HasShadow="False">
                                                     <StackLayout Orientation="Horizontal">
-                                                        <CheckBox Margin="-5,0" />
+
+                                                        <CheckBox Margin="-5,0" Color="#3F4478" />
                                                         <Label
-                                                            Margin="0"
-                                                            Padding="0"
                                                             FontAttributes="Bold"
-                                                            FontSize="14"
+                                                            FontSize="16"
                                                             Text="Oui"
                                                             TextColor="Gray"
                                                             VerticalTextAlignment="Center" />
                                                     </StackLayout>
                                                 </Frame>
-                                                <Frame Padding="0" HasShadow="False">
+                                                <Frame
+                                                    Padding="10,5"
+                                                    BorderColor="#f2f5fa"
+                                                    HasShadow="False">
                                                     <StackLayout Orientation="Horizontal">
-                                                        <CheckBox Margin="-5,0" />
+
+                                                        <CheckBox Margin="-5,0" Color="#3F4478" />
                                                         <Label
-                                                            Margin="0"
-                                                            Padding="0"
                                                             FontAttributes="Bold"
-                                                            FontSize="14"
+                                                            FontSize="16"
                                                             Text="Non"
                                                             TextColor="Gray"
                                                             VerticalTextAlignment="Center" />
@@ -367,49 +443,55 @@
                                                 Grid.Column="0"
                                                 Grid.ColumnSpan="2"
                                                 Padding="3"
-                                                BackgroundColor="#dbdbdb"
                                                 HasShadow="False">
                                                 <StackLayout Orientation="Vertical">
                                                     <Label
                                                         FontAttributes="Bold"
                                                         FontSize="16"
                                                         Text="Observations"
-                                                        TextColor="Gray"
+                                                        TextColor="#3F4050"
                                                         VerticalTextAlignment="Center" />
-                                                    <Entry BackgroundColor="White" HorizontalOptions="FillAndExpand" />
+                                                    <Frame
+                                                        Padding="1"
+                                                        BorderColor="#DEE1E8"
+                                                        HasShadow="False">
+                                                        <Entry BackgroundColor="White" HorizontalOptions="FillAndExpand" />
+                                                    </Frame>
                                                 </StackLayout>
                                             </Frame>
                                         </StackLayout>
-                                        <StackLayout
-                                            Grid.Row="3"
-                                            Padding="10"
-                                            BackgroundColor="White">
+                                        <StackLayout Grid.Row="3" BackgroundColor="White">
                                             <Label
                                                 FontAttributes="Bold"
                                                 FontSize="16"
-                                                Text="Klaxon et klaxon de recul" />
+                                                Text="Klaxon et klaxon de recul"
+                                                TextColor="#3F4050" />
                                             <StackLayout Orientation="Horizontal">
-                                                <Frame Padding="0" HasShadow="False">
+                                                <Frame
+                                                    Padding="10,5"
+                                                    BorderColor="#f2f5fa"
+                                                    HasShadow="False">
                                                     <StackLayout Orientation="Horizontal">
-                                                        <CheckBox Margin="-5,0" />
+
+                                                        <CheckBox Margin="-5,0" Color="#3F4478" />
                                                         <Label
-                                                            Margin="0"
-                                                            Padding="0"
                                                             FontAttributes="Bold"
-                                                            FontSize="14"
+                                                            FontSize="16"
                                                             Text="Oui"
                                                             TextColor="Gray"
                                                             VerticalTextAlignment="Center" />
                                                     </StackLayout>
                                                 </Frame>
-                                                <Frame Padding="0" HasShadow="False">
+                                                <Frame
+                                                    Padding="10,5"
+                                                    BorderColor="#f2f5fa"
+                                                    HasShadow="False">
                                                     <StackLayout Orientation="Horizontal">
-                                                        <CheckBox Margin="-5,0" />
+
+                                                        <CheckBox Margin="-5,0" Color="#3F4478" />
                                                         <Label
-                                                            Margin="0"
-                                                            Padding="0"
                                                             FontAttributes="Bold"
-                                                            FontSize="14"
+                                                            FontSize="16"
                                                             Text="Non"
                                                             TextColor="Gray"
                                                             VerticalTextAlignment="Center" />
@@ -422,49 +504,55 @@
                                                 Grid.Column="0"
                                                 Grid.ColumnSpan="2"
                                                 Padding="3"
-                                                BackgroundColor="#dbdbdb"
                                                 HasShadow="False">
                                                 <StackLayout Orientation="Vertical">
                                                     <Label
                                                         FontAttributes="Bold"
                                                         FontSize="16"
                                                         Text="Observations"
-                                                        TextColor="Gray"
+                                                        TextColor="#3F4050"
                                                         VerticalTextAlignment="Center" />
-                                                    <Entry BackgroundColor="White" HorizontalOptions="FillAndExpand" />
+                                                    <Frame
+                                                        Padding="1"
+                                                        BorderColor="#DEE1E8"
+                                                        HasShadow="False">
+                                                        <Entry BackgroundColor="White" HorizontalOptions="FillAndExpand" />
+                                                    </Frame>
                                                 </StackLayout>
                                             </Frame>
                                         </StackLayout>
-                                        <StackLayout
-                                            Grid.Row="4"
-                                            Padding="10"
-                                            BackgroundColor="White">
+                                        <StackLayout Grid.Row="4" BackgroundColor="White">
                                             <Label
                                                 FontAttributes="Bold"
                                                 FontSize="16"
-                                                Text="Vérifications visuelles : aspect extérieur de la PEMP (déformation, état des pneus et pression, état des élements d'articutation de la PEMP, fuites d'huile, état des manettes, état des sécurités fins de course)" />
+                                                Text="Vérifications visuelles : aspect extérieur de la PEMP (déformation, état des pneus et pression, état des élements d'articutation de la PEMP, fuites d'huile, état des manettes, état des sécurités fins de course)"
+                                                TextColor="#3F4050" />
                                             <StackLayout Orientation="Horizontal">
-                                                <Frame Padding="0" HasShadow="False">
+                                                <Frame
+                                                    Padding="10,5"
+                                                    BorderColor="#f2f5fa"
+                                                    HasShadow="False">
                                                     <StackLayout Orientation="Horizontal">
-                                                        <CheckBox Margin="-5,0" />
+
+                                                        <CheckBox Margin="-5,0" Color="#3F4478" />
                                                         <Label
-                                                            Margin="0"
-                                                            Padding="0"
                                                             FontAttributes="Bold"
-                                                            FontSize="14"
+                                                            FontSize="16"
                                                             Text="Oui"
                                                             TextColor="Gray"
                                                             VerticalTextAlignment="Center" />
                                                     </StackLayout>
                                                 </Frame>
-                                                <Frame Padding="0" HasShadow="False">
+                                                <Frame
+                                                    Padding="10,5"
+                                                    BorderColor="#f2f5fa"
+                                                    HasShadow="False">
                                                     <StackLayout Orientation="Horizontal">
-                                                        <CheckBox Margin="-5,0" />
+
+                                                        <CheckBox Margin="-5,0" Color="#3F4478" />
                                                         <Label
-                                                            Margin="0"
-                                                            Padding="0"
                                                             FontAttributes="Bold"
-                                                            FontSize="14"
+                                                            FontSize="16"
                                                             Text="Non"
                                                             TextColor="Gray"
                                                             VerticalTextAlignment="Center" />
@@ -477,49 +565,55 @@
                                                 Grid.Column="0"
                                                 Grid.ColumnSpan="2"
                                                 Padding="3"
-                                                BackgroundColor="#dbdbdb"
                                                 HasShadow="False">
                                                 <StackLayout Orientation="Vertical">
                                                     <Label
                                                         FontAttributes="Bold"
                                                         FontSize="16"
                                                         Text="Observations"
-                                                        TextColor="Gray"
+                                                        TextColor="#3F4050"
                                                         VerticalTextAlignment="Center" />
-                                                    <Entry BackgroundColor="White" HorizontalOptions="FillAndExpand" />
+                                                    <Frame
+                                                        Padding="1"
+                                                        BorderColor="#DEE1E8"
+                                                        HasShadow="False">
+                                                        <Entry BackgroundColor="White" HorizontalOptions="FillAndExpand" />
+                                                    </Frame>
                                                 </StackLayout>
                                             </Frame>
                                         </StackLayout>
-                                        <StackLayout
-                                            Grid.Row="5"
-                                            Padding="10"
-                                            BackgroundColor="White">
+                                        <StackLayout Grid.Row="5" BackgroundColor="White">
                                             <Label
                                                 FontAttributes="Bold"
                                                 FontSize="16"
-                                                Text="Freins" />
+                                                Text="Freins"
+                                                TextColor="#3F4050" />
                                             <StackLayout Orientation="Horizontal">
-                                                <Frame Padding="0" HasShadow="False">
+                                                <Frame
+                                                    Padding="10,5"
+                                                    BorderColor="#f2f5fa"
+                                                    HasShadow="False">
                                                     <StackLayout Orientation="Horizontal">
-                                                        <CheckBox Margin="-5,0" />
+
+                                                        <CheckBox Margin="-5,0" Color="#3F4478" />
                                                         <Label
-                                                            Margin="0"
-                                                            Padding="0"
                                                             FontAttributes="Bold"
-                                                            FontSize="14"
+                                                            FontSize="16"
                                                             Text="Oui"
                                                             TextColor="Gray"
                                                             VerticalTextAlignment="Center" />
                                                     </StackLayout>
                                                 </Frame>
-                                                <Frame Padding="0" HasShadow="False">
+                                                <Frame
+                                                    Padding="10,5"
+                                                    BorderColor="#f2f5fa"
+                                                    HasShadow="False">
                                                     <StackLayout Orientation="Horizontal">
-                                                        <CheckBox Margin="-5,0" />
+
+                                                        <CheckBox Margin="-5,0" Color="#3F4478" />
                                                         <Label
-                                                            Margin="0"
-                                                            Padding="0"
                                                             FontAttributes="Bold"
-                                                            FontSize="14"
+                                                            FontSize="16"
                                                             Text="Non"
                                                             TextColor="Gray"
                                                             VerticalTextAlignment="Center" />
@@ -532,16 +626,20 @@
                                                 Grid.Column="0"
                                                 Grid.ColumnSpan="2"
                                                 Padding="3"
-                                                BackgroundColor="#dbdbdb"
                                                 HasShadow="False">
                                                 <StackLayout Orientation="Vertical">
                                                     <Label
                                                         FontAttributes="Bold"
                                                         FontSize="16"
                                                         Text="Observations"
-                                                        TextColor="Gray"
+                                                        TextColor="#3F4050"
                                                         VerticalTextAlignment="Center" />
-                                                    <Entry BackgroundColor="White" HorizontalOptions="FillAndExpand" />
+                                                    <Frame
+                                                        Padding="1"
+                                                        BorderColor="#DEE1E8"
+                                                        HasShadow="False">
+                                                        <Entry BackgroundColor="White" HorizontalOptions="FillAndExpand" />
+                                                    </Frame>
                                                 </StackLayout>
                                             </Frame>
                                         </StackLayout>
@@ -551,15 +649,14 @@
                         </Frame>
                         <Frame
                             Padding="10"
-                            BackgroundColor="#dbdbdb"
-                            CornerRadius="4"
+                            CornerRadius="8"
                             HasShadow="False">
                             <StackLayout>
                                 <Label
                                     FontAttributes="Bold"
                                     FontSize="18"
                                     Text="Eléments relatifs aux conditions d'utilisation de la PEMP"
-                                    TextColor="Gray" />
+                                    TextColor="#3F4050" />
                                 <StackLayout>
                                     <Grid>
                                         <Grid.RowDefinitions>
@@ -573,36 +670,38 @@
                                             <RowDefinition Height="Auto" />
                                             <RowDefinition Height="Auto" />
                                         </Grid.RowDefinitions>
-                                        <StackLayout
-                                            Grid.Row="0"
-                                            Padding="10"
-                                            BackgroundColor="White">
+                                        <StackLayout Grid.Row="0" BackgroundColor="White">
                                             <Label
                                                 FontAttributes="Bold"
                                                 FontSize="16"
-                                                Text="Adéquation de la PEMP par rapport au travail en hauteur demandé (hauteur, accessibilité...)" />
+                                                Text="Adéquation de la PEMP par rapport au travail en hauteur demandé (hauteur, accessibilité...)"
+                                                TextColor="#3F4050" />
                                             <StackLayout Orientation="Horizontal">
-                                                <Frame Padding="0" HasShadow="False">
+                                                <Frame
+                                                    Padding="10,5"
+                                                    BorderColor="#f2f5fa"
+                                                    HasShadow="False">
                                                     <StackLayout Orientation="Horizontal">
-                                                        <CheckBox Margin="-5,0" />
+
+                                                        <CheckBox Margin="-5,0" Color="#3F4478" />
                                                         <Label
-                                                            Margin="0"
-                                                            Padding="0"
                                                             FontAttributes="Bold"
-                                                            FontSize="14"
+                                                            FontSize="16"
                                                             Text="Oui"
                                                             TextColor="Gray"
                                                             VerticalTextAlignment="Center" />
                                                     </StackLayout>
                                                 </Frame>
-                                                <Frame Padding="0" HasShadow="False">
+                                                <Frame
+                                                    Padding="10,5"
+                                                    BorderColor="#f2f5fa"
+                                                    HasShadow="False">
                                                     <StackLayout Orientation="Horizontal">
-                                                        <CheckBox Margin="-5,0" />
+
+                                                        <CheckBox Margin="-5,0" Color="#3F4478" />
                                                         <Label
-                                                            Margin="0"
-                                                            Padding="0"
                                                             FontAttributes="Bold"
-                                                            FontSize="14"
+                                                            FontSize="16"
                                                             Text="Non"
                                                             TextColor="Gray"
                                                             VerticalTextAlignment="Center" />
@@ -615,49 +714,55 @@
                                                 Grid.Column="0"
                                                 Grid.ColumnSpan="2"
                                                 Padding="3"
-                                                BackgroundColor="#dbdbdb"
                                                 HasShadow="False">
                                                 <StackLayout Orientation="Vertical">
                                                     <Label
                                                         FontAttributes="Bold"
                                                         FontSize="16"
                                                         Text="Observations"
-                                                        TextColor="Gray"
+                                                        TextColor="#3F4050"
                                                         VerticalTextAlignment="Center" />
-                                                    <Entry BackgroundColor="White" HorizontalOptions="FillAndExpand" />
+                                                    <Frame
+                                                        Padding="1"
+                                                        BorderColor="#DEE1E8"
+                                                        HasShadow="False">
+                                                        <Entry BackgroundColor="White" HorizontalOptions="FillAndExpand" />
+                                                    </Frame>
                                                 </StackLayout>
                                             </Frame>
                                         </StackLayout>
-                                        <StackLayout
-                                            Grid.Row="1"
-                                            Padding="10"
-                                            BackgroundColor="White">
+                                        <StackLayout Grid.Row="1" BackgroundColor="White">
                                             <Label
                                                 FontAttributes="Bold"
                                                 FontSize="16"
-                                                Text="Etat du sol" />
+                                                Text="Etat du sol"
+                                                TextColor="#3F4050" />
                                             <StackLayout Orientation="Horizontal">
-                                                <Frame Padding="0" HasShadow="False">
+                                                <Frame
+                                                    Padding="10,5"
+                                                    BorderColor="#f2f5fa"
+                                                    HasShadow="False">
                                                     <StackLayout Orientation="Horizontal">
-                                                        <CheckBox Margin="-5,0" />
+
+                                                        <CheckBox Margin="-5,0" Color="#3F4478" />
                                                         <Label
-                                                            Margin="0"
-                                                            Padding="0"
                                                             FontAttributes="Bold"
-                                                            FontSize="14"
+                                                            FontSize="16"
                                                             Text="Oui"
                                                             TextColor="Gray"
                                                             VerticalTextAlignment="Center" />
                                                     </StackLayout>
                                                 </Frame>
-                                                <Frame Padding="0" HasShadow="False">
+                                                <Frame
+                                                    Padding="10,5"
+                                                    BorderColor="#f2f5fa"
+                                                    HasShadow="False">
                                                     <StackLayout Orientation="Horizontal">
-                                                        <CheckBox Margin="-5,0" />
+
+                                                        <CheckBox Margin="-5,0" Color="#3F4478" />
                                                         <Label
-                                                            Margin="0"
-                                                            Padding="0"
                                                             FontAttributes="Bold"
-                                                            FontSize="14"
+                                                            FontSize="16"
                                                             Text="Non"
                                                             TextColor="Gray"
                                                             VerticalTextAlignment="Center" />
@@ -670,49 +775,55 @@
                                                 Grid.Column="0"
                                                 Grid.ColumnSpan="2"
                                                 Padding="3"
-                                                BackgroundColor="#dbdbdb"
                                                 HasShadow="False">
                                                 <StackLayout Orientation="Vertical">
                                                     <Label
                                                         FontAttributes="Bold"
                                                         FontSize="16"
                                                         Text="Observations"
-                                                        TextColor="Gray"
+                                                        TextColor="#3F4050"
                                                         VerticalTextAlignment="Center" />
-                                                    <Entry BackgroundColor="White" HorizontalOptions="FillAndExpand" />
+                                                    <Frame
+                                                        Padding="1"
+                                                        BorderColor="#DEE1E8"
+                                                        HasShadow="False">
+                                                        <Entry BackgroundColor="White" HorizontalOptions="FillAndExpand" />
+                                                    </Frame>
                                                 </StackLayout>
                                             </Frame>
                                         </StackLayout>
-                                        <StackLayout
-                                            Grid.Row="2"
-                                            Padding="10"
-                                            BackgroundColor="White">
+                                        <StackLayout Grid.Row="2" BackgroundColor="White">
                                             <Label
                                                 FontAttributes="Bold"
                                                 FontSize="16"
-                                                Text="Conditions atmosphériques" />
+                                                Text="Conditions atmosphériques"
+                                                TextColor="#3F4050" />
                                             <StackLayout Orientation="Horizontal">
-                                                <Frame Padding="0" HasShadow="False">
+                                                <Frame
+                                                    Padding="10,5"
+                                                    BorderColor="#f2f5fa"
+                                                    HasShadow="False">
                                                     <StackLayout Orientation="Horizontal">
-                                                        <CheckBox Margin="-5,0" />
+
+                                                        <CheckBox Margin="-5,0" Color="#3F4478" />
                                                         <Label
-                                                            Margin="0"
-                                                            Padding="0"
                                                             FontAttributes="Bold"
-                                                            FontSize="14"
+                                                            FontSize="16"
                                                             Text="Oui"
                                                             TextColor="Gray"
                                                             VerticalTextAlignment="Center" />
                                                     </StackLayout>
                                                 </Frame>
-                                                <Frame Padding="0" HasShadow="False">
+                                                <Frame
+                                                    Padding="10,5"
+                                                    BorderColor="#f2f5fa"
+                                                    HasShadow="False">
                                                     <StackLayout Orientation="Horizontal">
-                                                        <CheckBox Margin="-5,0" />
+
+                                                        <CheckBox Margin="-5,0" Color="#3F4478" />
                                                         <Label
-                                                            Margin="0"
-                                                            Padding="0"
                                                             FontAttributes="Bold"
-                                                            FontSize="14"
+                                                            FontSize="16"
                                                             Text="Non"
                                                             TextColor="Gray"
                                                             VerticalTextAlignment="Center" />
@@ -725,49 +836,55 @@
                                                 Grid.Column="0"
                                                 Grid.ColumnSpan="2"
                                                 Padding="3"
-                                                BackgroundColor="#dbdbdb"
                                                 HasShadow="False">
                                                 <StackLayout Orientation="Vertical">
                                                     <Label
                                                         FontAttributes="Bold"
                                                         FontSize="16"
                                                         Text="Observations"
-                                                        TextColor="Gray"
+                                                        TextColor="#3F4050"
                                                         VerticalTextAlignment="Center" />
-                                                    <Entry BackgroundColor="White" HorizontalOptions="FillAndExpand" />
+                                                    <Frame
+                                                        Padding="1"
+                                                        BorderColor="#DEE1E8"
+                                                        HasShadow="False">
+                                                        <Entry BackgroundColor="White" HorizontalOptions="FillAndExpand" />
+                                                    </Frame>
                                                 </StackLayout>
                                             </Frame>
                                         </StackLayout>
-                                        <StackLayout
-                                            Grid.Row="3"
-                                            Padding="10"
-                                            BackgroundColor="White">
+                                        <StackLayout Grid.Row="3" BackgroundColor="White">
                                             <Label
                                                 FontAttributes="Bold"
                                                 FontSize="16"
-                                                Text="Vitesse du vent par rapport à la vitesse maximale autorisée" />
+                                                Text="Vitesse du vent par rapport à la vitesse maximale autorisée"
+                                                TextColor="#3F4050" />
                                             <StackLayout Orientation="Horizontal">
-                                                <Frame Padding="0" HasShadow="False">
+                                                <Frame
+                                                    Padding="10,5"
+                                                    BorderColor="#f2f5fa"
+                                                    HasShadow="False">
                                                     <StackLayout Orientation="Horizontal">
-                                                        <CheckBox Margin="-5,0" />
+
+                                                        <CheckBox Margin="-5,0" Color="#3F4478" />
                                                         <Label
-                                                            Margin="0"
-                                                            Padding="0"
                                                             FontAttributes="Bold"
-                                                            FontSize="14"
+                                                            FontSize="16"
                                                             Text="Oui"
                                                             TextColor="Gray"
                                                             VerticalTextAlignment="Center" />
                                                     </StackLayout>
                                                 </Frame>
-                                                <Frame Padding="0" HasShadow="False">
+                                                <Frame
+                                                    Padding="10,5"
+                                                    BorderColor="#f2f5fa"
+                                                    HasShadow="False">
                                                     <StackLayout Orientation="Horizontal">
-                                                        <CheckBox Margin="-5,0" />
+
+                                                        <CheckBox Margin="-5,0" Color="#3F4478" />
                                                         <Label
-                                                            Margin="0"
-                                                            Padding="0"
                                                             FontAttributes="Bold"
-                                                            FontSize="14"
+                                                            FontSize="16"
                                                             Text="Non"
                                                             TextColor="Gray"
                                                             VerticalTextAlignment="Center" />
@@ -780,49 +897,55 @@
                                                 Grid.Column="0"
                                                 Grid.ColumnSpan="2"
                                                 Padding="3"
-                                                BackgroundColor="#dbdbdb"
                                                 HasShadow="False">
                                                 <StackLayout Orientation="Vertical">
                                                     <Label
                                                         FontAttributes="Bold"
                                                         FontSize="16"
                                                         Text="Observations"
-                                                        TextColor="Gray"
+                                                        TextColor="#3F4050"
                                                         VerticalTextAlignment="Center" />
-                                                    <Entry BackgroundColor="White" HorizontalOptions="FillAndExpand" />
+                                                    <Frame
+                                                        Padding="1"
+                                                        BorderColor="#DEE1E8"
+                                                        HasShadow="False">
+                                                        <Entry BackgroundColor="White" HorizontalOptions="FillAndExpand" />
+                                                    </Frame>
                                                 </StackLayout>
                                             </Frame>
                                         </StackLayout>
-                                        <StackLayout
-                                            Grid.Row="4"
-                                            Padding="10"
-                                            BackgroundColor="White">
+                                        <StackLayout Grid.Row="4" BackgroundColor="White">
                                             <Label
                                                 FontAttributes="Bold"
                                                 FontSize="16"
-                                                Text="Respect de la charge de la platforme autorisée" />
+                                                Text="Respect de la charge de la platforme autorisée"
+                                                TextColor="#3F4050" />
                                             <StackLayout Orientation="Horizontal">
-                                                <Frame Padding="0" HasShadow="False">
+                                                <Frame
+                                                    Padding="10,5"
+                                                    BorderColor="#f2f5fa"
+                                                    HasShadow="False">
                                                     <StackLayout Orientation="Horizontal">
-                                                        <CheckBox Margin="-5,0" />
+
+                                                        <CheckBox Margin="-5,0" Color="#3F4478" />
                                                         <Label
-                                                            Margin="0"
-                                                            Padding="0"
                                                             FontAttributes="Bold"
-                                                            FontSize="14"
+                                                            FontSize="16"
                                                             Text="Oui"
                                                             TextColor="Gray"
                                                             VerticalTextAlignment="Center" />
                                                     </StackLayout>
                                                 </Frame>
-                                                <Frame Padding="0" HasShadow="False">
+                                                <Frame
+                                                    Padding="10,5"
+                                                    BorderColor="#f2f5fa"
+                                                    HasShadow="False">
                                                     <StackLayout Orientation="Horizontal">
-                                                        <CheckBox Margin="-5,0" />
+
+                                                        <CheckBox Margin="-5,0" Color="#3F4478" />
                                                         <Label
-                                                            Margin="0"
-                                                            Padding="0"
                                                             FontAttributes="Bold"
-                                                            FontSize="14"
+                                                            FontSize="16"
                                                             Text="Non"
                                                             TextColor="Gray"
                                                             VerticalTextAlignment="Center" />
@@ -835,49 +958,56 @@
                                                 Grid.Column="0"
                                                 Grid.ColumnSpan="2"
                                                 Padding="3"
-                                                BackgroundColor="#dbdbdb"
                                                 HasShadow="False">
                                                 <StackLayout Orientation="Vertical">
                                                     <Label
                                                         FontAttributes="Bold"
                                                         FontSize="16"
                                                         Text="Observations"
-                                                        TextColor="Gray"
+                                                        TextColor="#3F4050"
                                                         VerticalTextAlignment="Center" />
-                                                    <Entry BackgroundColor="White" HorizontalOptions="FillAndExpand" />
+                                                    <Frame
+                                                        Padding="1"
+                                                        BorderColor="#DEE1E8"
+                                                        HasShadow="False">
+                                                        <Entry BackgroundColor="White" HorizontalOptions="FillAndExpand" />
+                                                    </Frame>
                                                 </StackLayout>
                                             </Frame>
                                         </StackLayout>
-                                        <StackLayout
-                                            Grid.Row="5"
-                                            Padding="10"
-                                            BackgroundColor="White">
+
+                                        <StackLayout Grid.Row="5" BackgroundColor="White">
                                             <Label
                                                 FontAttributes="Bold"
                                                 FontSize="16"
-                                                Text="Distance par rapport aux lignes électriques" />
+                                                Text="Distance par rapport aux lignes électriques"
+                                                TextColor="#3F4050" />
                                             <StackLayout Orientation="Horizontal">
-                                                <Frame Padding="0" HasShadow="False">
+                                                <Frame
+                                                    Padding="10,5"
+                                                    BorderColor="#f2f5fa"
+                                                    HasShadow="False">
                                                     <StackLayout Orientation="Horizontal">
-                                                        <CheckBox Margin="-5,0" />
+
+                                                        <CheckBox Margin="-5,0" Color="#3F4478" />
                                                         <Label
-                                                            Margin="0"
-                                                            Padding="0"
                                                             FontAttributes="Bold"
-                                                            FontSize="14"
+                                                            FontSize="16"
                                                             Text="Oui"
                                                             TextColor="Gray"
                                                             VerticalTextAlignment="Center" />
                                                     </StackLayout>
                                                 </Frame>
-                                                <Frame Padding="0" HasShadow="False">
+                                                <Frame
+                                                    Padding="10,5"
+                                                    BorderColor="#f2f5fa"
+                                                    HasShadow="False">
                                                     <StackLayout Orientation="Horizontal">
-                                                        <CheckBox Margin="-5,0" />
+
+                                                        <CheckBox Margin="-5,0" Color="#3F4478" />
                                                         <Label
-                                                            Margin="0"
-                                                            Padding="0"
                                                             FontAttributes="Bold"
-                                                            FontSize="14"
+                                                            FontSize="16"
                                                             Text="Non"
                                                             TextColor="Gray"
                                                             VerticalTextAlignment="Center" />
@@ -890,49 +1020,55 @@
                                                 Grid.Column="0"
                                                 Grid.ColumnSpan="2"
                                                 Padding="3"
-                                                BackgroundColor="#dbdbdb"
                                                 HasShadow="False">
                                                 <StackLayout Orientation="Vertical">
                                                     <Label
                                                         FontAttributes="Bold"
                                                         FontSize="16"
                                                         Text="Observations"
-                                                        TextColor="Gray"
+                                                        TextColor="#3F4050"
                                                         VerticalTextAlignment="Center" />
-                                                    <Entry BackgroundColor="White" HorizontalOptions="FillAndExpand" />
+                                                    <Frame
+                                                        Padding="1"
+                                                        BorderColor="#DEE1E8"
+                                                        HasShadow="False">
+                                                        <Entry BackgroundColor="White" HorizontalOptions="FillAndExpand" />
+                                                    </Frame>
                                                 </StackLayout>
                                             </Frame>
                                         </StackLayout>
-                                        <StackLayout
-                                            Grid.Row="6"
-                                            Padding="10"
-                                            BackgroundColor="White">
+                                        <StackLayout Grid.Row="6" BackgroundColor="White">
                                             <Label
                                                 FontAttributes="Bold"
                                                 FontSize="16"
-                                                Text="Aptitude physique et formation des personnes réalisant le travail en hauteur" />
+                                                Text="Aptitude physique et formation des personnes réalisant le travail en hauteur"
+                                                TextColor="#3F4050" />
                                             <StackLayout Orientation="Horizontal">
-                                                <Frame Padding="0" HasShadow="False">
+                                                <Frame
+                                                    Padding="10,5"
+                                                    BorderColor="#f2f5fa"
+                                                    HasShadow="False">
                                                     <StackLayout Orientation="Horizontal">
-                                                        <CheckBox Margin="-5,0" />
+
+                                                        <CheckBox Margin="-5,0" Color="#3F4478" />
                                                         <Label
-                                                            Margin="0"
-                                                            Padding="0"
                                                             FontAttributes="Bold"
-                                                            FontSize="14"
+                                                            FontSize="16"
                                                             Text="Oui"
                                                             TextColor="Gray"
                                                             VerticalTextAlignment="Center" />
                                                     </StackLayout>
                                                 </Frame>
-                                                <Frame Padding="0" HasShadow="False">
+                                                <Frame
+                                                    Padding="10,5"
+                                                    BorderColor="#f2f5fa"
+                                                    HasShadow="False">
                                                     <StackLayout Orientation="Horizontal">
-                                                        <CheckBox Margin="-5,0" />
+
+                                                        <CheckBox Margin="-5,0" Color="#3F4478" />
                                                         <Label
-                                                            Margin="0"
-                                                            Padding="0"
                                                             FontAttributes="Bold"
-                                                            FontSize="14"
+                                                            FontSize="16"
                                                             Text="Non"
                                                             TextColor="Gray"
                                                             VerticalTextAlignment="Center" />
@@ -945,49 +1081,55 @@
                                                 Grid.Column="0"
                                                 Grid.ColumnSpan="2"
                                                 Padding="3"
-                                                BackgroundColor="#dbdbdb"
                                                 HasShadow="False">
                                                 <StackLayout Orientation="Vertical">
                                                     <Label
                                                         FontAttributes="Bold"
                                                         FontSize="16"
                                                         Text="Observations"
-                                                        TextColor="Gray"
+                                                        TextColor="#3F4050"
                                                         VerticalTextAlignment="Center" />
-                                                    <Entry BackgroundColor="White" HorizontalOptions="FillAndExpand" />
+                                                    <Frame
+                                                        Padding="1"
+                                                        BorderColor="#DEE1E8"
+                                                        HasShadow="False">
+                                                        <Entry BackgroundColor="White" HorizontalOptions="FillAndExpand" />
+                                                    </Frame>
                                                 </StackLayout>
                                             </Frame>
                                         </StackLayout>
-                                        <StackLayout
-                                            Grid.Row="7"
-                                            Padding="10"
-                                            BackgroundColor="White">
+                                        <StackLayout Grid.Row="7" BackgroundColor="White">
                                             <Label
                                                 FontAttributes="Bold"
                                                 FontSize="16"
-                                                Text="Habilitation du conducteur et formation des utilisateurs" />
+                                                Text="Habilitation du conducteur et formation des utilisateurs"
+                                                TextColor="#3F4050" />
                                             <StackLayout Orientation="Horizontal">
-                                                <Frame Padding="0" HasShadow="False">
+                                                <Frame
+                                                    Padding="10,5"
+                                                    BorderColor="#f2f5fa"
+                                                    HasShadow="False">
                                                     <StackLayout Orientation="Horizontal">
-                                                        <CheckBox Margin="-5,0" />
+
+                                                        <CheckBox Margin="-5,0" Color="#3F4478" />
                                                         <Label
-                                                            Margin="0"
-                                                            Padding="0"
                                                             FontAttributes="Bold"
-                                                            FontSize="14"
+                                                            FontSize="16"
                                                             Text="Oui"
                                                             TextColor="Gray"
                                                             VerticalTextAlignment="Center" />
                                                     </StackLayout>
                                                 </Frame>
-                                                <Frame Padding="0" HasShadow="False">
+                                                <Frame
+                                                    Padding="10,5"
+                                                    BorderColor="#f2f5fa"
+                                                    HasShadow="False">
                                                     <StackLayout Orientation="Horizontal">
-                                                        <CheckBox Margin="-5,0" />
+
+                                                        <CheckBox Margin="-5,0" Color="#3F4478" />
                                                         <Label
-                                                            Margin="0"
-                                                            Padding="0"
                                                             FontAttributes="Bold"
-                                                            FontSize="14"
+                                                            FontSize="16"
                                                             Text="Non"
                                                             TextColor="Gray"
                                                             VerticalTextAlignment="Center" />
@@ -1000,49 +1142,55 @@
                                                 Grid.Column="0"
                                                 Grid.ColumnSpan="2"
                                                 Padding="3"
-                                                BackgroundColor="#dbdbdb"
                                                 HasShadow="False">
                                                 <StackLayout Orientation="Vertical">
                                                     <Label
                                                         FontAttributes="Bold"
                                                         FontSize="16"
                                                         Text="Observations"
-                                                        TextColor="Gray"
+                                                        TextColor="#3F4050"
                                                         VerticalTextAlignment="Center" />
-                                                    <Entry BackgroundColor="White" HorizontalOptions="FillAndExpand" />
+                                                    <Frame
+                                                        Padding="1"
+                                                        BorderColor="#DEE1E8"
+                                                        HasShadow="False">
+                                                        <Entry BackgroundColor="White" HorizontalOptions="FillAndExpand" />
+                                                    </Frame>
                                                 </StackLayout>
                                             </Frame>
                                         </StackLayout>
-                                        <StackLayout
-                                            Grid.Row="8"
-                                            Padding="10"
-                                            BackgroundColor="White">
+                                        <StackLayout Grid.Row="8" BackgroundColor="White">
                                             <Label
                                                 FontAttributes="Bold"
                                                 FontSize="16"
-                                                Text="Chemin de conduite de la PEMP jusqu'au lieu de l'intervention (obstacles en hauteur, encombrement...)" />
+                                                Text="Chemin de conduite de la PEMP jusqu'au lieu de l'intervention (obstacles en hauteur, encombrement...)"
+                                                TextColor="#3F4050" />
                                             <StackLayout Orientation="Horizontal">
-                                                <Frame Padding="0" HasShadow="False">
+                                                <Frame
+                                                    Padding="10,5"
+                                                    BorderColor="#f2f5fa"
+                                                    HasShadow="False">
                                                     <StackLayout Orientation="Horizontal">
-                                                        <CheckBox Margin="-5,0" />
+
+                                                        <CheckBox Margin="-5,0" Color="#3F4478" />
                                                         <Label
-                                                            Margin="0"
-                                                            Padding="0"
                                                             FontAttributes="Bold"
-                                                            FontSize="14"
+                                                            FontSize="16"
                                                             Text="Oui"
                                                             TextColor="Gray"
                                                             VerticalTextAlignment="Center" />
                                                     </StackLayout>
                                                 </Frame>
-                                                <Frame Padding="0" HasShadow="False">
+                                                <Frame
+                                                    Padding="10,5"
+                                                    BorderColor="#f2f5fa"
+                                                    HasShadow="False">
                                                     <StackLayout Orientation="Horizontal">
-                                                        <CheckBox Margin="-5,0" />
+
+                                                        <CheckBox Margin="-5,0" Color="#3F4478" />
                                                         <Label
-                                                            Margin="0"
-                                                            Padding="0"
                                                             FontAttributes="Bold"
-                                                            FontSize="14"
+                                                            FontSize="16"
                                                             Text="Non"
                                                             TextColor="Gray"
                                                             VerticalTextAlignment="Center" />
@@ -1055,16 +1203,20 @@
                                                 Grid.Column="0"
                                                 Grid.ColumnSpan="2"
                                                 Padding="3"
-                                                BackgroundColor="#dbdbdb"
                                                 HasShadow="False">
                                                 <StackLayout Orientation="Vertical">
                                                     <Label
                                                         FontAttributes="Bold"
                                                         FontSize="16"
                                                         Text="Observations"
-                                                        TextColor="Gray"
+                                                        TextColor="#3F4050"
                                                         VerticalTextAlignment="Center" />
-                                                    <Entry BackgroundColor="White" HorizontalOptions="FillAndExpand" />
+                                                    <Frame
+                                                        Padding="1"
+                                                        BorderColor="#DEE1E8"
+                                                        HasShadow="False">
+                                                        <Entry BackgroundColor="White" HorizontalOptions="FillAndExpand" />
+                                                    </Frame>
                                                 </StackLayout>
                                             </Frame>
                                         </StackLayout>
@@ -1074,22 +1226,19 @@
                         </Frame>
                     </StackLayout>
                 </StackLayout>
-                <StackLayout x:Name="Actions" VerticalOptions="End">
-                    <StackLayout.Margin>
-                        <OnIdiom
-                            x:TypeArguments="Thickness"
-                            Phone="10"
-                            Tablet="15" />
-                    </StackLayout.Margin>
+
+                <!--#region Save Button-->
+                <StackLayout Margin="10" VerticalOptions="End">
                     <Button
-                        BackgroundColor="#fcb32a"
-                        CornerRadius="5"
-                        FontAttributes="Bold"
-                        FontSize="20"
-                        Text="Envoyer le Permis"
+                        BackgroundColor="#3F4478"
+                        CornerRadius="8"
+                        FontSize="18"
+                        HeightRequest="60"
+                        Text="Créer Permis"
                         TextColor="White"
                         VerticalOptions="Center" />
                 </StackLayout>
+                <!--#endregion-->
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

@@ -6,87 +6,187 @@
     xmlns:Popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
     xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:magic="clr-namespace:MagicGradients;assembly=MagicGradients"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <Popup:PopupPage.Animation>
         <animations:ScaleAnimation
-            DurationIn="400"
-            DurationOut="300"
-            EasingIn="SinOut"
-            EasingOut="SinIn"
-            HasBackgroundAnimation="True"
-            PositionIn="Center"
-            PositionOut="Center"
+            DurationIn="100"
+            DurationOut="100"
+            EasingIn="Linear"
+            EasingOut="Linear"
+            HasBackgroundAnimation="False"
+            PositionIn="Bottom"
+            PositionOut="Bottom"
             ScaleIn="1.2"
-            ScaleOut="0.8" />
+            ScaleOut="1.6" />
     </Popup:PopupPage.Animation>
+
     <Frame
-        Margin="20"
-        Padding="15"
-        BackgroundColor="White"
-        CornerRadius="5"
+        Margin="0,0,0,-15"
+        Padding="20"
+        CornerRadius="15"
         HorizontalOptions="FillAndExpand"
-        VerticalOptions="Center">
+        VerticalOptions="End">
         <ScrollView>
             <StackLayout Orientation="Vertical">
-                <Label
-                    Margin="0"
-                    FontAttributes="Bold"
-                    FontSize="18"
-                    Text="Veuillez choisir le type de permis désirer."
-                    TextColor="Black" />
+                <StackLayout Orientation="Horizontal">
+                    <Label
+                        Margin="0"
+                        FontAttributes="Bold"
+                        FontSize="16"
+                        Text="Veuillez choisir le type de permis désirer"
+                        TextColor="#3F4050" />
+                    <Frame
+                        Padding="0"
+                        BackgroundColor="#dbdbdb"
+                        CornerRadius="30"
+                        HasShadow="False"
+                        HorizontalOptions="EndAndExpand"
+                        VerticalOptions="Center">
+                        <Image
+                            HeightRequest="25"
+                            Source="close.png"
+                            WidthRequest="25">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ClosePopup_Clicked" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Frame>
+                </StackLayout>
 
                 <StackLayout x:Name="PermisList" Margin="0,10">
-                    <Button
-                        BackgroundColor="#fcb32a"
-                        Clicked="PermisFeu_Clicked"
-                        CornerRadius="5"
-                        FontAttributes="Bold"
-                        FontSize="16"
-                        Text="Permis de feu"
-                        TextColor="White"
-                        VerticalOptions="Center" />
-                    <Button
-                        BackgroundColor="#fcb32a"
-                        CornerRadius="5"
-                        FontAttributes="Bold"
-                        FontSize="16"
-                        Text="Permis de fouille"
-                        TextColor="White"
-                        VerticalOptions="Center" />
-                    <Button
-                        BackgroundColor="#fcb32a"
-                        CornerRadius="5"
-                        FontAttributes="Bold"
-                        FontSize="16"
-                        Text="Permis de Travail en Hauteur avec EPI"
-                        TextColor="White"
-                        VerticalOptions="Center" />
-                    <Button
-                        BackgroundColor="#fcb32a"
-                        Clicked="PermisPEMP_Clicked"
-                        CornerRadius="5"
-                        FontAttributes="Bold"
-                        FontSize="16"
-                        Text="Permis d'utilisation de la PEMP"
-                        TextColor="White"
-                        VerticalOptions="Center" />
-                    <Button
-                        BackgroundColor="#fcb32a"
-                        CornerRadius="5"
-                        FontAttributes="Bold"
-                        FontSize="16"
-                        Text="Permis de travail sur échafaudage"
-                        TextColor="White"
-                        VerticalOptions="Center" />
-                    <Button
-                        BackgroundColor="#fcb32a"
-                        CornerRadius="5"
-                        FontAttributes="Bold"
-                        FontSize="16"
-                        Text="Permis de pénétration dans un espace confiné"
-                        TextColor="White"
-                        VerticalOptions="Center" />
+                    <Grid>
+                        <!--#region Gradient-->
+                        <magic:GradientView VerticalOptions="FillAndExpand">
+                            <magic:GradientView.GradientSource>
+                                <magic:LinearGradient Angle="0">
+                                    <magic:GradientStop Offset="0" Color="#3185DE" />
+                                    <magic:GradientStop Offset="1" Color="#5163E9" />
+                                </magic:LinearGradient>
+                            </magic:GradientView.GradientSource>
+                        </magic:GradientView>
+                        <!--#endregion-->
+                        <Button
+                            Margin="2"
+                            BackgroundColor="White"
+                            Clicked="PermisFeu_Clicked"
+                            CornerRadius="2"
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            Text="Permis de feu"
+                            TextColor="#3185DE" />
+                    </Grid>
+                    <Grid>
+                        <!--#region Gradient-->
+                        <magic:GradientView VerticalOptions="FillAndExpand">
+                            <magic:GradientView.GradientSource>
+                                <magic:LinearGradient Angle="0">
+                                    <magic:GradientStop Offset="0" Color="#3185DE" />
+                                    <magic:GradientStop Offset="1" Color="#5163E9" />
+                                </magic:LinearGradient>
+                            </magic:GradientView.GradientSource>
+                        </magic:GradientView>
+                        <!--#endregion-->
+                        <Button
+                            Margin="2"
+                            BackgroundColor="White"
+                            CornerRadius="2"
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            Text="Permis de fouille"
+                            TextColor="#3185DE" />
+                    </Grid>
+                    <Grid>
+                        <!--#region Gradient-->
+                        <magic:GradientView VerticalOptions="FillAndExpand">
+                            <magic:GradientView.GradientSource>
+                                <magic:LinearGradient Angle="0">
+                                    <magic:GradientStop Offset="0" Color="#3185DE" />
+                                    <magic:GradientStop Offset="1" Color="#5163E9" />
+                                </magic:LinearGradient>
+                            </magic:GradientView.GradientSource>
+                        </magic:GradientView>
+                        <!--#endregion-->
+                        <Button
+                            Margin="2"
+                            BackgroundColor="White"
+                            CornerRadius="2"
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            Text="Permis de Travail en Hauteur avec EPI"
+                            TextColor="#3185DE" />
+                    </Grid>
+                    <Grid>
+                        <!--#region Gradient-->
+                        <magic:GradientView VerticalOptions="FillAndExpand">
+                            <magic:GradientView.GradientSource>
+                                <magic:LinearGradient Angle="0">
+                                    <magic:GradientStop Offset="0" Color="#3185DE" />
+                                    <magic:GradientStop Offset="1" Color="#5163E9" />
+                                </magic:LinearGradient>
+                            </magic:GradientView.GradientSource>
+                        </magic:GradientView>
+                        <!--#endregion-->
+                        <Button
+                            Margin="2"
+                            BackgroundColor="White"
+                            Clicked="PermisPEMP_Clicked"
+                            CornerRadius="2"
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            Text="Permis d'utilisation de la PEMP"
+                            TextColor="#3185DE" />
+                    </Grid>
+                    <Grid>
+                        <!--#region Gradient-->
+                        <magic:GradientView VerticalOptions="FillAndExpand">
+                            <magic:GradientView.GradientSource>
+                                <magic:LinearGradient Angle="0">
+                                    <magic:GradientStop Offset="0" Color="#3185DE" />
+                                    <magic:GradientStop Offset="1" Color="#5163E9" />
+                                </magic:LinearGradient>
+                            </magic:GradientView.GradientSource>
+                        </magic:GradientView>
+                        <!--#endregion-->
+                        <Button
+                            Margin="2"
+                            BackgroundColor="White"
+                            Clicked="PermisPEMP_Clicked"
+                            CornerRadius="2"
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            Text="Permis de travail sur échafaudage"
+                            TextColor="#3185DE" />
+                    </Grid>
+                    <Grid>
+                        <!--#region Gradient-->
+                        <magic:GradientView VerticalOptions="FillAndExpand">
+                            <magic:GradientView.GradientSource>
+                                <magic:LinearGradient Angle="0">
+                                    <magic:GradientStop Offset="0" Color="#3185DE" />
+                                    <magic:GradientStop Offset="1" Color="#5163E9" />
+                                </magic:LinearGradient>
+                            </magic:GradientView.GradientSource>
+                        </magic:GradientView>
+                        <!--#endregion-->
+                        <Button
+                            BackgroundColor="Transparent"
+                            CornerRadius="5"
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            Text="Permis de pénétration dans un espace confiné"
+                            TextColor="White" />
+                        <Button
+                            Margin="2"
+                            BackgroundColor="White"
+                            Clicked="PermisPenetration_Clicked"
+                            CornerRadius="2"
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            Text="Permis de pénétration dans un espace confiné"
+                            TextColor="#3185DE" />
+                    </Grid>
                 </StackLayout>
             </StackLayout>
         </ScrollView>

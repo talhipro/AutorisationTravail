@@ -67,5 +67,10 @@ namespace AutorisationTravail.Views.Permis.PermisTravailHauteur
                 System.Console.WriteLine("Exception choosing file: " + ex.ToString());
             }
         }
+
+        private async void BackBtn_Tapped(object sender, EventArgs e)
+        {
+            await Application.Current.MainPage.Navigation.PopAsync();
+        }
     }
 }

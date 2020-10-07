@@ -24,5 +24,9 @@ namespace Shared
         public const string ROLE_CEEP = "ROLE_CEEP";
         public const string ROLE_HSEENTITE = "ROLE_HSESITE";
         public const string ROLE_HSESITE = "ROLE_HSESITE";
+
+        //MESSAGING CENTER
+        public const string FILTER_AT = "FILTER_AT";
+        public const string FILTER_PERMIS = "FILTER_PERMIS";
     }
 }

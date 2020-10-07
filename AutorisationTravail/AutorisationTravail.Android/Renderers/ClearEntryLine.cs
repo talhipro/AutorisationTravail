@@ -28,14 +28,12 @@ namespace AutorisationTravail.Droid.Renderers
         protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)
         {
             base.OnElementChanged(e);
-
             if (Control != null)
             {
-                GradientDrawable gd = new GradientDrawable();
-                gd.SetColor(global::Android.Graphics.Color.Transparent);
-                Control.SetBackground(gd);
-                Control.SetRawInputType(InputTypes.TextFlagNoSuggestions);
-                Control.SetHintTextColor(ColorStateList.ValueOf(global::Android.Graphics.Color.White));
+                if (Control != null)
+                {
+                    Control.Background = new ColorDrawable(Android.Graphics.Color.Transparent);
+                }
             }
         }
     }

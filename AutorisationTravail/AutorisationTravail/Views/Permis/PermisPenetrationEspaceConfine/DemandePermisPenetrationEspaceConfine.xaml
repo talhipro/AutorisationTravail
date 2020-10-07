@@ -1,0 +1,320 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AutorisationTravail.Views.Permis.PermisPenetrationEspaceConfine.DemandePermisPenetrationEspaceConfine"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:magic="clr-namespace:MagicGradients;assembly=MagicGradients"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout x:Name="Page" BackgroundColor="#e6ebfc">
+                <StackLayout x:Name="Header">
+                    <Grid>
+                        <!--#region Gradient-->
+                        <magic:GradientView VerticalOptions="FillAndExpand">
+                            <magic:GradientView.GradientSource>
+                                <magic:LinearGradient Angle="0">
+                                    <magic:GradientStop Offset="0" Color="#3185DE" />
+                                    <magic:GradientStop Offset="1" Color="#5163E9" />
+                                </magic:LinearGradient>
+                            </magic:GradientView.GradientSource>
+                        </magic:GradientView>
+                        <!--#endregion-->
+                        <Frame
+                            Margin="0,-15,0,0"
+                            Padding="10,40,10,30"
+                            BackgroundColor="Transparent"
+                            CornerRadius="15"
+                            HasShadow="False"
+                            VerticalOptions="Center">
+                            <StackLayout Orientation="Horizontal" Spacing="15">
+                                <Frame
+                                    Padding="5"
+                                    BackgroundColor="#5294d9"
+                                    CornerRadius="8"
+                                    HasShadow="False"
+                                    VerticalOptions="Center">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="BackBtn_Tapped" />
+                                    </Frame.GestureRecognizers>
+                                    <Image
+                                        HeightRequest="25"
+                                        HorizontalOptions="End"
+                                        Source="arrowleft.png"
+                                        WidthRequest="25" />
+                                </Frame>
+                                <Label
+                                    Margin="0"
+                                    FontAttributes="Bold"
+                                    FontSize="18"
+                                    HorizontalOptions="CenterAndExpand"
+                                    HorizontalTextAlignment="Center"
+                                    Text="Demande de Permis de pénétration dans un espace confiné"
+                                    TextColor="White"
+                                    VerticalOptions="Center" />
+                                <Frame
+                                    Padding="5"
+                                    BackgroundColor="#5294d9"
+                                    CornerRadius="8"
+                                    HasShadow="False"
+                                    VerticalOptions="Center">
+                                    <Image
+                                        HeightRequest="25"
+                                        HorizontalOptions="End"
+                                        Source="save.png"
+                                        WidthRequest="25" />
+                                </Frame>
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
+                </StackLayout>
+
+                <StackLayout
+                    x:Name="Content"
+                    Margin="10"
+                    Spacing="10">
+                    <Frame CornerRadius="8" HasShadow="False">
+                        <StackLayout Spacing="15">
+                            <StackLayout Orientation="Horizontal">
+                                <StackLayout HorizontalOptions="FillAndExpand">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="16"
+                                        Text="Permis Valable du"
+                                        TextColor="#3F4050" />
+                                    <Frame
+                                        Padding="1"
+                                        BorderColor="#DEE1E8"
+                                        HasShadow="False">
+                                        <DatePicker Format="dd/MM/yyyy" HorizontalOptions="FillAndExpand" />
+                                    </Frame>
+                                </StackLayout>
+                                <StackLayout HorizontalOptions="FillAndExpand">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="16"
+                                        Text="à"
+                                        TextColor="#3F4050" />
+                                    <Frame
+                                        Padding="1"
+                                        BorderColor="#DEE1E8"
+                                        HasShadow="False">
+                                        <TimePicker Format="HH:mm" />
+                                    </Frame>
+                                </StackLayout>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <StackLayout HorizontalOptions="FillAndExpand">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="16"
+                                        Text="Permis Valable jusqu'au"
+                                        TextColor="#3F4050" />
+                                    <Frame
+                                        Padding="1"
+                                        BorderColor="#DEE1E8"
+                                        HasShadow="False">
+                                        <DatePicker Format="dd/MM/yyyy" HorizontalOptions="FillAndExpand" />
+                                    </Frame>
+                                </StackLayout>
+                                <StackLayout HorizontalOptions="FillAndExpand">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="16"
+                                        Text="à"
+                                        TextColor="#3F4050" />
+                                    <Frame
+                                        Padding="1"
+                                        BorderColor="#DEE1E8"
+                                        HasShadow="False">
+                                        <TimePicker Format="HH:mm" />
+                                    </Frame>
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                    <Frame CornerRadius="8" HasShadow="False">
+                        <StackLayout Spacing="15">
+                            <StackLayout>
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="16"
+                                    Text="Produit véhicule/stocké"
+                                    TextColor="#3F4050" />
+                                <Frame
+                                    Padding="1"
+                                    BorderColor="#DEE1E8"
+                                    HasShadow="False">
+                                    <Entry />
+                                </Frame>
+                            </StackLayout>
+                            <StackLayout>
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="16"
+                                    Text="Emplacement géografique"
+                                    TextColor="#3F4050" />
+                                <Frame
+                                    Padding="1"
+                                    BorderColor="#DEE1E8"
+                                    HasShadow="False">
+                                    <Entry />
+                                </Frame>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                    <Frame CornerRadius="8" HasShadow="False">
+                        <StackLayout Spacing="15">
+                            <StackLayout>
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="16"
+                                    Text="Autorisation de travail Nº"
+                                    TextColor="#3F4050" />
+                                <Frame
+                                    Padding="1"
+                                    BorderColor="#DEE1E8"
+                                    HasShadow="False">
+                                    <Entry />
+                                </Frame>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <StackLayout HorizontalOptions="FillAndExpand">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="16"
+                                        Text="AT Valable du"
+                                        TextColor="#3F4050" />
+                                    <Frame
+                                        Padding="1"
+                                        BorderColor="#DEE1E8"
+                                        HasShadow="False">
+                                        <DatePicker Format="dd/MM/yyyy" HorizontalOptions="FillAndExpand" />
+                                    </Frame>
+                                </StackLayout>
+                                <StackLayout HorizontalOptions="FillAndExpand">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="16"
+                                        Text="à"
+                                        TextColor="#3F4050" />
+                                    <Frame
+                                        Padding="1"
+                                        BorderColor="#DEE1E8"
+                                        HasShadow="False">
+                                        <TimePicker Format="HH:mm" />
+                                    </Frame>
+                                </StackLayout>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <StackLayout HorizontalOptions="FillAndExpand">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="16"
+                                        Text="AT Valable jusqu'au"
+                                        TextColor="#3F4050" />
+                                    <Frame
+                                        Padding="1"
+                                        BorderColor="#DEE1E8"
+                                        HasShadow="False">
+                                        <DatePicker Format="dd/MM/yyyy" HorizontalOptions="FillAndExpand" />
+                                    </Frame>
+                                </StackLayout>
+                                <StackLayout HorizontalOptions="FillAndExpand">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="16"
+                                        Text="à"
+                                        TextColor="#3F4050" />
+                                    <Frame
+                                        Padding="1"
+                                        BorderColor="#DEE1E8"
+                                        HasShadow="False">
+                                        <TimePicker Format="HH:mm" />
+                                    </Frame>
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                    <Frame CornerRadius="8" HasShadow="False">
+                        <StackLayout Spacing="15">
+                            <StackLayout>
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="16"
+                                    Text="Entreprise de pénétrer"
+                                    TextColor="#3F4050" />
+                                <Frame
+                                    Padding="1"
+                                    BorderColor="#DEE1E8"
+                                    HasShadow="False">
+                                    <Entry />
+                                </Frame>
+                            </StackLayout>
+                            <StackLayout>
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="16"
+                                    Text="Référence du marché"
+                                    TextColor="#3F4050" />
+                                <Frame
+                                    Padding="1"
+                                    BorderColor="#DEE1E8"
+                                    HasShadow="False">
+                                    <Entry />
+                                </Frame>
+                            </StackLayout>
+                            <StackLayout>
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="16"
+                                    Text="Objet de l'intervention"
+                                    TextColor="#3F4050" />
+                                <Frame
+                                    Padding="1"
+                                    BorderColor="#DEE1E8"
+                                    HasShadow="False">
+                                    <Entry />
+                                </Frame>
+                            </StackLayout>
+                            <StackLayout>
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="16"
+                                    Text="Rappel des risques identifiés lors de l'analyse de risque (joindre obligatoirement l'ADRPT de l'intervention)"
+                                    TextColor="#3F4050" />
+                                <Button
+                                    BackgroundColor="White"
+                                    BorderColor="#3F4478"
+                                    BorderWidth=".5"
+                                    Clicked="PickFileAptitude_Clicked"
+                                    CornerRadius="4"
+                                    Text="Choisir un fichier"
+                                    VerticalOptions="Center" />
+                                <Label
+                                    x:Name="AptitudeFileName"
+                                    Text=""
+                                    TextColor="#3F4050" />
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+                <!--#region Save Button-->
+                <StackLayout Margin="10" VerticalOptions="EndAndExpand">
+                    <Button
+                        BackgroundColor="#3F4478"
+                        CornerRadius="8"
+                        FontSize="18"
+                        HeightRequest="60"
+                        Text="Envoyer la demande"
+                        TextColor="White"
+                        VerticalOptions="Center" />
+                </StackLayout>
+            </StackLayout>
+            <!--#endregion-->
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -27,8 +27,10 @@
         HorizontalOptions="FillAndExpand"
         VerticalOptions="Fill">
         <StackLayout Orientation="Vertical">
-            <StackLayout Margin="20,10" Orientation="Horizontal">
-
+            <StackLayout
+                Margin="15"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal">
                 <StackLayout VerticalOptions="Center">
                     <Label
                         FontAttributes="Bold"
@@ -39,10 +41,9 @@
                 </StackLayout>
 
                 <Frame
-                    Margin="10"
                     Padding="0"
                     BackgroundColor="#dbdbdb"
-                    CornerRadius="10"
+                    CornerRadius="30"
                     HasShadow="False"
                     HorizontalOptions="EndAndExpand"
                     VerticalOptions="Center">
@@ -55,6 +56,7 @@
                         </Image.GestureRecognizers>
                     </Image>
                 </Frame>
+
             </StackLayout>
 
             <StackLayout Padding="0" BackgroundColor="#3F4478">

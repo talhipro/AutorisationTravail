@@ -1,0 +1,326 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AutorisationTravail.Views.DemandeAutorisationTravail.DemandeAutorisationDetails"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout BackgroundColor="#F4F4F4">
+                <StackLayout x:Name="Header">
+                    <Grid>
+                        <Frame
+                            Padding="5,10,5,20"
+                            HasShadow="False"
+                            VerticalOptions="Center">
+                            <StackLayout Orientation="Horizontal">
+                                <Frame
+                                    Padding="5"
+                                    CornerRadius="8"
+                                    HasShadow="False">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="BackBtn_Tapped" />
+                                    </Frame.GestureRecognizers>
+                                    <Image
+                                        HeightRequest="20"
+                                        HorizontalOptions="End"
+                                        Source="back_arrow.png"
+                                        WidthRequest="20" />
+                                </Frame>
+                                <Label
+                                    Margin="20,0,0,0"
+                                    FontAttributes="Bold"
+                                    FontSize="20"
+                                    HorizontalOptions="FillAndExpand"
+                                    Text="Demandes N° 0037483"
+                                    TextColor="#212121"
+                                    VerticalOptions="Center" />
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
+                </StackLayout>
+                <StackLayout x:Name="Content">
+                    <Frame CornerRadius="0" HasShadow="False">
+                        <StackLayout x:Name="ActionsCard" Spacing="15">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="18"
+                                Text="Demande à traiter"
+                                TextColor="#5BA702" />
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                Text="Vous avez une demande à traiter" />
+                            <StackLayout Orientation="Horizontal">
+                                <Button
+                                    BackgroundColor="#5BA702"
+                                    Clicked="ButtonValider_Clicked"
+                                    CornerRadius="0"
+                                    Text="VALIDER"
+                                    TextColor="White" />
+                                <Button
+                                    BackgroundColor="#E02020"
+                                    Clicked="ButtonRefuser_Clicked"
+                                    CornerRadius="0"
+                                    Text="DEMANDER UNE RÉVISION"
+                                    TextColor="White" />
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+
+
+                    <StackLayout
+                        x:Name="Infos"
+                        Padding="0,10"
+                        BackgroundColor="White">
+                        <StackLayout
+                            x:Name="NumDemandeCard"
+                            Padding="20"
+                            BackgroundColor="#F4F4F4"
+                            Orientation="Horizontal">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                HorizontalOptions="FillAndExpand"
+                                Text="Numéro de la demande"
+                                TextColor="#424242" />
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                Text="{Binding DemandeDetails.NumDemande}"
+                                TextColor="#5BA702" />
+                        </StackLayout>
+
+                        <StackLayout x:Name="DecsriptionCard" Padding="20">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                HorizontalOptions="FillAndExpand"
+                                Text="Description de la demande :"
+                                TextColor="#424242" />
+                            <Label
+                                FontSize="16"
+                                Text="{Binding DemandeDetails.Description}"
+                                TextColor="#424242" />
+                        </StackLayout>
+
+                        <StackLayout
+                            x:Name="createDateCard"
+                            Padding="20"
+                            BackgroundColor="#F4F4F4"
+                            Orientation="Horizontal">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                HorizontalOptions="FillAndExpand"
+                                Text="Date de création"
+                                TextColor="#424242" />
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                Text="{Binding DemandeDetails.CreateDate}"
+                                TextColor="#424242" />
+                        </StackLayout>
+
+                        <StackLayout
+                            x:Name="CEEECard"
+                            Padding="20"
+                            Orientation="Horizontal">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                HorizontalOptions="FillAndExpand"
+                                Text="CEEE"
+                                TextColor="#424242" />
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                Text="{Binding DemandeDetails.CEEE}"
+                                TextColor="#424242" />
+                        </StackLayout>
+
+                        <StackLayout
+                            x:Name="ServicesCard"
+                            Padding="20"
+                            BackgroundColor="#F4F4F4"
+                            Orientation="Horizontal">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                HorizontalOptions="FillAndExpand"
+                                Text="Services intervenants"
+                                TextColor="#424242" />
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                Text="{Binding DemandeDetails.Services}"
+                                TextColor="#424242" />
+                        </StackLayout>
+
+                        <StackLayout
+                            x:Name="DateInterventionCard"
+                            Padding="20"
+                            Orientation="Horizontal">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                HorizontalOptions="FillAndExpand"
+                                Text="Date d'intervention"
+                                TextColor="#424242" />
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                Text="{Binding DemandeDetails.DateIntervention}"
+                                TextColor="#424242" />
+                        </StackLayout>
+
+                        <StackLayout
+                            x:Name="HeureDebutCard"
+                            Padding="20"
+                            BackgroundColor="#F4F4F4"
+                            Orientation="Horizontal">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                HorizontalOptions="FillAndExpand"
+                                Text="Heure début"
+                                TextColor="#424242" />
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                Text="{Binding DemandeDetails.HeureDebut}"
+                                TextColor="#424242" />
+                        </StackLayout>
+
+                        <StackLayout
+                            x:Name="HeureFinCard"
+                            Padding="20"
+                            Orientation="Horizontal">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                HorizontalOptions="FillAndExpand"
+                                Text="Heure de fin (prévue)"
+                                TextColor="#424242" />
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                Text="{Binding DemandeDetails.HeureFin}"
+                                TextColor="#424242" />
+                        </StackLayout>
+
+                        <StackLayout
+                            x:Name="SiteCard"
+                            Padding="20"
+                            BackgroundColor="#F4F4F4"
+                            Orientation="Horizontal">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                HorizontalOptions="FillAndExpand"
+                                Text="Site"
+                                TextColor="#424242" />
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                Text="{Binding DemandeDetails.Site}"
+                                TextColor="#424242" />
+                        </StackLayout>
+
+                        <StackLayout
+                            x:Name="EntitePropCard"
+                            Padding="20"
+                            Orientation="Horizontal">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                HorizontalOptions="FillAndExpand"
+                                Text="Entité propriétaire"
+                                TextColor="#424242" />
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                Text="{Binding DemandeDetails.EntiteProp}"
+                                TextColor="#424242" />
+                        </StackLayout>
+
+                        <StackLayout
+                            x:Name="EntiteExecCard"
+                            Padding="20"
+                            BackgroundColor="#F4F4F4"
+                            Orientation="Horizontal">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                HorizontalOptions="FillAndExpand"
+                                Text="Entité executante"
+                                TextColor="#424242" />
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                Text="{Binding DemandeDetails.EntiteExec}"
+                                TextColor="#424242" />
+                        </StackLayout>
+
+                        <StackLayout
+                            x:Name="OTNumCard"
+                            Padding="20"
+                            Orientation="Horizontal">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                HorizontalOptions="FillAndExpand"
+                                Text="OT N°"
+                                TextColor="#424242" />
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                Text="{Binding DemandeDetails.OTNum}"
+                                TextColor="#424242" />
+                        </StackLayout>
+
+                        <StackLayout
+                            x:Name="LieuCard"
+                            Padding="20"
+                            BackgroundColor="#F4F4F4"
+                            Orientation="Horizontal">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                HorizontalOptions="FillAndExpand"
+                                Text="Lieu d'intervention"
+                                TextColor="#424242" />
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                Text="{Binding DemandeDetails.Lieu}"
+                                TextColor="#424242" />
+                        </StackLayout>
+
+                        <StackLayout
+                            x:Name="EntreprisesCard"
+                            Padding="20"
+                            Orientation="Horizontal">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                HorizontalOptions="FillAndExpand"
+                                Text="Entreprises intervenantes"
+                                TextColor="#424242" />
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                Text="{Binding DemandeDetails.Entreprises}"
+                                TextColor="#424242" />
+                        </StackLayout>
+
+                    </StackLayout>
+                </StackLayout>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

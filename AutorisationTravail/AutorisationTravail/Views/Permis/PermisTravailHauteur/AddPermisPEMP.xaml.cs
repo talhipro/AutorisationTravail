@@ -16,5 +16,10 @@ namespace AutorisationTravail.Views.Permis.PermisTravailHauteur
         {
             InitializeComponent();
         }
+
+        private async void BackBtn_Tapped(object sender, EventArgs e)
+        {
+            await Application.Current.MainPage.Navigation.PopAsync();
+        }
     }
 }

@@ -27,18 +27,22 @@
         HorizontalOptions="FillAndExpand"
         VerticalOptions="Fill">
         <StackLayout Orientation="Vertical">
-            <StackLayout Orientation="Horizontal">
-                <Label
-                    Margin="20"
-                    FontAttributes="Bold"
-                    FontSize="18"
-                    Text="Moyens d'acces nécessaires"
-                    TextColor="#3F4051" />
+            <StackLayout
+                Margin="15"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal">
+                <StackLayout VerticalOptions="Center">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="Moyens d'acces nécessaires"
+                        TextColor="#3F4051"
+                        VerticalOptions="Center" />
+                </StackLayout>
                 <Frame
-                    Margin="10"
                     Padding="0"
                     BackgroundColor="#dbdbdb"
-                    CornerRadius="10"
+                    CornerRadius="30"
                     HasShadow="False"
                     HorizontalOptions="EndAndExpand"
                     VerticalOptions="Center">
@@ -53,7 +57,7 @@
                 </Frame>
             </StackLayout>
 
-            <StackLayout Padding="0" BackgroundColor="#3F4478">
+            <StackLayout Padding="0" BackgroundColor="#dbdbdb">
                 <ListView
                     x:Name="myListe"
                     CachingStrategy="RecycleElementAndDataTemplate"

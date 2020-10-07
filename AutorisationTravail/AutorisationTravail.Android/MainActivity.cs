@@ -7,6 +7,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using Android.Graphics;
+using FFImageLoading.Forms.Platform;
 
 namespace AutorisationTravail.Droid
 {
@@ -21,11 +22,13 @@ namespace AutorisationTravail.Droid
 
             base.OnCreate(savedInstanceState);
 
-            Window.SetStatusBarColor(Color.ParseColor("#3185DE"));
-            //Window.SetNavigationBarColor(Android.Graphics.Color.ParseColor("#FFFFFF"));
+            Window.SetStatusBarColor(Color.White);
+            ///Window.SetStatusBarColor(Color.ParseColor("#3185DE"));
+            Window.SetNavigationBarColor(Color.White);
 
             #region Plugins Init
             Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init(enableFastRenderer: true);
             #endregion
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);

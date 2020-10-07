@@ -1,0 +1,480 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Popup:PopupPage
+    x:Class="AutorisationTravail.Popups.FilterATPopup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Controls="clr-namespace:AutorisationTravail.Controls"
+    xmlns:Popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    CloseWhenBackgroundIsClicked="False"
+    mc:Ignorable="d">
+    <Popup:PopupPage.Animation>
+        <animations:ScaleAnimation
+            DurationIn="100"
+            DurationOut="100"
+            EasingIn="Linear"
+            EasingOut="Linear"
+            HasBackgroundAnimation="False"
+            PositionIn="Bottom"
+            PositionOut="Bottom"
+            ScaleIn="1.2"
+            ScaleOut="1.6" />
+    </Popup:PopupPage.Animation>
+    <Frame
+        Margin="0,200,0,0"
+        Padding="0"
+        CornerRadius="15"
+        HasShadow="False"
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="Fill">
+        <Frame.GestureRecognizers>
+            <SwipeGestureRecognizer Direction="Up" Swiped="SwipeUp_Swiped" />
+            <SwipeGestureRecognizer Direction="Down" Swiped="SwipeDown_Swiped" />
+        </Frame.GestureRecognizers>
+        <StackLayout Orientation="Vertical" Spacing="0">
+            <StackLayout HorizontalOptions="Center">
+                <Controls:CustomCachedImage
+                    x:Name="UpArrowImg"
+                    Margin="0,10,0,0"
+                    Aspect="Fill"
+                    HeightRequest="10"
+                    Source="ArrowUp.png"
+                    TintColor="Black"
+                    WidthRequest="30" />
+            </StackLayout>
+            <StackLayout Margin="15">
+                <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                    <StackLayout VerticalOptions="Center">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="18"
+                            Text="Recherche avancée"
+                            TextColor="#3F4051"
+                            VerticalOptions="Center" />
+                    </StackLayout>
+
+                    <Frame
+                        Padding="0"
+                        BackgroundColor="#dbdbdb"
+                        CornerRadius="30"
+                        HasShadow="False"
+                        HorizontalOptions="EndAndExpand"
+                        VerticalOptions="Center">
+                        <Image
+                            HeightRequest="25"
+                            Source="close.png"
+                            WidthRequest="25">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ClosePopup_Clicked" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Frame>
+                </StackLayout>
+
+                <Grid Margin="0,10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".25*" />
+                        <ColumnDefinition Width=".25*" />
+                        <ColumnDefinition Width=".25*" />
+                        <ColumnDefinition Width=".25*" />
+                    </Grid.ColumnDefinitions>
+                    <StackLayout Grid.Column="0" Spacing="0">
+                        <Grid>
+                            <Frame
+                                x:Name="StatutFrame"
+                                Padding="10"
+                                BackgroundColor="#54C7FC"
+                                CornerRadius="50"
+                                HasShadow="False"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Statut_Tapped" />
+                                </Frame.GestureRecognizers>
+                                <Controls:CustomCachedImage
+                                    x:Name="StatutIcon"
+                                    Aspect="AspectFill"
+                                    DownsampleToViewSize="true"
+                                    HeightRequest="30"
+                                    HorizontalOptions="Center"
+                                    Source="statutFilter.png"
+                                    VerticalOptions="Center"
+                                    WidthRequest="30" />
+                            </Frame>
+                            <BoxView
+                                x:Name="StatutBox"
+                                Margin="0,0,20,0"
+                                BackgroundColor="Accent"
+                                CornerRadius="15"
+                                HeightRequest="20"
+                                HorizontalOptions="End"
+                                IsVisible="False"
+                                VerticalOptions="Start"
+                                WidthRequest="20" />
+                        </Grid>
+                        <Label
+                            FontAttributes="Bold"
+                            HorizontalOptions="Center"
+                            Text="Statut"
+                            TextColor="#3F4051" />
+                    </StackLayout>
+                    <StackLayout Grid.Column="1" Spacing="0">
+                        <Grid>
+                            <Frame
+                                x:Name="EntiteFrame"
+                                Padding="10"
+                                BackgroundColor="#EAF8FF"
+                                CornerRadius="50"
+                                HasShadow="False"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Entite_Tapped" />
+                                </Frame.GestureRecognizers>
+                                <Controls:CustomCachedImage
+                                    x:Name="EntiteIcon"
+                                    Aspect="AspectFill"
+                                    DownsampleToViewSize="true"
+                                    HeightRequest="30"
+                                    HorizontalOptions="Center"
+                                    Source="search.png"
+                                    TintColor="#54C7FC"
+                                    VerticalOptions="Center"
+                                    WidthRequest="30" />
+                            </Frame>
+                            <BoxView
+                                x:Name="EntityBox"
+                                Margin="0,0,20,0"
+                                BackgroundColor="Accent"
+                                CornerRadius="15"
+                                HeightRequest="20"
+                                HorizontalOptions="End"
+                                IsVisible="False"
+                                VerticalOptions="Start"
+                                WidthRequest="20" />
+                        </Grid>
+                        <Label
+                            FontAttributes="Bold"
+                            HorizontalOptions="Center"
+                            Text="Entité"
+                            TextColor="#3F4051" />
+                    </StackLayout>
+                    <StackLayout Grid.Column="2" Spacing="0">
+                        <Grid>
+                            <Frame
+                                x:Name="ServiceFrame"
+                                Padding="10"
+                                BackgroundColor="#EAF8FF"
+                                CornerRadius="50"
+                                HasShadow="False"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Service_Tapped" />
+                                </Frame.GestureRecognizers>
+                                <Controls:CustomCachedImage
+                                    x:Name="ServiceIcon"
+                                    Aspect="AspectFill"
+                                    DownsampleToViewSize="true"
+                                    HeightRequest="30"
+                                    HorizontalOptions="Center"
+                                    Source="notification.png"
+                                    TintColor="#54C7FC"
+                                    VerticalOptions="Center"
+                                    WidthRequest="30" />
+                            </Frame>
+                            <BoxView
+                                x:Name="ServiceBox"
+                                Margin="0,0,20,0"
+                                BackgroundColor="Accent"
+                                CornerRadius="15"
+                                HeightRequest="20"
+                                HorizontalOptions="End"
+                                IsVisible="False"
+                                VerticalOptions="Start"
+                                WidthRequest="20" />
+                        </Grid>
+                        <Label
+                            FontAttributes="Bold"
+                            HorizontalOptions="Center"
+                            Text="Service"
+                            TextColor="#3F4051" />
+                    </StackLayout>
+                    <StackLayout Grid.Column="3" Spacing="0">
+                        <Grid>
+                            <Frame
+                                x:Name="DemandeurFrame"
+                                Padding="10"
+                                BackgroundColor="#EAF8FF"
+                                CornerRadius="50"
+                                HasShadow="False"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Demandeur_Tapped" />
+                                </Frame.GestureRecognizers>
+                                <Controls:CustomCachedImage
+                                    x:Name="DemandeurIcon"
+                                    Aspect="AspectFill"
+                                    DownsampleToViewSize="true"
+                                    HeightRequest="30"
+                                    HorizontalOptions="Center"
+                                    Source="pencil.png"
+                                    TintColor="#54C7FC"
+                                    VerticalOptions="Center"
+                                    WidthRequest="30" />
+                            </Frame>
+                            <BoxView
+                                x:Name="DemandeurBox"
+                                Margin="0,0,20,0"
+                                BackgroundColor="Accent"
+                                CornerRadius="15"
+                                HeightRequest="20"
+                                HorizontalOptions="End"
+                                IsVisible="False"
+                                VerticalOptions="Start"
+                                WidthRequest="20" />
+                        </Grid>
+                        <Label
+                            FontAttributes="Bold"
+                            HorizontalOptions="Center"
+                            Text="Demandeur"
+                            TextColor="#3F4051" />
+                    </StackLayout>
+                </Grid>
+                <StackLayout>
+                    <Frame
+                        x:Name="SearchInFilter"
+                        Padding="10,2"
+                        BackgroundColor="#eeeeef"
+                        CornerRadius="20"
+                        HasShadow="False">
+                        <StackLayout Orientation="Horizontal" Spacing="10">
+                            <Controls:CustomCachedImage
+                                HeightRequest="25"
+                                Source="searchBlack.png"
+                                TintColor="#8e8e91"
+                                WidthRequest="25" />
+                            <Frame
+                                Padding="1"
+                                BackgroundColor="#eeeeef"
+                                HasShadow="False"
+                                HorizontalOptions="FillAndExpand">
+                                <Entry
+                                    x:Name="SearchInFilterEntry"
+                                    FontSize="15"
+                                    Placeholder="Recherche ..."
+                                    PlaceholderColor="#8e8e91"
+                                    TextChanged="FilterSerach_TextChanged"
+                                    VerticalTextAlignment="Center" />
+                            </Frame>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </StackLayout>
+            <BoxView BackgroundColor="#F0F2F6" HeightRequest="1" />
+            <StackLayout x:Name="StatutListContainer" Padding="0">
+                <ListView
+                    x:Name="StatutList"
+                    CachingStrategy="RecycleElementAndDataTemplate"
+                    HasUnevenRows="True"
+                    SeparatorVisibility="None"
+                    VerticalScrollBarVisibility="Never">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Spacing="0">
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="StatutList_ItemSelected" />
+                                    </StackLayout.GestureRecognizers>
+                                    <StackLayout Padding="15" Orientation="Horizontal">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="16"
+                                            HeightRequest="25"
+                                            Text="{Binding Name}"
+                                            TextColor="#3F4051"
+                                            VerticalOptions="Center"
+                                            VerticalTextAlignment="Center" />
+                                        <Frame
+                                            Padding="0"
+                                            CornerRadius="20"
+                                            HasShadow="False"
+                                            HorizontalOptions="EndAndExpand"
+                                            IsVisible="{Binding IsSelected}"
+                                            VerticalOptions="Center">
+                                            <Image
+                                                HeightRequest="25"
+                                                Source="checked.png"
+                                                WidthRequest="25" />
+                                        </Frame>
+                                    </StackLayout>
+                                    <BoxView BackgroundColor="#F0F2F6" HeightRequest="1" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <StackLayout
+                x:Name="EntiteListContainer"
+                Padding="0"
+                IsVisible="False">
+                <ListView
+                    x:Name="EntiteList"
+                    CachingStrategy="RecycleElementAndDataTemplate"
+                    HasUnevenRows="True"
+                    SeparatorVisibility="None"
+                    VerticalScrollBarVisibility="Never">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Spacing="0">
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="EntiteList_ItemSelected" />
+                                    </StackLayout.GestureRecognizers>
+                                    <StackLayout Padding="15" Orientation="Horizontal">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="16"
+                                            HeightRequest="25"
+                                            Text="{Binding Name}"
+                                            TextColor="#3F4051"
+                                            VerticalOptions="Center"
+                                            VerticalTextAlignment="Center" />
+                                        <Frame
+                                            Padding="0"
+                                            CornerRadius="20"
+                                            HasShadow="False"
+                                            HorizontalOptions="EndAndExpand"
+                                            IsVisible="{Binding IsSelected}"
+                                            VerticalOptions="Center">
+                                            <Image
+                                                HeightRequest="25"
+                                                Source="checked.png"
+                                                WidthRequest="25" />
+                                        </Frame>
+                                    </StackLayout>
+                                    <BoxView BackgroundColor="#F0F2F6" HeightRequest="1" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <StackLayout
+                x:Name="ServiceListContainer"
+                Padding="0"
+                IsVisible="False">
+                <ListView
+                    x:Name="ServiceList"
+                    CachingStrategy="RecycleElementAndDataTemplate"
+                    HasUnevenRows="True"
+                    SeparatorVisibility="None"
+                    VerticalScrollBarVisibility="Never">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Spacing="0">
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="ServiceList_ItemSelected" />
+                                    </StackLayout.GestureRecognizers>
+                                    <StackLayout Padding="15" Orientation="Horizontal">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="16"
+                                            HeightRequest="25"
+                                            Text="{Binding Name}"
+                                            TextColor="#3F4051"
+                                            VerticalOptions="Center"
+                                            VerticalTextAlignment="Center" />
+                                        <Frame
+                                            Padding="0"
+                                            CornerRadius="20"
+                                            HasShadow="False"
+                                            HorizontalOptions="EndAndExpand"
+                                            IsVisible="{Binding IsSelected}"
+                                            VerticalOptions="Center">
+                                            <Image
+                                                HeightRequest="25"
+                                                Source="checked.png"
+                                                WidthRequest="25" />
+                                        </Frame>
+                                    </StackLayout>
+                                    <BoxView BackgroundColor="#F0F2F6" HeightRequest="1" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <StackLayout
+                x:Name="DemandeurListContainer"
+                Padding="0"
+                IsVisible="False">
+                <ListView
+                    x:Name="DemandeurList"
+                    CachingStrategy="RecycleElementAndDataTemplate"
+                    HasUnevenRows="True"
+                    SeparatorVisibility="None"
+                    VerticalScrollBarVisibility="Never">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Spacing="0">
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="DemandeurList_ItemSelected" />
+                                    </StackLayout.GestureRecognizers>
+                                    <StackLayout Padding="15" Orientation="Horizontal">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="16"
+                                            HeightRequest="25"
+                                            Text="{Binding Name}"
+                                            TextColor="#3F4051"
+                                            VerticalOptions="Center"
+                                            VerticalTextAlignment="Center" />
+                                        <Frame
+                                            Padding="0"
+                                            CornerRadius="20"
+                                            HasShadow="False"
+                                            HorizontalOptions="EndAndExpand"
+                                            IsVisible="{Binding IsSelected}"
+                                            VerticalOptions="Center">
+                                            <Image
+                                                HeightRequest="25"
+                                                Source="checked.png"
+                                                WidthRequest="25" />
+                                        </Frame>
+                                    </StackLayout>
+                                    <BoxView BackgroundColor="#F0F2F6" HeightRequest="1" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <StackLayout
+                Padding="20"
+                BackgroundColor="White"
+                VerticalOptions="EndAndExpand">
+                <Button
+                    BackgroundColor="#3F4478"
+                    BorderColor="White"
+                    Clicked="ApplyFilter_Clicked"
+                    CornerRadius="6"
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    Text="Appliquer"
+                    TextColor="White" />
+            </StackLayout>
+
+
+        </StackLayout>
+    </Frame>
+</Popup:PopupPage>

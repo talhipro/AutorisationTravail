@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Popup:PopupPage
+    x:Class="AutorisationTravail.Popups.ValiderDemandeAT"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Popup:PopupPage.Animation>
+        <animations:ScaleAnimation
+            DurationIn="400"
+            DurationOut="300"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True"
+            PositionIn="Center"
+            PositionOut="Center"
+            ScaleIn="1.2"
+            ScaleOut="0.8" />
+    </Popup:PopupPage.Animation>
+
+    <Frame
+        Margin="15,0"
+        Padding="25"
+        HorizontalOptions="CenterAndExpand"
+        VerticalOptions="CenterAndExpand">
+        <StackLayout Spacing="20">
+            <Label
+                FontAttributes="Bold"
+                FontSize="20"
+                Text="Voulez‑vous vraiment valider la demande" />
+            <StackLayout
+                HorizontalOptions="CenterAndExpand"
+                Orientation="Horizontal"
+                Spacing="50">
+                <Button
+                    BackgroundColor="Transparent"
+                    Clicked="Non_Clicked"
+                    FontAttributes="Bold"
+                    FontSize="20"
+                    Text="NON"
+                    TextColor="#E02020" />
+                <Button
+                    BackgroundColor="Transparent"
+                    FontAttributes="Bold"
+                    FontSize="20"
+                    Clicked="Oui_Clicked"
+                    Text="OUI"
+                    TextColor="#5BA702" />
+            </StackLayout>
+        </StackLayout>
+    </Frame>
+</Popup:PopupPage>
