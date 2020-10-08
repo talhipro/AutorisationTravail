@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AutorisationTravail.Views.Menu.MenuMaster"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Master">
+    <StackLayout>
+        <ListView
+            x:Name="MenuItemsListView"
+            HasUnevenRows="true"
+            ItemsSource="{Binding MenuItems}"
+            SeparatorVisibility="None">
+            <ListView.Header>
+                <!--<Image Source="imgBackground.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="Fill"/>-->
+                <Grid BackgroundColor="Gray">
+                    <Image
+                        Aspect="AspectFill"
+                        HeightRequest="300"
+                        HorizontalOptions="FillAndExpand"
+                        Opacity=".4"
+                        Source="imgBackground.png"
+                        VerticalOptions="FillAndExpand" />
+                    <Image
+                        Margin="10"
+                        Aspect="AspectFill"
+                        HorizontalOptions="Start"
+                        Source="close.png"
+                        VerticalOptions="Start"
+                        WidthRequest="35" >
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="CloseBtn_Tapped" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label
+                        Margin="15"
+                        FontSize="20"
+                        Text="najib.merouani@externe.ma"
+                        TextColor="White"
+                        VerticalOptions="End" />
+
+
+
+                    <!--<Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="10" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="20" />
+                    </Grid.RowDefinitions>
+
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        FontSize="20"
+                        Text="X"
+                        TextColor="White" />
+                    <Image
+                        Grid.Row="2"
+                        Grid.ColumnSpan="3"
+                        Aspect="AspectFill"
+                        HeightRequest="300"
+                        HorizontalOptions="FillAndExpand"
+                        Source="imgBackground.png"
+                        VerticalOptions="FillAndExpand" />
+                    <Label
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        FontSize="14"
+                        Text="najib.merouani@externe.ma"
+                        TextColor="White" />-->
+                </Grid>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="15,15" HorizontalOptions="FillAndExpand">
+                            <StackLayout Orientation="Horizontal">
+                                <Image
+                                    Margin="0,0,20,0"
+                                    HeightRequest="20"
+                                    HorizontalOptions="End"
+                                    Source="{Binding Icon}"
+                                    WidthRequest="20" />
+                                <Label
+                                    FontSize="16"
+                                    Text="{Binding Title}"
+                                    VerticalOptions="FillAndExpand"
+                                    VerticalTextAlignment="Center" />
+
+                            </StackLayout>
+                        </StackLayout>
+
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

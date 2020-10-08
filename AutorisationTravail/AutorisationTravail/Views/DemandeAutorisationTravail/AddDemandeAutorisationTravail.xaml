@@ -1,81 +1,21 @@
-﻿<?xml version="1.0" encoding="UTF-8" ?>
-<ContentPage
-    x:Class="AutorisationTravail.Views.DemandeAutorisationTravail.AddDemandeAutorisationTravail"
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:Controls="clr-namespace:AutorisationTravail.Controls"
-    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    xmlns:magic="clr-namespace:MagicGradients;assembly=MagicGradients"
-    ios:Page.UseSafeArea="True"
-    NavigationPage.HasNavigationBar="False">
-    <!--NavigationPage.TitleView>
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="True"
+             xmlns:Controls="clr-namespace:AutorisationTravail.Controls"
+             x:Class="AutorisationTravail.Views.DemandeAutorisationTravail.AddDemandeAutorisationTravail">
+        <NavigationPage.TitleView>
         <Label Text="Nouvelle demande AT"
-               AbsoluteLayout.LayoutFlags="PositionProportional"
-               FontSize="25" TextColor="Black"/>
+               AbsoluteLayout.LayoutFlags="PositionProportional" 
+               FontSize="20" TextColor="Black"/>
+        </NavigationPage.TitleView>
 
-    </-->
+  
     <ContentPage.Content>
-        <ScrollView>
+        
             <StackLayout BackgroundColor="White">
-                <StackLayout x:Name="Header">
-                    <Grid>
-                        <!--#region Gradient-->
-                        <magic:GradientView VerticalOptions="FillAndExpand">
-                            <magic:GradientView.GradientSource>
-                                <magic:LinearGradient Angle="0">
-                                    <magic:GradientStop Offset="0" Color="#3185DE" />
-                                    <magic:GradientStop Offset="1" Color="#5163E9" />
-                                </magic:LinearGradient>
-                            </magic:GradientView.GradientSource>
-                        </magic:GradientView>
-                        <!--#endregion-->
-                        <Frame
-                            Margin="0,-15,0,0"
-                            Padding="10,40,10,30"
-                            BackgroundColor="Transparent"
-                            CornerRadius="15"
-                            HasShadow="False"
-                            VerticalOptions="Center">
-                            <StackLayout Orientation="Horizontal">
-                                <Frame
-                                    Padding="5"
-                                    BackgroundColor="#5294d9"
-                                    CornerRadius="8"
-                                    HasShadow="False">
-                                    <Frame.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="BackButton_Clicked" />
-                                    </Frame.GestureRecognizers>
-                                    <Image
-                                        HeightRequest="25"
-                                        HorizontalOptions="End"
-                                        Source="arrowleft.png"
-                                        WidthRequest="25" />
-                                </Frame>
-                                <Label
-                                    Margin="0"
-                                    FontAttributes="Bold"
-                                    FontSize="18"
-                                    HorizontalOptions="CenterAndExpand"
-                                    Text="Nouvelle autorisation de travail"
-                                    TextColor="White"
-                                    VerticalOptions="Center" />
-                                <Frame
-                                    Padding="5"
-                                    BackgroundColor="#5294d9"
-                                    CornerRadius="8"
-                                    HasShadow="False"
-                                    VerticalOptions="Center">
-                                    <Image
-                                        HeightRequest="25"
-                                        HorizontalOptions="End"
-                                        Source="save.png"
-                                        WidthRequest="25" />
-                                </Frame>
-                            </StackLayout>
-                        </Frame>
-                    </Grid>
-                </StackLayout>
-                <StackLayout x:Name="HeaderOL">
+            <!--<StackLayout x:Name="Header">
                     <Frame
                         Margin="0,-15,0,0"
                         Padding="10,40,10,30"
@@ -83,20 +23,21 @@
                         CornerRadius="0"
                         HasShadow="False"
                         VerticalOptions="Center">
-                        <StackLayout Orientation="Horizontal">
+                        <StackLayout Orientation="Horizontal" >
                             <Frame
                                 Padding="5"
                                 BackgroundColor="White"
                                 CornerRadius="8"
                                 HasShadow="False">
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="BackButton_Clicked" />
-                                </Frame.GestureRecognizers>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="BackButton_Clicked" />
+                    </Frame.GestureRecognizers>
                                 <Image
-                                    HeightRequest="25"
+                                    HeightRequest="10"
                                     HorizontalOptions="End"
-                                    Source="arrowleft.png"
-                                    WidthRequest="25" />
+                                    Source="left_arrow.png"
+                                    WidthRequest="10"                                   
+                                    />
                             </Frame>
                             <Label
                                 Margin="15,0,0,0"
@@ -106,502 +47,503 @@
                                 Text="Nouvelle demande AT"
                                 TextColor="Black"
                                 VerticalOptions="Center" />
-
+                           
                         </StackLayout>
                     </Frame>
-                </StackLayout>
+                </StackLayout>-->
 
-                <StackLayout
+                  <StackLayout
                     Padding="20,10"
                     Spacing="0"
                     VerticalOptions="Center">
                     <StackLayout>
 
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="Step1_Clicked" />
-                        </StackLayout.GestureRecognizers>
-                        <StackLayout Orientation="Horizontal">
-                            <Frame
-                                x:Name="Step1IconFrame"
-                                Margin="0"
-                                Padding="0"
-                                BackgroundColor="LightGray"
-                                CornerRadius="10"
-                                HasShadow="False"
-                                HeightRequest="20"
-                                HorizontalOptions="Start"
-                                VerticalOptions="Start"
-                                WidthRequest="20">
-                                <Label
-                                    x:Name="Step1IconText"
-                                    FontSize="10"
-                                    HorizontalOptions="Center"
-                                    HorizontalTextAlignment="Center"
-                                    Text="1"
-                                    TextColor="White"
-                                    VerticalOptions="Center"
-                                    VerticalTextAlignment="Center" />
-                            </Frame>
-                            <Label
-                                FontAttributes="Bold"
-                                FontSize="13"
-                                HorizontalTextAlignment="Center"
-                                Text="Titre étape 1"
-                                TextColor="#333045"
-                                VerticalOptions="Center" />
-                        </StackLayout>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Step1_Clicked" />
+                    </StackLayout.GestureRecognizers>
+                    <StackLayout Orientation="Horizontal">
+                        <Frame
+                            x:Name="Step1IconFrame"
+                            HeightRequest="20"
+                            WidthRequest="20"
+                            CornerRadius="10"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Start"
+                            Margin="0"
+                            Padding="0" 
+                            BackgroundColor="LightGray"
+                            HasShadow="False">
+                        <Label x:Name="Step1IconText"
+                               Text="1" FontSize="10" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" /> 
+                         </Frame>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="13"
+                            HorizontalTextAlignment="Center"
+                            Text="Titre étape 1"
+                            TextColor="#333045"
+                            VerticalOptions="Center" />
+                         <Label
+
+                            FontAttributes="Bold"
+                            FontSize="13"
+                            HorizontalTextAlignment="Center"
+                            Text="Enregistrer le bruillon"
+                            VerticalOptions="Center"
+                            HorizontalOptions="EndAndExpand"
+                            TextColor="#7ba7e8">
+                             <Label.GestureRecognizers>
+                                 <TapGestureRecognizer Tapped="SaveAsDraft_Tapped" />
+                             </Label.GestureRecognizers>
+                         </Label>                            
                     </StackLayout>
-                    <StackLayout x:Name="Step1ExpandableLayout" HorizontalOptions="FillAndExpand">
-                        <StackLayout x:Name="Step1ExpandableContent">
-                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="2*" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-                                <BoxView
-                                    Margin="10,5,0,0"
+                    </StackLayout>
+                    <StackLayout
+                        x:Name="Step1ExpandableLayout"
+                        HorizontalOptions="FillAndExpand"
+                        HeightRequest="-1">
+                        <StackLayout x:Name="Step1ExpandableContent" >
+                        <Grid
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                             HeightRequest="-1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                             <BoxView BackgroundColor="LightGray"
+                                     WidthRequest="1"
+                                     HorizontalOptions="Start"
+                                     VerticalOptions="FillAndExpand"
+                                     Margin="10,5,0,0"/>
+                        <!--#region from step 1-->
+                      
+                        <StackLayout HorizontalOptions="FillAndExpand"
+                                     VerticalOptions="FillAndExpand"
+                                     Margin="25,20,0,0"
+                                     Spacing="10">
+                                      
+                            <StackLayout>
+                                <Frame
+                                    Padding="1"
+                                    BorderColor="#DEE1E8"
+                                    HasShadow="False">
+                                    <Controls:CustomRoundedPicker
+                                        x:Name="SitePicker"
+                                        Title="Séléctionner un site"
+                                        ItemDisplayBinding="{Binding SiteName}"
+                                        ItemsSource="{Binding SiteList}"
+                                        SelectedItem="{Binding DemandeAutorisationTravail.AtSite, Mode=TwoWay}"
+                                        TitleColor="#9495A8"
+                                        Style="{StaticResource InputStyle}"
+                                        Unfocused="SitePicker_Unfocused"
+                                        />
+                                </Frame>
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="FillAndExpand">
+                                <Frame
+                                    Padding="1"
+                                    BorderColor="#DEE1E8"
+                                    HasShadow="False">
+                                    <Controls:CustomRoundedPicker
+                                        x:Name="EntitePicker"
+                                        Title="Séléctionner une entité"
+                                        ItemDisplayBinding="{Binding EntiteName}"
+                                        ItemsSource="{Binding EntiteList}"
+                                        TitleColor="#9495A8"
+                                        Style="{StaticResource InputStyle}"                                    
+                                        Unfocused="EntitePicker_Unfocused"/>
+                                </Frame>
+                            </StackLayout>
+                            
+                            <StackLayout>
+                                <Frame
+                                    Padding="1"
+                                    BorderColor="#DEE1E8"
+                                    HasShadow="False">
+                                    <Entry
+                                        x:Name="LieuEntry"
+                                        Placeholder="Lieu d'intervention"
+                                        Style="{StaticResource InputStyle}"
+                                        TextChanged="LieuEntry_TextChanged"
+                                        />
+                                </Frame>
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="FillAndExpand">
+                                <Frame
+                                    Padding="1"
+                                    BorderColor="#DEE1E8"
+                                    HasShadow="False">
+                                    <Controls:CustomRoundedPicker
+                                        x:Name="ChefEquipPicker"
+                                        Title="Chef d'équipe entité"
+                                        ItemDisplayBinding="{Binding Name}"
+                                        ItemsSource="{Binding ChefEntiteList}"
+                                        SelectedItem="{Binding DemandeAutorisationTravail.ChefEntite, Mode=TwoWay}"
+                                        TitleColor="#9495A8"
+                                        Style="{StaticResource InputStyle}"
+                                        Unfocused="ChefEquipPicker_Unfocused"
+                                        
+                                        />
+                                </Frame>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal"
+                                         VerticalOptions="Center"
+                                         Margin="0,25,0,0">
+
+                                 <Button
+                                
+                                    Clicked="BackButton_Clicked"
+                                    Text="ANNULER"
+                                    TextColor="Gray"
                                     BackgroundColor="LightGray"
-                                    HorizontalOptions="Start"
-                                    VerticalOptions="FillAndExpand"
-                                    WidthRequest="1" />
-                                <!--#region from step 1-->
+                                    FontAttributes="Bold"
+                                    FontSize="15"
+                                    Padding="15,0"
+                                    HeightRequest="35"
+                                    WidthRequest="120"
+                                    CornerRadius="0"
+                                    />
+                            <Button
+                                
+                                    x:Name="ButtonNextStep1"
+                                    Clicked="Suivant_Step1_Clicked"
+                                    Text="SUIVANT"
+                                    TextColor="White"
+                                    BackgroundColor="#5BA702"
+                                    FontAttributes="Bold"
+                                    FontSize="15"
+                                    Padding="15,0"
+                                    Margin="10,0,0,0"
+                                    HeightRequest="35"
+                                    WidthRequest="120"
+                                    CornerRadius="0"
+                                    />
+                                
+                           
 
-                                <StackLayout
-                                    Margin="25,20,0,0"
-                                    HorizontalOptions="FillAndExpand"
-                                    Spacing="10"
-                                    VerticalOptions="FillAndExpand">
-
-                                    <StackLayout>
-                                        <Frame
-                                            Padding="1"
-                                            BorderColor="#DEE1E8"
-                                            HasShadow="False">
-                                            <Controls:CustomRoundedPicker
-                                                x:Name="SitePicker"
-                                                Title="Séléctionner un site"
-                                                ItemDisplayBinding="{Binding SiteName}"
-                                                ItemsSource="{Binding SiteList}"
-                                                SelectedItem="{Binding DemandeAutorisationTravail.AtSite, Mode=TwoWay}"
-                                                TitleColor="#9495A8" />
-                                        </Frame>
-                                    </StackLayout>
-                                    <StackLayout HorizontalOptions="FillAndExpand">
-                                        <Frame
-                                            Padding="1"
-                                            BorderColor="#DEE1E8"
-                                            HasShadow="False">
-                                            <Controls:CustomRoundedPicker
-                                                Title="Séléctionner une entité"
-                                                ItemDisplayBinding="{Binding EntiteName}"
-                                                ItemsSource="{Binding EntiteList}"
-                                                TitleColor="#9495A8" />
-                                        </Frame>
-                                    </StackLayout>
-
-                                    <StackLayout>
-                                        <Frame
-                                            Padding="1"
-                                            BorderColor="#DEE1E8"
-                                            HasShadow="False">
-                                            <Entry
-                                                x:Name="LieuEntry"
-                                                Placeholder="Lieu d'intervention"
-                                                TextColor="Gray" />
-                                        </Frame>
-                                    </StackLayout>
-                                    <StackLayout HorizontalOptions="FillAndExpand">
-                                        <Frame
-                                            Padding="1"
-                                            BorderColor="#DEE1E8"
-                                            HasShadow="False">
-                                            <Controls:CustomRoundedPicker
-                                                Title="Chef d'équipe entité"
-                                                ItemDisplayBinding="{Binding Name}"
-                                                ItemsSource="{Binding ChefEntiteList}"
-                                                SelectedItem="{Binding DemandeAutorisationTravail.ChefEntite, Mode=TwoWay}"
-                                                TitleColor="#9495A8" />
-                                        </Frame>
-                                    </StackLayout>
-                                    <StackLayout HorizontalOptions="FillAndExpand">
-                                        <Frame
-                                            Padding="1"
-                                            BorderColor="#DEE1E8"
-                                            HasShadow="False">
-                                            <Controls:CustomRoundedPicker
-                                                Title="Chef d'équipe entité"
-                                                ItemDisplayBinding="{Binding Name}"
-                                                ItemsSource="{Binding ChefEntiteList}"
-                                                SelectedItem="{Binding DemandeAutorisationTravail.ChefEntite, Mode=TwoWay}"
-                                                TitleColor="#9495A8" />
-                                        </Frame>
-                                    </StackLayout>
-                                    <StackLayout HorizontalOptions="FillAndExpand">
-                                        <Frame
-                                            Padding="1"
-                                            BorderColor="#DEE1E8"
-                                            HasShadow="False">
-                                            <Controls:CustomRoundedPicker
-                                                Title="Chef d'équipe entité"
-                                                ItemDisplayBinding="{Binding Name}"
-                                                ItemsSource="{Binding ChefEntiteList}"
-                                                SelectedItem="{Binding DemandeAutorisationTravail.ChefEntite, Mode=TwoWay}"
-                                                TitleColor="#9495A8" />
-                                        </Frame>
-                                    </StackLayout>
-                                    <StackLayout HorizontalOptions="FillAndExpand">
-                                        <Frame
-                                            Padding="1"
-                                            BorderColor="#DEE1E8"
-                                            HasShadow="False">
-                                            <Controls:CustomRoundedPicker
-                                                Title="Chef d'équipe entité"
-                                                ItemDisplayBinding="{Binding Name}"
-                                                ItemsSource="{Binding ChefEntiteList}"
-                                                SelectedItem="{Binding DemandeAutorisationTravail.ChefEntite, Mode=TwoWay}"
-                                                TitleColor="#9495A8" />
-                                        </Frame>
-                                    </StackLayout>
-                                    <StackLayout
-                                        Margin="0,25,0,0"
-                                        Orientation="Horizontal"
-                                        VerticalOptions="Center">
-
-                                        <Button
-                                            Padding="15,0"
-                                            BackgroundColor="LightGray"
-                                            Clicked="BackButton_Clicked"
-                                            FontAttributes="Bold"
-                                            FontSize="15"
-                                            HeightRequest="35"
-                                            Text="ANNULER"
-                                            TextColor="Gray" />
-                                        <Button
-                                            Margin="10,0,0,0"
-                                            Padding="15,0"
-                                            BackgroundColor="#4a8803"
-                                            Clicked="Suivant_Step1_Clicked"
-                                            FontAttributes="Bold"
-                                            FontSize="15"
-                                            HeightRequest="35"
-                                            Text="SUIVANT"
-                                            TextColor="White" />
-                                    </StackLayout>
-                                </StackLayout>
-
-                                <!--#endregion form step 1-->
-                            </Grid>
+                            </StackLayout>
+                            </StackLayout>
+                    
+                            <!--#endregion form step 1-->
+                        </Grid>
                         </StackLayout>
                     </StackLayout>
-                </StackLayout>
-
+              </StackLayout>
+                
                 <!--#region Step 2-->
-                <StackLayout
+                 <StackLayout
                     Padding="20,0,0,10"
                     Spacing="0"
                     VerticalOptions="Center">
                     <StackLayout>
 
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="Step2_Clicked" />
-                        </StackLayout.GestureRecognizers>
-                        <StackLayout Orientation="Horizontal">
-                            <Frame
-                                x:Name="Step2IconFrame"
-                                Margin="0"
-                                Padding="0"
-                                BackgroundColor="LightGray"
-                                CornerRadius="10"
-                                HasShadow="False"
-                                HeightRequest="20"
-                                HorizontalOptions="Start"
-                                VerticalOptions="Start"
-                                WidthRequest="20">
-                                <Label
-                                    x:Name="Step2IconText"
-                                    FontSize="10"
-                                    HorizontalOptions="Center"
-                                    HorizontalTextAlignment="Center"
-                                    Text="2"
-                                    TextColor="White"
-                                    VerticalOptions="Center"
-                                    VerticalTextAlignment="Center" />
-                            </Frame>
-                            <Label
-                                FontAttributes="Bold"
-                                FontSize="13"
-                                HorizontalTextAlignment="Center"
-                                Text="Titre étape 2"
-                                TextColor="#333045"
-                                VerticalOptions="Center" />
-                        </StackLayout>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Step2_Clicked" />
+                    </StackLayout.GestureRecognizers>
+                    <StackLayout Orientation="Horizontal">
+                        <Frame
+                            x:Name="Step2IconFrame" 
+                            HeightRequest="20"
+                            WidthRequest="20"
+                            CornerRadius="10"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Start"
+                            Margin="0"
+                            Padding="0" 
+                            BackgroundColor="LightGray"
+                            HasShadow="False">
+                        <Label  x:Name="Step2IconText" FontSize="10"  Text="2" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" 
+                        HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label> 
+                         </Frame>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="13"
+                            HorizontalTextAlignment="Center"
+                            Text="Titre étape 2"
+                            TextColor="#333045"
+                            VerticalOptions="Center" />
                     </StackLayout>
-                    <StackLayout
+                    </StackLayout>
+                   <StackLayout
                         x:Name="Step2ExpandableLayout"
                         Padding="0"
-                        HorizontalOptions="FillAndExpand">
-                        <StackLayout x:Name="Step2ExpandableContent">
-                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
+                        HorizontalOptions="FillAndExpand"
+                       HeightRequest="-1">
+                        <StackLayout x:Name="Step2ExpandableContent" >
+                        <Grid
+                            VerticalOptions="StartAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            HeightRequest="-1">
+                            <Grid.ColumnDefinitions>   
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <BoxView BackgroundColor="LightGray"
+                                     WidthRequest="1"
+                                     HorizontalOptions="Start"
+                                     VerticalOptions="FillAndExpand"
+                                     Margin="10,5,0,0"/>
+                              <!--#region from step 2-->
+                           
+                        <StackLayout HorizontalOptions="FillAndExpand"
+                                     VerticalOptions="FillAndExpand"
+                                     Margin="25,20,20,0"
+                                     Spacing="10">
+                            
+                            <StackLayout>
+                                <Frame
+                                    Padding="1"
+                                    BorderColor="#DEE1E8"
+                                    HasShadow="False">
+                                    <Entry x:Name="NumeroDemandeEntry"
+                                            Placeholder="Numéro de la demande" 
+                                           Style="{StaticResource InputStyle}"/>
+                                </Frame>
+                            </StackLayout>
+
+                          <StackLayout>
+                              <Grid>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="2*" />
-                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="2*"/>
                                 </Grid.ColumnDefinitions>
-                                <BoxView
-                                    Margin="10,5,0,0"
-                                    BackgroundColor="LightGray"
-                                    HorizontalOptions="Start"
-                                    VerticalOptions="FillAndExpand"
-                                    WidthRequest="1" />
-                                <!--#region from step 2-->
-
-                                <StackLayout
-                                    Margin="25,20,20,0"
-                                    HorizontalOptions="FillAndExpand"
-                                    Spacing="10"
-                                    VerticalOptions="FillAndExpand">
-
-                                    <StackLayout>
-                                        <Frame
-                                            Padding="1"
-                                            BorderColor="#DEE1E8"
-                                            HasShadow="False">
-                                            <Entry
-                                                x:Name="NumeroDemandeEntry"
-                                                Keyboard="Numeric"
-                                                Placeholder="Numéro de la demande"
-                                                TextColor="Gray" />
-                                        </Frame>
-                                    </StackLayout>
-
-                                    <StackLayout>
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="2*" />
-                                            </Grid.ColumnDefinitions>
-                                            <StackLayout
-                                                Grid.Column="0"
-                                                HorizontalOptions="FillAndExpand"
-                                                VerticalOptions="FillAndExpand">
-                                                <Frame
-                                                    Padding="1"
-                                                    BorderColor="#DEE1E8"
-                                                    HasShadow="False">
-                                                    <Controls:CustomRoundedPicker
-                                                        Title="BT"
-                                                        ItemsSource="{Binding DTList}"
-                                                        TitleColor="#9495A8" />
-                                                </Frame>
-                                            </StackLayout>
-                                            <StackLayout
-                                                Grid.Column="1"
-                                                HorizontalOptions="FillAndExpand"
-                                                VerticalOptions="FillAndExpand">
-                                                <Frame
-                                                    Padding="1"
-                                                    BorderColor="#DEE1E8"
-                                                    HasShadow="False">
-                                                    <Entry
-                                                        x:Name="NumeroEntry"
-                                                        Keyboard="Numeric"
-                                                        Placeholder="Numéro" />
-                                                </Frame>
-                                            </StackLayout>
-                                        </Grid>
-                                    </StackLayout>
-                                    <StackLayout>
-
-                                        <Frame
-                                            Padding="1"
-                                            BorderColor="#DEE1E8"
-                                            HasShadow="False">
-                                            <Editor
-                                                x:Name="DescriptionEditor"
-                                                HeightRequest="100"
-                                                MaxLength="1000"
-                                                Placeholder="Brève description*"
-                                                TextColor="Gray" />
-                                        </Frame>
-                                        <Label
-                                            FontSize="10"
-                                            Text="0/1000"
-                                            TextColor="Gray" />
-                                    </StackLayout>
-                                    <StackLayout
-                                        Margin="0,25,0,0"
-                                        Orientation="Horizontal"
-                                        VerticalOptions="Center">
-                                        <Button
-                                            Padding="15,0"
-                                            BackgroundColor="LightGray"
-                                            Clicked="BackButton_Clicked"
-                                            FontAttributes="Bold"
-                                            FontSize="16"
-                                            HeightRequest="35"
-                                            Text="ANNULER"
-                                            TextColor="Gray" />
-                                        <Button
-                                            Margin="0,0,0,0"
-                                            Padding="15,0"
-                                            BackgroundColor="#4a8803"
-                                            Clicked="Suivant_Step2_Clicked"
-                                            FontAttributes="Bold"
-                                            FontSize="16"
-                                            HeightRequest="35"
-                                            Text="SUIVANT"
-                                            TextColor="White" />
-
-
-
-                                    </StackLayout>
+                                <StackLayout HorizontalOptions="FillAndExpand"
+                                             VerticalOptions="FillAndExpand"
+                                                Grid.Column="0">
+                                    <Frame
+                                        Padding="1"
+                                        BorderColor="#DEE1E8"
+                                        HasShadow="False">
+                                        <Controls:CustomRoundedPicker
+                                        x:Name="AttachedElementPicker"
+                                        Title="BT"
+                                        ItemsSource="{Binding DTList}"
+                                        TitleColor="#9495A8"
+                                        Style="{StaticResource InputStyle}"
+                                        Unfocused="AttachedElementPicker_Unfocused"
+                                        />
+                                    </Frame>
                                 </StackLayout>
+                                <StackLayout HorizontalOptions="FillAndExpand"
+                                             VerticalOptions="FillAndExpand"
+                                              Grid.Column="1">
+                                    <Frame
+                                        Padding="1"
+                                        BorderColor="#DEE1E8"
+                                        HasShadow="False">
+                                        <Entry
+                                            x:Name="NumeroEntry"
+                                            Placeholder="Numéro"
+                                            Style="{StaticResource InputStyle}"
+                                            TextChanged="NumeroEntry_TextChanged"/>
+                                    </Frame>
+                                </StackLayout>
+                            </Grid>    
+                            </StackLayout>
+                              <StackLayout>
+                                
+                                <Frame
+                                    Padding="1"
+                                    BorderColor="#DEE1E8"
+                                    HasShadow="False"
+                                   >
+                                    <Editor
+                                        x:Name="DescriptionEditor"
+                                        HeightRequest="100"
+                                        Placeholder="Brève description*"   
+                                        TextColor="Gray"
+                                        MaxLength = "1000"
+                                        Style="{StaticResource InputStyle}"
+                                        TextChanged="DescriptionEditor_TextChanged"/>
+                                </Frame>
+                                  <Label x:Name="DescriptionLengthLabel" Text="0/1000" FontSize="10" TextColor="Gray"/>
+                            </StackLayout>
+                             <StackLayout Orientation="Horizontal"
+                                         VerticalOptions="Center"
+                                         Margin="0,25,0,0">
+                              <Button
+                                    Clicked="BackButton_Clicked"
+                                    Text="ANNULER"
+                                    TextColor="Gray"
+                                    BackgroundColor="LightGray"
+                                    FontAttributes="Bold"
+                                    FontSize="16"
+                                    Padding="15,0"
+                                    WidthRequest="120"
+                                    CornerRadius="0"
+                                    HeightRequest="35"
+                                    />  
+                            <Button
+                                
+                                    x:Name="ButtonNextStep2"
+                                    Clicked="Suivant_Step2_Clicked"
+                                    Text="SUIVANT"
+                                    TextColor="White"
+                                    BackgroundColor="#4a8803"
+                                    FontAttributes="Bold"
+                                    FontSize="16"
+                                    Padding="15,0"
+                                    HeightRequest="35"
+                                    WidthRequest="120"
+                                    CornerRadius="0"
+                                    Margin="10,0,0,0"
+                                    />
+                                
+                            
 
-                                <!--#endregion form step 2-->
-
-                            </Grid>
+                            </StackLayout>
+                            </StackLayout>
+                    
+                            <!--#endregion form step 2-->
+                       
+                        </Grid>
                         </StackLayout>
                     </StackLayout>
-                </StackLayout>
+              </StackLayout>
                 <!--#endregion Step 2-->
-                <!--#region Step 3-->
-                <StackLayout
+                  <!--#region Step 3-->
+                 <StackLayout
                     Padding="20,0,0,10"
                     Spacing="0"
                     VerticalOptions="Center">
                     <StackLayout>
 
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="Step3_Clicked" />
-                        </StackLayout.GestureRecognizers>
-                        <StackLayout Orientation="Horizontal">
-                            <Frame
-                                x:Name="Step3IconFrame"
-                                Margin="0"
-                                Padding="0"
-                                BackgroundColor="LightGray"
-                                CornerRadius="10"
-                                HasShadow="False"
-                                HeightRequest="20"
-                                HorizontalOptions="Start"
-                                VerticalOptions="Start"
-                                WidthRequest="20">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Step3_Clicked" />
+                    </StackLayout.GestureRecognizers>
+                    <StackLayout Orientation="Horizontal">
+                        <Frame
+                            x:Name="Step3IconFrame" 
+                            HeightRequest="20"
+                            WidthRequest="20"
+                            CornerRadius="10"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Start"
+                            Margin="0"
+                            Padding="0" 
+                            BackgroundColor="LightGray"
+                            HasShadow="False">
 
-                                <Label
-                                    x:Name="Step3IconText"
-                                    FontSize="10"
-                                    HorizontalOptions="Center"
-                                    HorizontalTextAlignment="Center"
-                                    Text="3"
-                                    TextColor="White"
-                                    VerticalOptions="Center"
-                                    VerticalTextAlignment="Center" />
-                            </Frame>
-                            <Label
-                                FontAttributes="Bold"
-                                FontSize="13"
-                                HorizontalTextAlignment="Center"
-                                Text="Titre étape 3"
-                                TextColor="#333045"
-                                VerticalOptions="Center" />
-                        </StackLayout>
+                        <Label x:Name="Step3IconText" FontSize="10"  Text="3" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" 
+                        HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label> 
+                         </Frame>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="13"
+                            HorizontalTextAlignment="Center"
+                            Text="Titre étape 3"
+                            TextColor="#333045"
+                            VerticalOptions="Center" />
                     </StackLayout>
-                    <StackLayout
+                    </StackLayout>
+                   <StackLayout
                         x:Name="Step3ExpandableLayout"
                         Padding="0"
-                        HorizontalOptions="FillAndExpand">
+                        HorizontalOptions="FillAndExpand"
+                       HeightRequest="-1">
                         <StackLayout x:Name="Step3ExpandableContent">
-                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="2*" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-                                <BoxView
-                                    Margin="10,5,0,0"
-                                    BackgroundColor="LightGray"
-                                    HorizontalOptions="Start"
-                                    VerticalOptions="FillAndExpand"
-                                    WidthRequest="1" />
-                                <!--#region from step 3-->
-                                <StackLayout
-                                    Margin="25,20,20,0"
-                                    HorizontalOptions="FillAndExpand"
-                                    Spacing="10"
-                                    VerticalOptions="FillAndExpand">
-                                    <StackLayout>
-                                        <Label
-                                            FontAttributes="None"
-                                            FontSize="16"
-                                            Text="Date de l'intervention"
-                                            TextColor="Gray" />
-                                        <Frame
-                                            Padding="1"
-                                            BorderColor="#DEE1E8"
-                                            HasShadow="False">
-                                            <DatePicker Format="dd/MM/yyyy" HorizontalOptions="FillAndExpand" />
-                                        </Frame>
-                                    </StackLayout>
-                                    <StackLayout HorizontalOptions="FillAndExpand">
-                                        <Label
-                                            FontAttributes="None"
-                                            FontSize="16"
-                                            Text="Heure début"
-                                            TextColor="Gray" />
-                                        <Frame
-                                            Padding="1"
-                                            BorderColor="#DEE1E8"
-                                            HasShadow="False">
-                                            <TimePicker Format="HH:mm" />
-                                        </Frame>
-                                    </StackLayout>
-                                    <StackLayout HorizontalOptions="FillAndExpand">
-                                        <Label
-                                            FontAttributes="None"
-                                            FontSize="16"
-                                            Text="Heure fin"
-                                            TextColor="Gray" />
-                                        <Frame
-                                            Padding="1"
-                                            BorderColor="#DEE1E8"
-                                            HasShadow="False">
-                                            <TimePicker Format="HH:mm" />
-                                        </Frame>
-                                    </StackLayout>
-                                    <StackLayout
-                                        Margin="0,25,0,0"
-                                        Orientation="Horizontal"
-                                        VerticalOptions="Center">
-
-                                        <Button
-                                            Padding="15,0"
-                                            BackgroundColor="LightGray"
-                                            Clicked="BackButton_Clicked"
-                                            FontAttributes="Bold"
-                                            FontSize="16"
-                                            HeightRequest="35"
-                                            Text="ANNULER"
-                                            TextColor="Gray" />
-                                        <Button
-                                            Margin="10,0,0,0"
-                                            Padding="15,0"
-                                            BackgroundColor="#4a8803"
-                                            Clicked="Suivant_Step3_Clicked"
-                                            FontAttributes="Bold"
-                                            FontSize="16"
-                                            HeightRequest="35"
-                                            Text="VALIDER"
-                                            TextColor="White" />
-                                    </StackLayout>
+                        <Grid
+                            VerticalOptions="StartAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            HeightRequest="-1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <BoxView BackgroundColor="LightGray"
+                                     WidthRequest="1"
+                                     HorizontalOptions="Start"
+                                     VerticalOptions="FillAndExpand"
+                                     Margin="10,5,0,0"/>
+                             <!--#region from step 3-->
+                       <StackLayout HorizontalOptions="FillAndExpand"
+                                     VerticalOptions="FillAndExpand"
+                                     Margin="25,20,20,0"
+                                     Spacing="10">
+                            <StackLayout>
+                                <Label
+                                    FontAttributes="None"
+                                    FontSize="16"
+                                    Text="Date de l'intervention"
+                                    TextColor="Gray" />
+                                <Frame
+                                    Padding="1"
+                                    BorderColor="#DEE1E8"
+                                    HasShadow="False">
+                                    <DatePicker  x:Name="InterventionDatePicker" Format="dd/MM/yyyy" HorizontalOptions="FillAndExpand"
+                                                Style="{StaticResource InputStyle}" Unfocused="InterventionDatePicker_Unfocused"/>
+                                </Frame>
+                            </StackLayout>
+                                <StackLayout HorizontalOptions="FillAndExpand">
+                                    <Label
+                                        FontAttributes="None"
+                                        FontSize="16"
+                                        Text="Heure début"
+                                      TextColor="Gray" />
+                                    <Frame
+                                        Padding="1"
+                                        BorderColor="#DEE1E8"
+                                        HasShadow="False">
+                                        <TimePicker x:Name="HeureStartTimePicker" Format="HH:mm" Style="{StaticResource InputStyle}" Unfocused="HeureStartTimePicker_Unfocused"/>
+                                    </Frame>
                                 </StackLayout>
+                                <StackLayout HorizontalOptions="FillAndExpand">
+                                    <Label
+                                        FontAttributes="None"
+                                        FontSize="16"
+                                        Text="Heure fin"
+                                         TextColor="Gray"/>
+                                    <Frame
+                                        Padding="1"
+                                        BorderColor="#DEE1E8"
+                                        HasShadow="False">
+                                        <TimePicker x:Name="HeureEndTimePicker" Format="HH:mm"  Style="{StaticResource InputStyle}"  Unfocused="HeureEndTimePicker_Unfocused"/>
+                                    </Frame>
+                                </StackLayout>
+                              <StackLayout Orientation="Horizontal"
+                                         VerticalOptions="Center"
+                                         Margin="0,25,0,0">
+                                   <Button
+                                    Clicked="BackButton_Clicked"
+                                    Text="ANNULER"
+                                    TextColor="Gray"
+                                    BackgroundColor="LightGray"
+                                    FontAttributes="Bold"
+                                    FontSize="16"
+                                    Padding="15,0"
+                                    HeightRequest="35"
+                                    WidthRequest="120"
+                                    CornerRadius="0"
+                                    />
+                                    <Button
+                                    x:Name="ButtonNextStep3"
+                                    Clicked="Suivant_Step3_Clicked"
+                                    Text="VALIDER"
+                                    TextColor="White"
+                                    BackgroundColor="#5BA702"
+                                    FontAttributes="Bold"
+                                    FontSize="16"
+                                    Padding="15,0"
+                                    Margin="10,0,0,0"
+                                    HeightRequest="35"
+                                    WidthRequest="120"
+                                    CornerRadius="0"
+                                    />
+                                
+                           
 
-                                <!--#endregion form step 3-->
-
-                            </Grid>
+                            </StackLayout>
+                        </StackLayout>
+                    
+                            <!--#endregion form step 3-->
+                       
+                        </Grid>
                         </StackLayout>
                     </StackLayout>
-                </StackLayout>
+              </StackLayout>
                 <!--#endregion-->
-
-            </StackLayout>
-        </ScrollView>
+               
+                </StackLayout>                      
     </ContentPage.Content>
 </ContentPage>

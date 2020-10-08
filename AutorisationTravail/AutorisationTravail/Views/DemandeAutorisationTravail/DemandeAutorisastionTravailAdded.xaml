@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="AutorisationTravail.Views.DemandeAutorisationTravail.DemandeAutorisastionTravailAdded"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout
+            HorizontalOptions="CenterAndExpand"
+            VerticalOptions="CenterAndExpand"
+            Margin="10,0"
+            Spacing="20">
+            <Image
+                    HeightRequest="200"
+                WidthRequest="160"
+                   Source="success.png"                                  
+                                    />
+            <Label Text="Demande AT envoyée avec succès"
+                   FontAttributes="None"
+                   FontSize="20"
+                   TextColor="#5b5c5c"
+                   HorizontalTextAlignment="Center"
+                   HorizontalOptions="CenterAndExpand"
+                   />
+            <Label Text="La demande d'Autorisation de travail a été envohée avec succès.Elle sera visible sur l'onglet &quot;Demande AT en attentes&quot; "
+                   FontAttributes="None"
+                   TextColor="Gray"
+                   HorizontalTextAlignment="Center"
+                   HorizontalOptions="CenterAndExpand"
+                   Margin="20,0"/>
+            
+            <Button
+                x:Name="BackToDemandeATButton"
+                Text="DEMANDES AT"
+                Clicked="BackToDemandeATButton_Clicked"
+                    TextColor="White"
+                    BackgroundColor="#40b340"
+                    HorizontalOptions="CenterAndExpand"
+                    Padding="25,0"
+                    CornerRadius="23"/>
+           
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

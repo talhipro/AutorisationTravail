@@ -17,10 +17,17 @@ namespace AutorisationTravail.Droid
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            RequestedOrientation = ScreenOrientation.Portrait;
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(savedInstanceState);
+
+            #region Initialize plugins
+            Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
+            #endregion
+
+
 
             Window.SetStatusBarColor(Color.White);
             ///Window.SetStatusBarColor(Color.ParseColor("#3185DE"));

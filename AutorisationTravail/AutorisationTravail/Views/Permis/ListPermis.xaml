@@ -7,14 +7,44 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:magic="clr-namespace:MagicGradients;assembly=MagicGradients"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    NavigationPage.HasNavigationBar="False"
+    NavigationPage.HasNavigationBar="True"
     mc:Ignorable="d">
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal">
+            <Label
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                FontAttributes="Bold"
+                FontSize="20"
+                HorizontalOptions="FillAndExpand"
+                Text="Liste des Permis"
+                TextColor="Black" />
+            <Frame
+                Margin="0,0,10,0"
+                Padding="5"
+                BackgroundColor="Gray"
+                CornerRadius="8"
+                HasShadow="False"
+                VerticalOptions="End">
+                <Image
+                    HeightRequest="25"
+                    HorizontalOptions="End"
+                    Source="add.png"
+                    WidthRequest="25">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="NewPermis_Tapped" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </Frame>
+        </StackLayout>
+    </NavigationPage.TitleView>
     <ContentPage.Content>
         <ScrollView>
             <StackLayout BackgroundColor="#e6ebfc">
-                <StackLayout x:Name="Header">
+                <!--<StackLayout x:Name="Header">
                     <Grid>
-                        <!--#region Gradient-->
+                -->
+                <!--#region Gradient-->
+                <!--
                         <magic:GradientView VerticalOptions="FillAndExpand">
                             <magic:GradientView.GradientSource>
                                 <magic:LinearGradient Angle="0">
@@ -23,7 +53,9 @@
                                 </magic:LinearGradient>
                             </magic:GradientView.GradientSource>
                         </magic:GradientView>
-                        <!--#endregion-->
+                -->
+                <!--#endregion-->
+                <!--
                         <StackLayout Spacing="0">
                             <Frame
                                 Margin="0,-15"
@@ -108,8 +140,40 @@
 
                         </StackLayout>
                     </Grid>
-                </StackLayout>
+                </StackLayout>-->
 
+                <Frame
+                    x:Name="SearchSection"
+                    Padding="10"
+                    BackgroundColor="Transparent"
+                    HasShadow="False">
+                    <StackLayout Margin="0">
+                        <Frame
+                            x:Name="FilterPermis"
+                            Padding="6"
+                            CornerRadius="6"
+                            HasShadow="False">
+                            <StackLayout Orientation="Horizontal" Spacing="10">
+                                <Controls:CustomCachedImage
+                                    HeightRequest="30"
+                                    Source="filter.png"
+                                    WidthRequest="30" />
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="14"
+                                    Text="Site, Entité, Service,Type de permis, Demandeur, Statut"
+                                    TextColor="#172952"
+                                    VerticalOptions="Center" />
+                                <Controls:CustomCachedImage
+                                    HeightRequest="30"
+                                    HorizontalOptions="EndAndExpand"
+                                    Source="down_arrow.png"
+                                    TintColor="#172952"
+                                    WidthRequest="30" />
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                </Frame>
                 <Frame
                     x:Name="NoRecordsFrame"
                     Margin="10"

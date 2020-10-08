@@ -16,5 +16,11 @@ namespace AutorisationTravail.Popups
         {
             InitializeComponent();
         }
+
+        private async void DemandesAT_Clicked(object sender, EventArgs e)
+        {
+            await Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopAsync();
+            await App.Current.MainPage.Navigation.PopAsync();
+        }
     }
 }

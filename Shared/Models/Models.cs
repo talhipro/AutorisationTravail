@@ -26,4 +26,17 @@ namespace Shared.Models
         public string Id { get; set; }
         public string EntiteName { get; set; }
     }
+
+    [AddINotifyPropertyChangedInterface]
+    public class ChefEntiteModel
+    {
+        public string Id { get; set; }
+        public string Name { get; set; }
+    }
+
+    public class DTModel
+    {
+        public string Id { get; set; }
+        public string DTName { get; set; }
+    }
 }

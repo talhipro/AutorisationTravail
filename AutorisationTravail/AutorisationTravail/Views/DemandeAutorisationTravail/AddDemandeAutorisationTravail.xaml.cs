@@ -5,7 +5,8 @@ using Xamarin.Forms;
 
 using Shared.Models;
 using System.Collections.Generic;
-//using Shared.Models.DemandeAutorsationTravail;
+using Shared.Models.DemandeAutorisation;
+using Rg.Plugins.Popup.Services;
 
 namespace AutorisationTravail.Views.DemandeAutorisationTravail
 {
@@ -22,11 +23,11 @@ namespace AutorisationTravail.Views.DemandeAutorisationTravail
         private bool Step2IsChecked = false;
         private bool Step3IsChecked = false;
 
-        /*public DemandeATModel DemandeAutorisationTravail { get; set; } = new DemandeATModel();
+        public DemandeATModel DemandeAutorisationTravail { get; set; } = new DemandeATModel();
         public List<SiteModel> SiteList { get; set; } = new List<SiteModel>();
         public List<EntiteModel> EntiteList { get; set; } = new List<EntiteModel>();
         public List<ChefEntiteModel> ChefEntiteList { get; set; } = new List<ChefEntiteModel>();
-        public List<string> DTList { get; set; } = new List<string>();*/
+        public List<string> DTList { get; set; } = new List<string>();
 
         public AddDemandeAutorisationTravail()
         {
@@ -39,8 +40,7 @@ namespace AutorisationTravail.Views.DemandeAutorisationTravail
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-
-            /*EntiteList = new List<EntiteModel>
+            EntiteList = new List<EntiteModel>
             {
                 new EntiteModel() {Id = "01", EntiteName = "Entite 01"},
                 new EntiteModel() {Id = "02", EntiteName = "Entite 02"},
@@ -65,16 +65,19 @@ namespace AutorisationTravail.Views.DemandeAutorisationTravail
                 new ChefEntiteModel() {Id = "04", Name = "ChefEntite 04"},
                 new ChefEntiteModel() {Id = "05", Name = "ChefEntite 05"}
             };
-            DTList = new List<string>  {"DI","OT","BT" };*/
+            DTList = new List<string> { "DI", "OT", "BT" };
 
-
-            await ExpandLayout(Step1ExpandableLayout, Step1IconText,Step1IconFrame,Step1IsChecked,Step1IsExpanded);
+            await ExpandLayout(Step1ExpandableLayout, Step1IconText, Step1IconFrame, Step1IsChecked, Step1IsExpanded);
             Step1IsExpanded = true;
 
             SetUpPlaceHolder(LieuEntry, "Lieu d'intervention");
             SetUpPlaceHolder(NumeroEntry, "Numéro");
             SetUpPlaceHolder(NumeroDemandeEntry, "Numéro de la demande");
             SetUpPlaceHolder(DescriptionEditor, "Brève description*");
+
+            SetButtonDesabled(ButtonNextStep1);
+            SetButtonDesabled(ButtonNextStep2);
+            SetButtonDesabled(ButtonNextStep3);
         }
 
         private async void Step1_Clicked(object sender, EventArgs e)
@@ -85,13 +88,13 @@ namespace AutorisationTravail.Views.DemandeAutorisationTravail
                 //var height =  Step1ExpandableContent.Height;
                 if (Step1IsExpanded)
                 {
-                    await CollapseLayout(Step1ExpandableLayout, Step1IconText, Step1IconFrame, Step1IsChecked,Step1IsExpanded);
+                    await CollapseLayout(Step1ExpandableLayout, Step1IconText, Step1IconFrame, Step1IsChecked, Step1IsExpanded);
                 }
                 else
                 {
                     await CollapseLayout(Step3ExpandableLayout, Step3IconText, Step3IconFrame, Step3IsChecked, Step3IsExpanded);
                     await CollapseLayout(Step2ExpandableLayout, Step2IconText, Step2IconFrame, Step2IsChecked, Step2IsExpanded);
-                    await ExpandLayout(Step1ExpandableLayout, Step1IconText, Step1IconFrame, Step1IsChecked,Step1IsExpanded);
+                    await ExpandLayout(Step1ExpandableLayout, Step1IconText, Step1IconFrame, Step1IsChecked, Step1IsExpanded);
                     Step3IsExpanded = false;
                     Step2IsExpanded = false;
                 }
@@ -153,11 +156,11 @@ namespace AutorisationTravail.Views.DemandeAutorisationTravail
             Step1IconFrame.BackgroundColor = Color.DarkGreen;
 
             await CollapseLayout(Step1ExpandableLayout);
-            await ExpandLayout(Step2ExpandableLayout,Step2IconText,Step2IconFrame,Step2IsChecked,Step2IsExpanded);
+            await ExpandLayout(Step2ExpandableLayout, Step2IconText, Step2IconFrame, Step2IsChecked, Step2IsExpanded);
             Step2IsExpanded = true;
             Step1IsExpanded = false;
+            if (Step3FieldsValid()) { SetButtonEnabled(ButtonNextStep3); }
         }
-
         private async void Suivant_Step2_Clicked(object sender, EventArgs e)
         {
             Step2IsChecked = true;
@@ -169,30 +172,31 @@ namespace AutorisationTravail.Views.DemandeAutorisationTravail
             await ExpandLayout(Step3ExpandableLayout, Step3IconText, Step3IconFrame, Step3IsChecked, Step3IsExpanded);
             Step3IsExpanded = true;
             Step2IsExpanded = false;
+            if (Step3FieldsValid()) { SetButtonEnabled(ButtonNextStep3); }
         }
-
-        private void Suivant_Step3_Clicked(object sender, EventArgs e)
+        private async void Suivant_Step3_Clicked(object sender, EventArgs e)
         {
             Step3IsChecked = true;
             Step3IconText.Text = "✓";
             Step3IconText.TextColor = Color.White;
             Step3IconFrame.BackgroundColor = Color.DarkGreen;
+            await Application.Current.MainPage.Navigation.PushAsync(new DemandeAutorisastionTravailAdded());
+
         }
 
         private async Task CollapseLayout(StackLayout layout)
         {
-            var animation = new Animation(v => layout.HeightRequest = v, -1, 0);
-            animation.Commit(layout, "ExpandSize", 16, 100);
-            await layout.FadeTo(0, 200);
+            var animation = new Animation(v => layout.HeightRequest = v, 350, 0);
+            await layout.FadeTo(0, 250);
+            animation.Commit(layout, "ExpandSize", 16, 250);
 
         }
         private async Task ExpandLayout(StackLayout layout)
         {
-            var animation = new Animation(v => layout.HeightRequest = v, 0, -1);
-            animation.Commit(layout, "ExpandSize", 16, 100);
-            await layout.FadeTo(1, 200);
+            var animation = new Animation(v => layout.HeightRequest = v, 0, 350);
+            animation.Commit(layout, "ExpandSize", 16, 250);
+            await layout.FadeTo(1, 250);
         }
-
         private async Task ExpandLayout(StackLayout layout, Label label, Frame frame, bool IsChecked, bool IsExpanded)
         {
             if (!IsExpanded)
@@ -203,12 +207,12 @@ namespace AutorisationTravail.Views.DemandeAutorisationTravail
                     label.TextColor = Color.DarkGreen;
                     frame.BackgroundColor = Color.FromHex("#c4dfb4");
                 }
+
             }
         }
-
-        private async Task CollapseLayout(StackLayout layout, Label label, Frame frame, bool IsChecked,bool IsExpanded)
+        private async Task CollapseLayout(StackLayout layout, Label label, Frame frame, bool IsChecked, bool IsExpanded)
         {
-            if(IsExpanded)
+            if (IsExpanded)
             {
                 await CollapseLayout(layout);
                 if (!IsChecked)
@@ -219,11 +223,14 @@ namespace AutorisationTravail.Views.DemandeAutorisationTravail
             }
         }
 
+
         private async void BackButton_Clicked(System.Object sender, EventArgs e)
         {
-            await Application.Current.MainPage.Navigation.PushAsync(new Home.HomeView());
+            bool answer = await DisplayAlert("", "Voulez-vous vraiment annuler la demande?", "OUI", "NON");
+            if(answer)
+            await Application.Current.MainPage.Navigation.PushAsync(new ListDemandeAutorisationTravail());
         }
-        private void SetUpPlaceHolder(View view,string hint)
+        private void SetUpPlaceHolder(View view, string hint)
         {
             if (view is Entry)
             {
@@ -239,5 +246,104 @@ namespace AutorisationTravail.Views.DemandeAutorisationTravail
             }
 
         }
+
+        private async void SaveAsDraft_Tapped(System.Object sender, System.EventArgs e)
+        {
+            await PopupNavigation.Instance.PushAsync(new Popups.SaveAsDraftPopup());
+
+        }
+        private void SetButtonDesabled(Button button)
+        {
+            button.IsEnabled = false;
+            button.TextColor = Color.White;
+            button.BackgroundColor = Color.LightGray;
+        }
+        private void SetButtonEnabled(Button button)
+        {
+            button.IsEnabled = true;
+            button.TextColor = Color.White;
+            button.BackgroundColor = Color.FromHex("#4a8803");
+        }
+
+        #region Fields Validation
+        void SitePicker_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+            if (Step1FieldsValid()) { SetButtonEnabled(ButtonNextStep1); }
+            else { SetButtonDesabled(ButtonNextStep1); }
+        }
+
+
+        void EntitePicker_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+            if (Step1FieldsValid()) { SetButtonEnabled(ButtonNextStep1); }
+            else { SetButtonDesabled(ButtonNextStep1); }
+
+        }
+
+        void ChefEquipPicker_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+            if (Step1FieldsValid()) { SetButtonEnabled(ButtonNextStep1); }
+            else { SetButtonDesabled(ButtonNextStep1); }
+        }
+        private bool Step1FieldsValid()
+        {
+            return SitePicker.SelectedIndex != -1 && EntitePicker.SelectedIndex != -1 && ChefEquipPicker.SelectedIndex != -1 && !string.IsNullOrWhiteSpace(LieuEntry.Text) && LieuEntry.Text != "";
+        }
+
+        void LieuEntry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
+        {
+
+            if (Step1FieldsValid()) { SetButtonEnabled(ButtonNextStep1); }
+            else { SetButtonDesabled(ButtonNextStep1); }
+        }
+
+
+        private bool Step2FieldsValid()
+        {
+            return  !string.IsNullOrWhiteSpace(DescriptionEditor.Text) && DescriptionEditor.Text != "" && AttachedElementPicker.SelectedIndex != -1 && !string.IsNullOrWhiteSpace(NumeroEntry.Text) && NumeroEntry.Text != "";
+        }
+
+        void AttachedElementPicker_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+            if (Step2FieldsValid()) { SetButtonEnabled(ButtonNextStep2); }
+            else { SetButtonDesabled(ButtonNextStep2); }
+        }
+
+        void NumeroEntry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
+        {
+            if (Step2FieldsValid()) { SetButtonEnabled(ButtonNextStep2); }
+            else { SetButtonDesabled(ButtonNextStep2); }
+        }
+
+        void DescriptionEditor_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
+        {
+            DescriptionLengthLabel.Text = DescriptionEditor.Text.Length + "/1000";
+            if (Step2FieldsValid()) { SetButtonEnabled(ButtonNextStep2); }
+            else { SetButtonDesabled(ButtonNextStep2); }
+        }
+
+        void HeureEndTimePicker_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+            if (Step3FieldsValid()) { SetButtonEnabled(ButtonNextStep3); }
+            else { SetButtonDesabled(ButtonNextStep3); }
+        }
+
+        void HeureStartTimePicker_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+            if (Step3FieldsValid()) { SetButtonEnabled(ButtonNextStep3); }
+            else { SetButtonDesabled(ButtonNextStep3); }
+        }
+
+        void InterventionDatePicker_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+            if (Step3FieldsValid()) { SetButtonEnabled(ButtonNextStep3); }
+            else { SetButtonDesabled(ButtonNextStep3); }
+        }
+
+        private bool Step3FieldsValid()
+        {
+            return Step1FieldsValid() && Step2FieldsValid() && HeureStartTimePicker.Time < HeureEndTimePicker.Time;
+        }
+        #endregion Fields Validation
     }
 }

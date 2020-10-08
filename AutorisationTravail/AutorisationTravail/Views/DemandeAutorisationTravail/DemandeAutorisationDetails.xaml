@@ -5,12 +5,21 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    NavigationPage.HasNavigationBar="False"
+    NavigationPage.HasNavigationBar="True"
     mc:Ignorable="d">
+    <NavigationPage.TitleView>
+        <Label
+            AbsoluteLayout.LayoutFlags="PositionProportional"
+            FontAttributes="Bold"
+            FontSize="20"
+            HorizontalOptions="FillAndExpand"
+            Text="Demande N° 0037483"
+            TextColor="Black" />
+    </NavigationPage.TitleView>
     <ContentPage.Content>
         <ScrollView>
             <StackLayout BackgroundColor="#F4F4F4">
-                <StackLayout x:Name="Header">
+                <!--<StackLayout x:Name="Header">
                     <Grid>
                         <Frame
                             Padding="5,10,5,20"
@@ -41,7 +50,7 @@
                             </StackLayout>
                         </Frame>
                     </Grid>
-                </StackLayout>
+                </StackLayout>-->
                 <StackLayout x:Name="Content">
                     <Frame CornerRadius="0" HasShadow="False">
                         <StackLayout x:Name="ActionsCard" Spacing="15">

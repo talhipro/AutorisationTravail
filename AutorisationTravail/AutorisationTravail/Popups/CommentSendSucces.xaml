@@ -45,6 +45,7 @@
             <StackLayout Margin="0,20,0,0" HorizontalOptions="CenterAndExpand">
                 <Button
                     BackgroundColor="#5BA702"
+                    Clicked="DemandesAT_Clicked"
                     CornerRadius="50"
                     FontSize="18"
                     Text="Demandes AT"

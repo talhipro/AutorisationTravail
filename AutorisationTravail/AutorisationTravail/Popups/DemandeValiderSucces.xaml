@@ -47,6 +47,7 @@
                     BackgroundColor="#5BA702"
                     CornerRadius="50"
                     FontSize="18"
+                    Clicked="DemandesAT_Clicked"
                     Text="Demandes AT"
                     TextColor="White" />
             </StackLayout>

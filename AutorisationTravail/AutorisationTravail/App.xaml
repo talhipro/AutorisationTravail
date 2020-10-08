@@ -1,11 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Application xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             x:Class="AutorisationTravail.App">
+<Application
+    x:Class="AutorisationTravail.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
     <Application.Resources>
+        <!--  Styles  -->
+        <Style TargetType="NavigationPage">
+            <Setter Property="BarBackgroundColor" Value="White" />
+            <Setter Property="BarTextColor" Value="Black" />
+        </Style>
+        <Style
+            x:Key="InputStyle"
+            x:Name="InputStyle"
+            TargetType="Entry">
+            <Setter Property="HeightRequest" Value="45" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="TextColor" Value="Black" />
+        </Style>
+
+        <Style
+            x:Key="DesabledButtonStyle"
+            x:Name="DesabledButtonStyle"
+            TargetType="Button">
+            <Setter Property="BackgroundColor" Value="Red" />
+            <Setter Property="TextColor" Value="White" />
+        </Style>
+        <Style
+            x:Key="EnabledButtonStyle"
+            x:Name="EnabledButtonStyle"
+            TargetType="Button">
+            <Setter Property="BackgroundColor" Value="#4a8803" />
+            <Setter Property="TextColor" Value="White" />
+        </Style>
+        <!--  Styles  -->
 
     </Application.Resources>
 </Application>

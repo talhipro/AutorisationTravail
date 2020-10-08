@@ -1,0 +1,376 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="AutorisationTravail.Views.DemandeAutorisationTravail.ListDemandeAutorisationTravail"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Controls="clr-namespace:AutorisationTravail.Controls"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    Title="Detail"
+    ios:Page.UseSafeArea="True">
+    <NavigationPage.TitleView>
+        <Label
+            AbsoluteLayout.LayoutFlags="PositionProportional"
+            FontAttributes="Bold"
+            FontSize="20"
+            Text="Demandes AT"
+            TextColor="Black" />
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="White">
+            <!--<StackLayout x:Name="Header">
+                    <Frame
+                        Margin="0,-15,0,0"
+                        Padding="10,40,10,0"
+                        BackgroundColor="White"
+                        CornerRadius="0"
+                        HasShadow="False"
+                        VerticalOptions="Center">
+                        <StackLayout Orientation="Horizontal" >
+                            <Frame
+                                Padding="5"
+                                BackgroundColor="White"
+                                CornerRadius="8"
+                                HasShadow="False">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="BurgerMenu_Clicked" />
+                    </Frame.GestureRecognizers>
+                            <Image
+                                    HeightRequest="20"
+                                    HorizontalOptions="End"
+                                    Source="burger_menu.png"
+                                    WidthRequest="20"
+                                    />
+                            </Frame>
+                            <Label
+                                Margin="15,0,0,0"
+                                FontAttributes="Bold"
+                                FontSize="18"
+                                HorizontalOptions="StartAndExpand"
+                                Text="Demandes AT"
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+
+
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>-->
+            <StackLayout Margin="10,5">
+                <Controls:CustomRoundedPicker Title="Chercher une demande" />
+            </StackLayout>
+
+            <StackLayout x:Name="TabbedBar" HorizontalOptions="FillAndExpand">
+                <Grid
+                    Margin="10,5"
+                    Padding="0"
+                    HorizontalOptions="FillAndExpand"
+                    RowSpacing="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <StackLayout Grid.Column="0" HorizontalOptions="Fill">
+
+                        <Label
+                            x:Name="ValidatedDemandeLabel"
+                            FontSize="13"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="Validées"
+                            TextColor="#7BCB09" />
+                        <BoxView
+                            x:Name="ValidatedDemandeBox"
+                            BackgroundColor="#7BCB09"
+                            HeightRequest="3"
+                            HorizontalOptions="FillAndExpand" />
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Validated_Clicked" />
+                        </StackLayout.GestureRecognizers>
+
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="1" HorizontalOptions="Fill">
+                        <Label
+                            x:Name="PendingDemandeLabel"
+                            Margin="0"
+                            FontSize="13"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="En attentes"
+                            TextColor="Gray" />
+                        <BoxView
+                            x:Name="PendingDemandeBox"
+                            HeightRequest="3"
+                            HorizontalOptions="FillAndExpand" />
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Pending_Clicked" />
+                        </StackLayout.GestureRecognizers>
+
+                    </StackLayout>
+                    <StackLayout Grid.Column="2" HorizontalOptions="Fill">
+                        <Label
+                            x:Name="RefusedDemandeLabelle"
+                            Margin="0"
+                            FontSize="13"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="Refusées(5)"
+                            TextColor="Gray" />
+                        <BoxView
+                            x:Name="RefusedDemandeBox"
+                            HeightRequest="3"
+                            HorizontalOptions="FillAndExpand" />
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Refused_Clicked" />
+                        </StackLayout.GestureRecognizers>
+
+                    </StackLayout>
+                    <StackLayout Grid.Column="3" HorizontalOptions="Fill">
+                        <Label
+                            x:Name="DraftDemandeLabel"
+                            Margin="0"
+                            FontSize="13"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="Incomplétes"
+                            TextColor="Gray" />
+                        <BoxView
+                            x:Name="DraftDemandeBox"
+                            HeightRequest="3"
+                            HorizontalOptions="FillAndExpand" />
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Draft_Clicked" />
+                        </StackLayout.GestureRecognizers>
+
+                    </StackLayout>
+
+
+                </Grid>
+
+
+            </StackLayout>
+
+            <AbsoluteLayout>
+                <StackLayout BackgroundColor="#f2f8fc">
+                    <!--  ViewList  -->
+                    <ListView
+                        x:Name="myListe"
+                        Margin="10"
+                        CachingStrategy="RecycleElementAndDataTemplate"
+                        HasUnevenRows="True"
+                        ItemSelected="myListe_ItemSelected"
+                        SeparatorVisibility="None"
+                        VerticalScrollBarVisibility="Never">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Frame
+                                        Margin="0,4"
+                                        Padding="2"
+                                        CornerRadius="1"
+                                        HasShadow="True">
+                                        <StackLayout Spacing="0">
+                                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                                <StackLayout.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="Item_Tapped" />
+                                                </StackLayout.GestureRecognizers>
+
+                                                <Frame
+                                                    Padding="10"
+                                                    CornerRadius="8"
+                                                    HasShadow="False"
+                                                    HorizontalOptions="FillAndExpand">
+                                                    <StackLayout VerticalOptions="Center">
+                                                        <StackLayout Orientation="Horizontal" Spacing="2">
+                                                            <Label
+                                                                FontAttributes="Bold"
+                                                                Text="Numéro de la demande : "
+                                                                TextColor="#424242" />
+                                                            <Label
+                                                                FontAttributes="None"
+                                                                FontSize="16"
+                                                                Text="{Binding AutorisationNum}"
+                                                                TextColor="Green" />
+                                                        </StackLayout>
+                                                        <StackLayout>
+                                                            <StackLayout Orientation="Horizontal">
+                                                                <Label Text="EP : " TextColor="Gray" />
+                                                                <Label
+                                                                    FontAttributes="None"
+                                                                    FontSize="16"
+                                                                    Text="{Binding AutorisationSite}"
+                                                                    TextColor="Black" />
+                                                                <Label
+                                                                    Margin="10,0,0,0"
+                                                                    Text="EE : "
+                                                                    TextColor="Gray" />
+                                                                <Label
+                                                                    FontAttributes="None"
+                                                                    FontSize="16"
+                                                                    Text="Chimie"
+                                                                    TextColor="Black" />
+                                                            </StackLayout>
+                                                        </StackLayout>
+
+                                                        <StackLayout>
+                                                            <StackLayout Orientation="Horizontal">
+                                                                <Label Text="Crée le : " TextColor="Gray" />
+                                                                <Label
+                                                                    FontAttributes="None"
+                                                                    FontSize="16"
+                                                                    Text="{Binding AutorisationDate}"
+                                                                    TextColor="Black" />
+                                                            </StackLayout>
+                                                        </StackLayout>
+
+                                                        <StackLayout>
+                                                            <StackLayout Orientation="Horizontal">
+                                                                <Label Text="Date d'intervention : " TextColor="Gray" />
+                                                                <Label
+                                                                    FontAttributes="None"
+                                                                    FontSize="16"
+                                                                    Text="{Binding AutorisationDateIntervention}"
+                                                                    TextColor="Black" />
+                                                            </StackLayout>
+                                                        </StackLayout>
+                                                        <!--
+                                                <StackLayout
+                                                    HorizontalOptions="EndAndExpand"
+                                                    Spacing="0"
+                                                    VerticalOptions="Center">
+                                                    <Frame
+                                                        Padding="10"
+                                                        BackgroundColor="{Binding AutorisationStatutBgColor}"
+                                                        CornerRadius="6"
+                                                        HasShadow="False">
+                                                        <Label
+                                                            Margin="0,0,5,0"
+                                                            FontAttributes="Bold"
+                                                            FontSize="16"
+                                                            HorizontalOptions="CenterAndExpand"
+                                                            HorizontalTextAlignment="Center"
+                                                            Text="{Binding AutorisationStatut}"
+                                                            TextColor="{Binding AutorisationStatutTxtColor}" />
+                                                    </Frame>
+
+                                                </StackLayout>
+                                                        -->
+                                                    </StackLayout>
+                                                </Frame>
+                                            </StackLayout>
+                                            <StackLayout
+                                                Margin="0"
+                                                Padding="0,2,0,0"
+                                                BackgroundColor="#F5F5F5"
+                                                IsVisible="{Binding DetailsColapse}"
+                                                Spacing="2">
+                                                <Grid ColumnSpacing="2" RowSpacing="2">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto" />
+                                                        <RowDefinition Height="Auto" />
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width=".5*" />
+                                                        <ColumnDefinition Width=".5*" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <StackLayout
+                                                        Grid.Row="0"
+                                                        Grid.Column="0"
+                                                        Padding="15"
+                                                        BackgroundColor="White">
+                                                        <Label Text="Fait le" TextColor="#AEB4BF" />
+                                                        <Label Text="{Binding AutorisationDate, StringFormat='{0:dd/MM/yyyy}'}" TextColor="#3F4576" />
+                                                    </StackLayout>
+                                                    <StackLayout
+                                                        Grid.Row="0"
+                                                        Grid.Column="1"
+                                                        Padding="15"
+                                                        BackgroundColor="White">
+                                                        <Label Text="entité" TextColor="#AEB4BF" />
+                                                        <Label Text="{Binding AutorisationEntite}" TextColor="#3F4576" />
+                                                    </StackLayout>
+                                                    <StackLayout
+                                                        Grid.Row="1"
+                                                        Grid.Column="0"
+                                                        Padding="15"
+                                                        BackgroundColor="White">
+                                                        <Label Text="demandeur" TextColor="#AEB4BF" />
+                                                        <Label Text="{Binding AutorisationDemandeur}" TextColor="#3F4576" />
+                                                    </StackLayout>
+                                                    <StackLayout
+                                                        Grid.Row="1"
+                                                        Grid.Column="1"
+                                                        Padding="15"
+                                                        BackgroundColor="White">
+                                                        <Label Text="sevice" TextColor="#AEB4BF" />
+                                                        <Label Text="{Binding AutorisationService}" TextColor="#3F4576" />
+                                                    </StackLayout>
+                                                </Grid>
+                                                <StackLayout Padding="20" BackgroundColor="White">
+                                                    <Button
+                                                        BackgroundColor="#3F4478"
+                                                        BorderColor="White"
+                                                        FontSize="16"
+                                                        Clicked="Details_Clicked"
+                                                        Text="Voir détail"
+                                                        TextColor="White" />
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </StackLayout>
+
+                                    </Frame>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+
+
+
+                    </ListView>
+
+                    <!--  ViewList  -->
+
+                </StackLayout>
+
+                <Frame
+                    Padding="0,0"
+                    AbsoluteLayout.LayoutBounds="0.5,0.95,200,40"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    BackgroundColor="Transparent"
+                    CornerRadius="18"
+                    HasShadow="True"
+                    HorizontalOptions="CenterAndExpand">
+                    <Button
+                        x:Name="NewDemandeATButton"
+                        Padding="15,0"
+                        BackgroundColor="#40b340"
+                        Clicked="NewDemandeATButton_Clicked"
+                        CornerRadius="18"
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        HeightRequest="35"
+                        HorizontalOptions="CenterAndExpand"
+                        Text="NOUVELLE DEMANDES AT"
+                        TextColor="White" />
+                </Frame>
+            </AbsoluteLayout>
+
+
+
+
+            <!--
+            <Button
+                    x:Name="NewDemandeATButton"
+                    Clicked="NewDemandeATButton_Clicked"
+                    Text="NOUVELLE DEMANDES AT"
+                    FontSize="12"
+                     FontAttributes="Bold"
+                    TextColor="White"
+                    BackgroundColor="#40b340"
+                    HorizontalOptions="CenterAndExpand"
+                    Padding="15,0"
+                    CornerRadius="18"
+                    HeightRequest="35"
+
+                    />
+            -->
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
